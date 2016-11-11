@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "jkroso-type.js",
+  "sourceRoot": "..",
+  "sources": [
+    "src/jkroso-type.coffee"
+  ],
+  "names": [],
+  "mappings": ";AACA;EAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA"
+}

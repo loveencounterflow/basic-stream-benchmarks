@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "jkroso-equals.js",
+  "sourceRoot": "..",
+  "sources": [
+    "src/jkroso-equals.coffee"
+  ],
+  "names": [],
+  "mappings": ";AACA;EAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA"
+}
