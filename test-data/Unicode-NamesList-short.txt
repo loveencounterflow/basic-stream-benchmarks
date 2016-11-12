@@ -1,0 +1,300 @@
+; charset=UTF-8
+@@@	The Unicode Standard 9.0.0
+@@@+	U90M160615.lst
+	Unicode 9.0.0 final names list.
+	This file is semi-automatically derived from UnicodeData.txt and
+	a set of manually created annotations using a script to select
+	or suppress information from the data file. The rules used
+	for this process are aimed at readability for the human reader,
+	at the expense of some details; therefore, this file should not
+	be parsed for machine-readable information.
+@+		© 2016 Unicode®, Inc.
+	For terms of use, see http://www.unicode.org/terms_of_use.html
+@@	0000	C0 Controls and Basic Latin (Basic Latin)	007F
+@@+
+@		C0 controls
+@+		Alias names are those for ISO/IEC 6429:1992. Commonly used alternative aliases are also shown.
+0000	<control>
+	= NULL
+0001	<control>
+	= START OF HEADING
+0002	<control>
+	= START OF TEXT
+0003	<control>
+	= END OF TEXT
+0004	<control>
+	= END OF TRANSMISSION
+0005	<control>
+	= ENQUIRY
+0006	<control>
+	= ACKNOWLEDGE
+0007	<control>
+	= BELL
+0008	<control>
+	= BACKSPACE
+0009	<control>
+	= CHARACTER TABULATION
+	= horizontal tabulation (HT), tab
+000A	<control>
+	= LINE FEED (LF)
+	= new line (NL), end of line (EOL)
+000B	<control>
+	= LINE TABULATION
+	= vertical tabulation (VT)
+000C	<control>
+	= FORM FEED (FF)
+000D	<control>
+	= CARRIAGE RETURN (CR)
+000E	<control>
+	= SHIFT OUT
+	* known as LOCKING-SHIFT ONE in 8-bit environments
+000F	<control>
+	= SHIFT IN
+	* known as LOCKING-SHIFT ZERO in 8-bit environments
+0010	<control>
+	= DATA LINK ESCAPE
+0011	<control>
+	= DEVICE CONTROL ONE
+0012	<control>
+	= DEVICE CONTROL TWO
+0013	<control>
+	= DEVICE CONTROL THREE
+0014	<control>
+	= DEVICE CONTROL FOUR
+0015	<control>
+	= NEGATIVE ACKNOWLEDGE
+0016	<control>
+	= SYNCHRONOUS IDLE
+0017	<control>
+	= END OF TRANSMISSION BLOCK
+0018	<control>
+	= CANCEL
+0019	<control>
+	= END OF MEDIUM
+001A	<control>
+	= SUBSTITUTE
+	x (replacement character - FFFD)
+001B	<control>
+	= ESCAPE
+001C	<control>
+	= INFORMATION SEPARATOR FOUR
+	= file separator (FS)
+001D	<control>
+	= INFORMATION SEPARATOR THREE
+	= group separator (GS)
+001E	<control>
+	= INFORMATION SEPARATOR TWO
+	= record separator (RS)
+001F	<control>
+	= INFORMATION SEPARATOR ONE
+	= unit separator (US)
+@		ASCII punctuation and symbols
+@+		Based on ISO/IEC 646.
+0020	SPACE
+	* sometimes considered a control code
+	* other space characters: 2000-200A
+	x (no-break space - 00A0)
+	x (zero width space - 200B)
+	x (word joiner - 2060)
+	x (ideographic space - 3000)
+	x (zero width no-break space - FEFF)
+0021	EXCLAMATION MARK
+	= factorial
+	= bang
+	x (inverted exclamation mark - 00A1)
+	x (latin letter retroflex click - 01C3)
+	x (double exclamation mark - 203C)
+	x (interrobang - 203D)
+	x (heavy exclamation mark ornament - 2762)
+0022	QUOTATION MARK
+	* neutral (vertical), used as opening or closing quotation mark
+	* preferred characters in English for paired quotation marks are 201C & 201D
+	* 05F4 is preferred for gershayim when writing Hebrew
+	x (modifier letter double prime - 02BA)
+	x (combining double acute accent - 030B)
+	x (combining double vertical line above - 030E)
+	x (hebrew punctuation gershayim - 05F4)
+	x (double prime - 2033)
+	x (ditto mark - 3003)
+0023	NUMBER SIGN
+	= pound sign, hash, crosshatch, octothorpe
+	x (l b bar symbol - 2114)
+	x (viewdata square - 2317)
+	x (music sharp sign - 266F)
+	~ 0023 FE0E text style
+	~ 0023 FE0F emoji style
+0024	DOLLAR SIGN
+	= milréis, escudo
+	* used for many peso currencies in Latin America and elsewhere
+	* glyph may have one or two vertical bars
+	* other currency symbol characters start at 20A0
+	x (currency sign - 00A4)
+	x (peso sign - 20B1)
+	x (heavy dollar sign - 1F4B2)
+0025	PERCENT SIGN
+	x (arabic percent sign - 066A)
+	x (per mille sign - 2030)
+	x (per ten thousand sign - 2031)
+	x (commercial minus sign - 2052)
+0026	AMPERSAND
+	x (tironian sign et - 204A)
+	x (turned ampersand - 214B)
+	x (heavy ampersand ornament - 1F674)
+0027	APOSTROPHE
+	= apostrophe-quote (1.0)
+	= APL quote
+	* neutral (vertical) glyph with mixed usage
+	* 2019 is preferred for apostrophe
+	* preferred characters in English for paired quotation marks are 2018 & 2019
+	* 05F3 is preferred for geresh when writing Hebrew
+	x (modifier letter prime - 02B9)
+	x (modifier letter apostrophe - 02BC)
+	x (modifier letter vertical line - 02C8)
+	x (combining acute accent - 0301)
+	x (hebrew punctuation geresh - 05F3)
+	x (prime - 2032)
+	x (latin small letter saltillo - A78C)
+0028	LEFT PARENTHESIS
+	= opening parenthesis (1.0)
+0029	RIGHT PARENTHESIS
+	= closing parenthesis (1.0)
+	* see discussion on semantics of paired bracketing characters
+002A	ASTERISK
+	= star (on phone keypads)
+	x (arabic five pointed star - 066D)
+	x (low asterisk - 204E)
+	x (asterisk operator - 2217)
+	x (sextile - 26B9)
+	x (heavy asterisk - 2731)
+	~ 002A FE0E text style
+	~ 002A FE0F emoji style
+002B	PLUS SIGN
+	x (heavy plus sign - 2795)
+002C	COMMA
+	= decimal separator
+	x (arabic comma - 060C)
+	x (single low-9 quotation mark - 201A)
+	x (reversed comma - 2E41)
+	x (ideographic comma - 3001)
+002D	HYPHEN-MINUS
+	= hyphen or minus sign
+	* used for either hyphen or minus sign
+	x (hyphen - 2010)
+	x (non-breaking hyphen - 2011)
+	x (figure dash - 2012)
+	x (en dash - 2013)
+	x (hyphen bullet - 2043)
+	x (minus sign - 2212)
+	x (roman uncia sign - 10191)
+002E	FULL STOP
+	= period, dot, decimal point
+	* may be rendered as a raised decimal point in old style numbers
+	x (arabic full stop - 06D4)
+	x (stenographic full stop - 2E3C)
+	x (ideographic full stop - 3002)
+002F	SOLIDUS
+	= slash, virgule
+	x (latin letter dental click - 01C0)
+	x (combining long solidus overlay - 0338)
+	x (fraction slash - 2044)
+	x (division slash - 2215)
+@		ASCII digits
+0030	DIGIT ZERO
+	~ 0030 FE00 short diagonal stroke form
+	~ 0030 FE0E text style
+	~ 0030 FE0F emoji style
+0031	DIGIT ONE
+	~ 0031 FE0E text style
+	~ 0031 FE0F emoji style
+0032	DIGIT TWO
+	~ 0032 FE0E text style
+	~ 0032 FE0F emoji style
+0033	DIGIT THREE
+	~ 0033 FE0E text style
+	~ 0033 FE0F emoji style
+0034	DIGIT FOUR
+	~ 0034 FE0E text style
+	~ 0034 FE0F emoji style
+0035	DIGIT FIVE
+	~ 0035 FE0E text style
+	~ 0035 FE0F emoji style
+0036	DIGIT SIX
+	~ 0036 FE0E text style
+	~ 0036 FE0F emoji style
+0037	DIGIT SEVEN
+	~ 0037 FE0E text style
+	~ 0037 FE0F emoji style
+0038	DIGIT EIGHT
+	~ 0038 FE0E text style
+	~ 0038 FE0F emoji style
+0039	DIGIT NINE
+	~ 0039 FE0E text style
+	~ 0039 FE0F emoji style
+@		ASCII punctuation and symbols
+003A	COLON
+	* also used to denote division or scale; for that mathematical use 2236 is preferred
+	x (armenian full stop - 0589)
+	x (hebrew punctuation sof pasuq - 05C3)
+	x (ratio - 2236)
+	x (modifier letter colon - A789)
+003B	SEMICOLON
+	* this, and not 037E, is the preferred character for 'Greek question mark'
+	x (greek question mark - 037E)
+	x (arabic semicolon - 061B)
+	x (reversed semicolon - 204F)
+003C	LESS-THAN SIGN
+	x (single left-pointing angle quotation mark - 2039)
+	x (left-pointing angle bracket - 2329)
+	x (mathematical left angle bracket - 27E8)
+	x (left angle bracket - 3008)
+003D	EQUALS SIGN
+	* other related characters: 2241-2263
+	x (not equal to - 2260)
+	x (identical to - 2261)
+	x (modifier letter short equals sign - A78A)
+	x (roman sextans sign - 10190)
+003E	GREATER-THAN SIGN
+	x (single right-pointing angle quotation mark - 203A)
+	x (right-pointing angle bracket - 232A)
+	x (mathematical right angle bracket - 27E9)
+	x (right angle bracket - 3009)
+003F	QUESTION MARK
+	x (inverted question mark - 00BF)
+	x (greek question mark - 037E)
+	x (arabic question mark - 061F)
+	x (interrobang - 203D)
+	x (question exclamation mark - 2048)
+	x (exclamation question mark - 2049)
+0040	COMMERCIAL AT
+	= at sign
+@		Uppercase Latin alphabet
+0041	LATIN CAPITAL LETTER A
+0042	LATIN CAPITAL LETTER B
+	x (script capital b - 212C)
+0043	LATIN CAPITAL LETTER C
+	x (double-struck capital c - 2102)
+	x (black-letter capital c - 212D)
+0044	LATIN CAPITAL LETTER D
+0045	LATIN CAPITAL LETTER E
+	x (euler constant - 2107)
+	x (script capital e - 2130)
+0046	LATIN CAPITAL LETTER F
+	x (script capital f - 2131)
+	x (turned capital f - 2132)
+0047	LATIN CAPITAL LETTER G
+0048	LATIN CAPITAL LETTER H
+	x (script capital h - 210B)
+	x (black-letter capital h - 210C)
+	x (double-struck capital h - 210D)
+0049	LATIN CAPITAL LETTER I
+	* Turkish and Azerbaijani use 0131 for lowercase
+	x (latin capital letter i with dot above - 0130)
+	x (cyrillic capital letter byelorussian-ukrainian i - 0406)
+	x (cyrillic letter palochka - 04C0)
+	x (script capital i - 2110)
+	x (black-letter capital i - 2111)
+	x (roman numeral one - 2160)
+004A	LATIN CAPITAL LETTER J
+004B	LATIN CAPITAL LETTER K
+	x (kelvin sign - 212A)
+004C	LATIN CAPITAL LETTER L

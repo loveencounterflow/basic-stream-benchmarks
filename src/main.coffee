@@ -11,6 +11,7 @@ debug                     = CND.get_logger 'debug',     badge
 warn                      = CND.get_logger 'warn',      badge
 info                      = CND.get_logger 'info',      badge
 help                      = CND.get_logger 'help',      badge
+whisper                   = CND.get_logger 'whisper',   badge
 #...........................................................................................................
 PATH                      = require 'path'
 FS                        = require 'fs'
@@ -21,7 +22,16 @@ $split                    = require 'binary-split'
 new_numeral               = require 'numeral'
 format_float              = ( x ) -> ( new_numeral x ).format '0,0.000'
 format_integer            = ( x ) -> ( new_numeral x ).format '0,0'
+{ step, }                 = require 'coffeenode-suspend'
+#...........................................................................................................
+O                         = {}
+O.inputs                  = {}
+O.inputs[ 'long' ]        = PATH.resolve __dirname, '../test-data/Unicode-NamesList.txt'
+O.inputs[ 'short' ]       = PATH.resolve __dirname, '../test-data/Unicode-NamesList-short.txt'
 
+
+#===========================================================================================================
+# HELPERS
 #-----------------------------------------------------------------------------------------------------------
 $show = ->
   return through2 ( data, encoding, callback ) ->
@@ -35,44 +45,6 @@ $as_line = ->
     # info rpr data
     @push data + '\n'
     callback()
-
-#-----------------------------------------------------------------------------------------------------------
-@read_formula_data = ( handler ) ->
-  # input_path  = PATH.resolve __dirname, '../test-data/Unicode-index.txt'
-  input_path    = PATH.resolve __dirname, '../test-data/Unicode-NamesList.txt'
-  output_path   = '/tmp/xxx.txt'
-  input         = FS.createReadStream   input_path
-  output        = FS.createWriteStream  output_path
-  S             = {}
-  S.byte_count  = 0
-  S.item_count  = 0
-  S.t0          = null
-  S.t1          = null
-  #.........................................................................................................
-  input
-    #.......................................................................................................
-    .pipe $split()
-    # .pipe $show()
-    #.......................................................................................................
-    .pipe through2.obj ( data, encoding, callback ) ->
-      S.t0         ?= Date.now()
-      S.byte_count += data.length
-      S.item_count += +1
-      @push data
-      callback()
-    #.......................................................................................................
-    .pipe through2.obj ( data, encoding, callback ) -> @push data; callback()
-    .pipe through2.obj ( data, encoding, callback ) -> @push data; callback()
-    #.......................................................................................................
-    .pipe $as_line()
-    .pipe output
-  #.........................................................................................................
-  output.on 'close', =>
-    S.t1 = Date.now()
-    @report S
-    handler()
-  #.........................................................................................................
-  return null
 
 #-----------------------------------------------------------------------------------------------------------
 @report = ( S ) ->
@@ -89,108 +61,80 @@ $as_line = ->
   help "#{bps_txt} bps / #{ips_txt} ips"
 
 #-----------------------------------------------------------------------------------------------------------
-@read_formula_data_basic_version = ( handler ) ->
-  path        = PATH.resolve __dirname, '../../../mingkwai-rack/jizura-datasources/data/flat-files/shape/shape-breakdown-formula.txt'
-  input       = FS.createReadStream path
-  output      = FS.createWriteStream '/tmp/xxx.txt'
-  byte_count  = 0
-  item_count  = 0
-  t0          = null
-  t1          = null
+running_in_devtools = console.profile?
+
+#-----------------------------------------------------------------------------------------------------------
+@start_profile = ( name ) ->
+  if running_in_devtools then console.profile name
+  else                        whisper 'console.profile', name
+
+#-----------------------------------------------------------------------------------------------------------
+@start_profile = ( name ) ->
+  if running_in_devtools then console.profileEnd name
+  else                        whisper 'console.profileEnd', name
+
+
+#===========================================================================================================
+#
+#-----------------------------------------------------------------------------------------------------------
+@read_with_transforms = ( n, input_name, handler ) ->
+  # input_path  = PATH.resolve __dirname, '../test-data/Unicode-index.txt'
+  input_path    = O.inputs[ input_name ]
+  throw new Error "unknown input name #{rpr input_name}" unless input_path?
+  output_path   = '/dev/null'
+  input         = FS.createReadStream   input_path
+  output        = FS.createWriteStream  output_path
+  S             = {}
+  S.byte_count  = 0
+  S.item_count  = 0
+  S.t0          = null
+  S.t1          = null
+  name          = "n:#{n}"
   #.........................................................................................................
-  output.on 'finish', =>
-    help "finished"
+  p = input
+  p = p.pipe $split()
+  #.........................................................................................................
+  p = p.pipe through2.obj ( data, encoding, callback ) ->
+    unless S.t0?
+      console.profile name
+      S.t0 ?= Date.now()
+    S.byte_count += data.length
+    S.item_count += +1
+    @push data
+    callback()
+  #.........................................................................................................
+  for _ in [ 1 .. n ] by +1
+    p = p.pipe through2.obj ( data, encoding, callback ) -> @push data; callback()
+  #.........................................................................................................
+  p = p.pipe $as_line()
+  p = p.pipe output
+  #.........................................................................................................
+  output.on 'close', =>
+    console.profileEnd name
+    S.t1 = Date.now()
+    @report S
     handler()
-  #.........................................................................................................
-  input
-    # .pipe $ 'start', ( send ) => t0 = Date.now()
-    # .pipe $ ( chunk ) => byte_count += chunk.length
-    #.......................................................................................................
-    .pipe $split()
-    .pipe through2.obj ( data, encoding, callback ) -> @push data; callback()
-    .pipe through2.obj ( data, encoding, callback ) -> @push data; callback()
-    .pipe through2.obj ( data, encoding, callback ) -> @push data; callback()
-    # .pipe $ ( data, send ) => send data # nr 1
-    # .pipe $ ( data, send ) => send data # nr 2
-    # .pipe $ ( data, send ) => send data # nr 3
-    # .pipe $ ( data, send ) => send data # nr 4
-    # .pipe $ ( data, send ) => send data # nr 5
-    # .pipe $ ( data, send ) => send data # nr 6
-    # .pipe $ ( data, send ) => send data # nr 7
-    # #.......................................................................................................
-    # .pipe $ ( data ) =>
-    #   item_count += +1
-    #   # whisper item_count if item_count % 100 is 0
-    # #.......................................................................................................
-    # .pipe $ ( data, send ) => send "item_count: #{item_count}, byte_count: #{byte_count}\n"
-    # .pipe $ 'stop', ( send ) -> t1 = Date.now()
-    .pipe output
-    #.......................................................................................................
-    .pipe $ 'finish', =>
-      t1              = Date.now()
-      dts             = ( t1 - t0 ) / 1000
-      bps             =  byte_count / dts
-      ips             =  item_count / dts
-      byte_count_txt  = format_integer  byte_count
-      item_count_txt  = format_integer  item_count
-      dts_txt         = format_float dts
-      bps_txt         = format_float bps
-      ips_txt         = format_float ips
-      help "#{dts_txt}s"
-      help "#{byte_count_txt} bytes / #{item_count_txt} items"
-      help "#{bps_txt} bps / #{ips_txt} ips"
-      handler()
   #.........................................................................................................
   return null
 
 #-----------------------------------------------------------------------------------------------------------
-@run_devtools_example = ->
-  console.profile 'build'
-  count = 0
-  f = ->
-    urge "item ##{count}"
-    count += +1
-    if count < 1000
-      setImmediate -> f()
-    else
-      console.profileEnd 'build'
-  f()
-  setTimeout ( -> f() ), 1e6
-
-#-----------------------------------------------------------------------------------------------------------
-@test_1 = ->
-  @read_formula_data ( error ) ->
-    throw error if error?
-    help 'ok'
-
-
-
-############################################################################################################
-console.profile    ?= ( name ) -> warn 'profile',     name
-console.profileEnd ?= ( name ) -> warn 'profileEnd',  name
+@main = ->
+  input_name = 'short'
+  step ( resume ) =>
+    for run in [ 0 .. 3 ]
+      yield @read_with_transforms   0, input_name, resume
+      yield @read_with_transforms   5, input_name, resume
+      yield @read_with_transforms  10, input_name, resume
+      # yield @read_with_transforms  50, input_name, resume
+      # yield @read_with_transforms 200, input_name, resume
+      # yield @read_with_transforms 300, input_name, resume
+    if running_in_devtools
+      setTimeout ( -> help 'ok' ), 1e6
 
 
 ############################################################################################################
 unless module.parent?
-  @test_1()
-  # @test_2()
-  # @test_3()
-
-###
-make plan to base future major version of PipeDreams directly on https://github.com/nodejs/readable-stream
-(and through2 etc)
-
-ways to solve current problem without rewriting PipeDreams:
-
-(1) try to read many sources in parallel
-(2) collect entire file content into single string / buffer; sizes are all OK for that
-(3) re-use existing pipeline for all files, only reset state
-
-use both approaches at the same time
-
-###
-
-
+  @main()
 
 
 

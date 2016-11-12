@@ -27,6 +27,7 @@
   "dependencies": {
     "binary-split": "^1.0.3",
     "cnd": "^4.2.0",
+    "coffeenode-suspend": "^0.1.11",
     "numeral": "^1.5.3",
     "through2": "^2.0.1"
   },
