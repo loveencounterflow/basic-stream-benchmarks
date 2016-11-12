@@ -64,12 +64,12 @@ $as_line = ->
 running_in_devtools = console.profile?
 
 #-----------------------------------------------------------------------------------------------------------
-@start_profile = ( name ) ->
+start_profile = ( name ) ->
   if running_in_devtools then console.profile name
   else                        whisper 'console.profile', name
 
 #-----------------------------------------------------------------------------------------------------------
-@start_profile = ( name ) ->
+stop_profile = ( name ) ->
   if running_in_devtools then console.profileEnd name
   else                        whisper 'console.profileEnd', name
 
@@ -77,10 +77,11 @@ running_in_devtools = console.profile?
 #===========================================================================================================
 #
 #-----------------------------------------------------------------------------------------------------------
-@read_with_transforms = ( n, input_name, handler ) ->
+@read_with_transforms = ( n, input_name, mode, handler ) ->
   # input_path  = PATH.resolve __dirname, '../test-data/Unicode-index.txt'
   input_path    = O.inputs[ input_name ]
   throw new Error "unknown input name #{rpr input_name}" unless input_path?
+  throw new Error "unknown mode #{rpr mode}" unless mode in [ 'sync', 'async', ]
   output_path   = '/dev/null'
   input         = FS.createReadStream   input_path
   output        = FS.createWriteStream  output_path
@@ -96,7 +97,7 @@ running_in_devtools = console.profile?
   #.........................................................................................................
   p = p.pipe through2.obj ( data, encoding, callback ) ->
     unless S.t0?
-      console.profile name
+      start_profile name
       S.t0 ?= Date.now()
     S.byte_count += data.length
     S.item_count += +1
@@ -104,13 +105,16 @@ running_in_devtools = console.profile?
     callback()
   #.........................................................................................................
   for _ in [ 1 .. n ] by +1
-    p = p.pipe through2.obj ( data, encoding, callback ) -> @push data; callback()
+    if mode is 'sync'
+      p = p.pipe through2.obj ( data, encoding, callback ) -> @push data; callback()
+    else
+      p = p.pipe through2.obj ( data, encoding, callback ) -> setImmediate => @push data; callback()
   #.........................................................................................................
   p = p.pipe $as_line()
   p = p.pipe output
   #.........................................................................................................
   output.on 'close', =>
-    console.profileEnd name
+    stop_profile name
     S.t1 = Date.now()
     @report S
     handler()
@@ -119,15 +123,19 @@ running_in_devtools = console.profile?
 
 #-----------------------------------------------------------------------------------------------------------
 @main = ->
-  input_name = 'short'
+  input_name  = 'short'
+  # input_name  = 'long'
+  mode        = 'async'
+  # mode        = 'sync'
   step ( resume ) =>
-    for run in [ 0 .. 3 ]
-      yield @read_with_transforms   0, input_name, resume
-      yield @read_with_transforms   5, input_name, resume
-      yield @read_with_transforms  10, input_name, resume
-      # yield @read_with_transforms  50, input_name, resume
-      # yield @read_with_transforms 200, input_name, resume
-      # yield @read_with_transforms 300, input_name, resume
+    for run in [ 1 .. 1 ]
+      yield @read_with_transforms   0, input_name, mode, resume
+      # yield @read_with_transforms   5, input_name, mode, resume
+      # yield @read_with_transforms  10, input_name, mode, resume
+      # yield @read_with_transforms  50, input_name, mode, resume
+      yield @read_with_transforms 100, input_name, mode, resume
+      yield @read_with_transforms 200, input_name, mode, resume
+      yield @read_with_transforms 300, input_name, mode, resume
     if running_in_devtools
       setTimeout ( -> help 'ok' ), 1e6
 
