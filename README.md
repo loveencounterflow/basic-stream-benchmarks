@@ -20,7 +20,7 @@ assessing throughput performance of NodeJS streams
 * [ ] logging: one result per line
 * [ ] TAP, PipeDreams?
 * [ ] test `process.nextTick` vs `setImmediate`
-
+* [ ] test streaming from file vs. manually feeding input with `input.push` in loop
 
 
 
