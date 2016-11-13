@@ -12,6 +12,7 @@ warn                      = CND.get_logger 'warn',      badge
 info                      = CND.get_logger 'info',      badge
 help                      = CND.get_logger 'help',      badge
 whisper                   = CND.get_logger 'whisper',   badge
+echo                      = CND.echo.bind CND
 #...........................................................................................................
 PATH                      = require 'path'
 FS                        = require 'fs'
@@ -57,6 +58,8 @@ $as_line = ->
 
 #-----------------------------------------------------------------------------------------------------------
 report = ( S ) ->
+  format_integer  = ( x ) -> "#{x}"
+  format_float    = ( x ) -> x.toFixed 3
   dts             = ( S.t1 - S.t0 ) / 1000
   bps             = S.byte_count / dts
   ips             = S.item_count / dts
@@ -66,37 +69,42 @@ report = ( S ) ->
   bps_txt         = format_float   bps
   ips_txt         = format_float   ips
   line            = []
-  line.push S.run_name
+  #.........................................................................................................
+  if report.is_first
+    report.is_first   = no
+    echo CND.lime [ 'job', 'n', 'mode', 'dt', 'bytes', 'items', 'bps', 'ips', ].join '\t'
+  #.........................................................................................................
+  line.push S.job_name
+  line.push S.n
+  line.push S.mode
   line.push dts_txt
   line.push byte_count_txt
-  line.push 'bytes'
   line.push item_count_txt
-  line.push 'items'
   line.push bps_txt
-  line.push 'bps'
   line.push ips_txt
-  line.push 'ips'
-  help line.join '\t'
-  # help "#{dts_txt}s"
-  # help "#{byte_count_txt} bytes / #{item_count_txt} items"
-  # help "#{bps_txt} bps / #{ips_txt} ips"
+  echo CND.steel line.join '\t'
+  #.........................................................................................................
+  return null
+
+#-----------------------------------------------------------------------------------------------------------
+report.is_first = yes
 
 #-----------------------------------------------------------------------------------------------------------
 start_profile = ( S ) ->
   if running_in_devtools
-    console.profile S.run_name
+    console.profile S.job_name
   else
-    V8PROFILER.startProfiling S.run_name
+    V8PROFILER.startProfiling S.job_name
 
 #-----------------------------------------------------------------------------------------------------------
 stop_profile = ( S, handler ) ->
   if running_in_devtools
-    console.profileEnd S.run_name
+    console.profileEnd S.job_name
   else
     step ( resume ) ->
-      profile         = V8PROFILER.stopProfiling S.run_name
+      profile         = V8PROFILER.stopProfiling S.job_name
       profile_data    = yield profile.export resume
-      S.profile_name  = "profile-#{S.run_name}.json"
+      S.profile_name  = "profile-#{S.job_name}.json"
       FS.writeFileSync S.profile_name, profile_data
       handler()
 
@@ -104,7 +112,7 @@ stop_profile = ( S, handler ) ->
 write_flamegraph = ( S, handler ) ->
   return if running_in_devtools
   #.........................................................................................................
-  S.flamegraph_name = "flamegraph-#{S.run_name}.svg"
+  S.flamegraph_name = "flamegraph-#{S.job_name}.svg"
   source            = D.new_stream 'utf-8', { path: S.profile_name, }
   callgraph_lines   = null
   #.........................................................................................................
@@ -127,7 +135,7 @@ write_flamegraph = ( S, handler ) ->
   # input
   #   .pipe output
   #   .pipe $ 'finish', ->
-  #     debug '44321', S.run_name
+  #     debug '44321', S.job_name
   #     help "output written to #{S.flamegraph_name}"
   #     handler()
 
@@ -144,11 +152,14 @@ write_flamegraph = ( S, handler ) ->
   input         = FS.createReadStream   input_path
   output        = FS.createWriteStream  output_path
   S             = {}
+  S.n           = n
+  S.size        = size
+  S.mode        = mode
   S.byte_count  = 0
   S.item_count  = 0
   S.t0          = null
   S.t1          = null
-  S.run_name    = "n=#{n},size=#{size},mode=#{mode}"
+  S.job_name    = "n=#{n},size=#{size},mode=#{mode}"
   #.........................................................................................................
   p = input
   p = p.pipe $split()
@@ -191,7 +202,7 @@ write_flamegraph = ( S, handler ) ->
   step ( resume ) =>
     for run in [ 1 .. n_max ]
       for mode in [ 'sync', 'async', ]
-        for size in [ 'short', ]
+        for size in [ 'short', 'long', ]
           for n in [ 1, 10, 100, ]
             yield @read_with_transforms n, size, mode, resume
     if running_in_devtools
