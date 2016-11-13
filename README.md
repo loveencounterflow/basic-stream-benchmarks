@@ -1,25 +1,24 @@
+
+# basic-stream-benchmarks
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [basic-stream-benchmarks](#basic-stream-benchmarks)
-  - [Installation](#installation)
-  - [Running](#running)
-    - [In 'plain' NodeJS](#in-plain-nodejs)
-    - [In DevTools](#in-devtools)
-  - [Building](#building)
-  - [Results](#results)
-    - [Observations](#observations)
-    - [Numbers](#numbers)
-    - [Flamegraphs](#flamegraphs)
-  - [ToDo](#todo)
-  - [Acknowledgements](#acknowledgements)
+- [Installation](#installation)
+- [Running](#running)
+  - [In 'plain' NodeJS](#in-plain-nodejs)
+  - [In DevTools](#in-devtools)
+- [Building](#building)
+- [Results](#results)
+  - [Observations](#observations)
+  - [Numbers](#numbers)
+  - [Flamegraphs](#flamegraphs)
+- [ToDo](#todo)
+- [Acknowledgements](#acknowledgements)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-
-# basic-stream-benchmarks
 
 ## Installation
 
