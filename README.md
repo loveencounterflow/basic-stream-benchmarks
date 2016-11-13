@@ -10,6 +10,7 @@
   - [In 'plain' NodeJS](#in-plain-nodejs)
   - [In DevTools](#in-devtools)
 - [Building](#building)
+- [What is measured](#what-is-measured)
 - [Results](#results)
   - [Observations](#observations)
   - [Numbers](#numbers)
@@ -65,18 +66,43 @@ If you have CoffeeScript installed and want to fiddle with source, you can re-bu
 npm run build
 ```
 
+## What is measured
+
+The reason for building this is my suspicion that when programming with piped streams in NodeJS, transforms
+are expensive. In order to find out whether that is indeed so or just a figment of some particular setup, I
+started to piece together a very simple setup that uses only basic tools like NodeJS' own
+`fs.createReadStream` and [rvagg/through2](https://github.com/rvagg/through2/issues/34), which is a slim
+convenience wrapper to allow for stream transforms without having to do subclasses; it includes a userland
+copy of NodeJS' stream implementation, so it introduces very little new stuff. Additionally, the
+[maxogden/binary-split](https://github.com/maxogden/binary-split) module is used to turn buffer chunks into
+lines of text.
+
+As it stands, the code will setup a stream pipeline that reads a text file for reading, splits the bytes
+read into lines of text, and writes those lines to `/dev/null`. Crucially, before writing the lines out,
+they are piped through a configurable number of minimalistic no-op stream transformations, the hope being
+that by comparing figures obtained from runs with few no-op transforms with figures from runs with many
+no-op transforms we can gain an understanding of how expensive the act of adding a single transform into
+a pipeline is as such (turns out the cost is considerable).
+
+
 ## Results
 
 ### Observations
+
+
+
 
 * sync mode is faster than async
 
 * devtools' instrumented runs are naturally slower than NodeJS runs
 
 * in async mode, call stacks have a conatant height; in sync mode, call stacks grow with the length of
-  the pipeline. Devtools errors out way below 100 strem transforms / pipeline, NodeJS manages 300 and
+  the pipeline.
+
+* DevTools errors out way below 100 strem transforms / pipeline, NodeJS manages 300 and
   maybe more.
 
+* **The overhead
 
 
 ### Numbers
