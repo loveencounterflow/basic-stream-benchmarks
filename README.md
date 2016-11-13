@@ -72,3 +72,6 @@ cat profile-n\:5.json | flamegraph -t cpuprofile > flamegraph-n5-async-short.svg
 
 
 
+Flamegraphs made with [thlorenz/flamegraph](https://github.com/thlorenz/flamegraph) which is based on
+[brendangregg/FlameGraph](https://github.com/brendangregg/FlameGraph).
+
