@@ -29,9 +29,13 @@ O.inputs                  = {}
 O.inputs[ 'long' ]        = PATH.resolve __dirname, '../test-data/Unicode-NamesList.txt'
 O.inputs[ 'short' ]       = PATH.resolve __dirname, '../test-data/Unicode-NamesList-short.txt'
 #...........................................................................................................
+D                         = require 'pipedreams'
+{ $, $async, }            = D
+#...........................................................................................................
 ### Avoid to try to require `v8-profiler` when running this module with `devtool`: ###
 running_in_devtools       = console.profile?
 V8PROFILER                = if running_in_devtools then null else require 'v8-profiler'
+flamegraph                = require 'flamegraph'
 flamegraph_from_stream    = require 'flamegraph/from-stream'
 
 
@@ -73,14 +77,15 @@ start_profile = ( run_name ) ->
     V8PROFILER.startProfiling run_name
 
 #-----------------------------------------------------------------------------------------------------------
-stop_profile = ( run_name ) ->
+stop_profile = ( run_name, handler ) ->
   if running_in_devtools
     console.profileEnd run_name
   else
-    profile = V8PROFILER.stopProfiling run_name
-    profile.export ( error, result ) =>
-      throw error if error?
-      FS.writeFileSync "profile-#{run_name}.json", result
+    step ( resume ) ->
+      profile       = V8PROFILER.stopProfiling run_name
+      profile_data  = yield profile.export resume
+      FS.writeFileSync "profile-#{run_name}.json", profile_data
+      handler()
 
 #-----------------------------------------------------------------------------------------------------------
 write_flamegraph = ( run_name, handler ) ->
@@ -90,13 +95,28 @@ write_flamegraph = ( run_name, handler ) ->
   profile_name    = "profile-#{run_name}.json"
   flamegraph_name = "flamegraph-#{run_name}.svg"
   # debug '33928', 'cat', [ profile_name, '|', 'flamegraph', '-t', 'cpuprofile', '>', flamegraph_name, ]
-  source          = FS.createReadStream profile_name, { encoding: 'utf-8', }
-  output          = FS.createWriteStream flamegraph_name
-  input           = flamegraph_from_stream source, { type: 'cpuprofile', }
-  input.pipe output
-  input.on 'close', ->
-    help "output written to #{flamegraph_name}"
-    handler()
+  source          = D.new_stream 'utf-8', { path: profile_name, }
+  # output          = D.new_stream 'write', { path: flamegraph_name, }
+  callgraph_lines = null
+  ### TAINT stream returned by `flamegraph_from_stream` apparently doesn't emit `close` events, so we
+  chose another way to do it: ###
+  source
+    .pipe D.$split()
+    .pipe D.$collect()
+    .pipe $ ( lines ) -> callgraph_lines = lines
+    .pipe $ 'finish', ->
+      svg = flamegraph callgraph_lines, { type: 'cpuprofile', }
+      FS.writeFileSync flamegraph_name, svg
+      handler()
+  # input           = flamegraph_from_stream source, { type: 'cpuprofile', }
+  # input.on 'end', -> debug 'end'
+  # input.on 'close', -> debug 'close'
+  # input
+  #   .pipe output
+  #   .pipe $ 'finish', ->
+  #     debug '44321', run_name
+  #     help "output written to #{flamegraph_name}"
+  #     handler()
   return null
 
 
@@ -139,25 +159,34 @@ write_flamegraph = ( run_name, handler ) ->
   p = p.pipe $as_line()
   p = p.pipe output
   #.........................................................................................................
-  output.on 'close', =>
-    stop_profile run_name
-    S.t1 = Date.now()
-    report S
-    write_flamegraph run_name, handler
+  output.on 'close', ->
+    step ( resume ) ->
+      yield stop_profile run_name, resume
+      S.t1 = Date.now()
+      report S
+      yield write_flamegraph run_name, resume
+      debug '88272'
+      handler()
   #.........................................................................................................
   return null
 
 #-----------------------------------------------------------------------------------------------------------
 @main = ->
-  size  = 'short'
+  # size  = 'short'
   # size  = 'long'
-  mode        = 'async'
+  # mode        = 'async'
   # mode        = 'sync'
+  n_max = if running_in_devtools then 3 else 1
   step ( resume ) =>
-    for run in [ 1 .. 1 ]
+    for run in [ 1 .. n_max ]
+      for mode in [ 'sync', 'async', ]
+        for size in [ 'short', ]
+          for n in [ 1, 10, 100, ]
+            debug run, mode, size, n
+            yield @read_with_transforms n, size, mode, resume
       # yield @read_with_transforms   0, size, mode, resume
       # yield @read_with_transforms   1, size, mode, resume
-      yield @read_with_transforms   5, size, mode, resume
+      # yield @read_with_transforms   5, size, mode, resume
       # yield @read_with_transforms  10, size, mode, resume
       # yield @read_with_transforms  50, size, mode, resume
       # yield @read_with_transforms 100, size, mode, resume
