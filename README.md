@@ -14,18 +14,18 @@ assessing throughput performance of NodeJS streams
 
 # Results
 
-| job                       | n    | mode  | dt     | bps        | ips       | Δdt    | Δbps     | Δips    |
-| ---:                      | ---: | ---:  | ---:   | ---:       | ---:      | ---:   | ---:     | ---:    |
-| n=0,size=long,mode=sync   | 0    | sync  | 1.966  | 718964.395 | 24806.714 |        |          |         |
-| n=1,size=long,mode=sync   | 1    | sync  | 2.742  | 515493.800 | 17786.287 | -0.776 | -203,471 | -7,020  |
-| n=10,size=long,mode=sync  | 10   | sync  | 6.682  | 211536.067 | 7298.713  | -0.472 | -50,743  | -1,751  |
-| n=20,size=long,mode=sync  | 20   | sync  | 10.784 | 131072.329 | 4522.441  | -0.441 | -29,395  | -1,014  |
-| n=40,size=long,mode=sync  | 40   | sync  | 19.103 | 73992.776  | 2553.002  | -0.428 | -16,124  | -556    |
-| n=0,size=long,mode=async  | 0    | async | 2.097  | 674050.548 | 23257.034 |        |          |         |
-| n=1,size=long,mode=async  | 1    | async | 4.413  | 320300.023 | 11051.439 | -2.316 | -353,751 | -12,206 |
-| n=10,size=long,mode=async | 10   | async | 10.733 | 131695.146 | 4543.930  | -0.864 | -54,236  | -1,871  |
-| n=20,size=long,mode=async | 20   | async | 16.113 | 87723.205  | 3026.749  | -0.701 | -29,316  | -1,012  |
-| n=40,size=long,mode=async | 40   | async | 27.659 | 51103.944  | 1763.260  | -0.639 | -15,574  | -537    |
+| job                       | n    | mode  | dt     | bps         | ips        | Δdt    | Δbps     | Δips    |
+| ---:                      | ---: | ---:  | ---:   | ---:        | ---:       | ---:   | ---:     | ---:    |
+| n=0,size=long,mode=sync   | 0    | sync  | 1.966  | 718,964.395 | 24,806.714 |        |          |         |
+| n=1,size=long,mode=sync   | 1    | sync  | 2.742  | 515,493.800 | 17,786.287 | -0.776 | -203,471 | -7,020  |
+| n=10,size=long,mode=sync  | 10   | sync  | 6.682  | 211,536.067 | 7,298.713  | -0.472 | -50,743  | -1,751  |
+| n=20,size=long,mode=sync  | 20   | sync  | 10.784 | 131,072.329 | 4,522.441  | -0.441 | -29,395  | -1,014  |
+| n=40,size=long,mode=sync  | 40   | sync  | 19.103 | 73,992.776  | 2,553.002  | -0.428 | -16,124  | -556    |
+| n=0,size=long,mode=async  | 0    | async | 2.097  | 674,050.548 | 23,257.034 |        |          |         |
+| n=1,size=long,mode=async  | 1    | async | 4.413  | 320,300.023 | 11,051.439 | -2.316 | -353,751 | -12,206 |
+| n=10,size=long,mode=async | 10   | async | 10.733 | 131,695.146 | 4,543.930  | -0.864 | -54,236  | -1,871  |
+| n=20,size=long,mode=async | 20   | async | 16.113 | 87,723.205  | 3,026.749  | -0.701 | -29,316  | -1,012  |
+| n=40,size=long,mode=async | 40   | async | 27.659 | 51,103.944  | 1,763.260  | -0.639 | -15,574  | -537    |
 
 Format of **columns Δdt, Δbps and Δips**: Numbers represent changes in wall clock time taken, bytes per
 second and items (lines) per second **relative to the count of minimal no-op transforms** (column **n**).
