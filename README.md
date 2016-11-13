@@ -102,7 +102,9 @@ a pipeline is as such (turns out the cost is considerable).
 * DevTools errors out way below 100 strem transforms / pipeline, NodeJS manages 300 and
   maybe more.
 
-* **The overhead
+* **The overhead of adding a single stream transform in an otherwise unsuspecting pipeline of little
+  complexity that basically copies an MB-sized file from hard disk to `/dev/null` is just under 1 second on
+  my notebook.**
 
 
 ### Numbers
