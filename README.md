@@ -43,7 +43,7 @@ cat profile-n\:5.json | flamegraph -t cpuprofile > flamegraph-n5-async-short.svg
 ```
 
 
-![](https://github.com/loveencounterflow/basic-stream-benchmarks/raw/master/flamegraph-n5-async-short.svg)
+![](https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n5-async-short.svg)
 
 
 
