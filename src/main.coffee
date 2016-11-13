@@ -28,6 +28,10 @@ O                         = {}
 O.inputs                  = {}
 O.inputs[ 'long' ]        = PATH.resolve __dirname, '../test-data/Unicode-NamesList.txt'
 O.inputs[ 'short' ]       = PATH.resolve __dirname, '../test-data/Unicode-NamesList-short.txt'
+#...........................................................................................................
+### Avoid to try (and, presumably, fail due to v8 version mismatch) to require `v8-profiler` when running
+this module with `devtool`: ###
+V8PROFILER                = null
 
 
 #===========================================================================================================
@@ -65,13 +69,21 @@ running_in_devtools = console.profile?
 
 #-----------------------------------------------------------------------------------------------------------
 start_profile = ( name ) ->
-  if running_in_devtools then console.profile name
-  else                        whisper 'console.profile', name
+  if running_in_devtools
+    console.profile name
+  else
+    V8PROFILER = require 'v8-profiler'
+    V8PROFILER.startProfiling name
 
 #-----------------------------------------------------------------------------------------------------------
 stop_profile = ( name ) ->
-  if running_in_devtools then console.profileEnd name
-  else                        whisper 'console.profileEnd', name
+  if running_in_devtools
+    console.profileEnd name
+  else
+    profile = V8PROFILER.stopProfiling name
+    profile.export ( error, result ) =>
+      throw error if error?
+      FS.writeFileSync "profile-#{name}.json", result
 
 
 #===========================================================================================================
@@ -129,13 +141,14 @@ stop_profile = ( name ) ->
   # mode        = 'sync'
   step ( resume ) =>
     for run in [ 1 .. 1 ]
-      yield @read_with_transforms   0, input_name, mode, resume
-      # yield @read_with_transforms   5, input_name, mode, resume
+      # yield @read_with_transforms   0, input_name, mode, resume
+      # yield @read_with_transforms   1, input_name, mode, resume
+      yield @read_with_transforms   5, input_name, mode, resume
       # yield @read_with_transforms  10, input_name, mode, resume
       # yield @read_with_transforms  50, input_name, mode, resume
-      yield @read_with_transforms 100, input_name, mode, resume
-      yield @read_with_transforms 200, input_name, mode, resume
-      yield @read_with_transforms 300, input_name, mode, resume
+      # yield @read_with_transforms 100, input_name, mode, resume
+      # yield @read_with_transforms 200, input_name, mode, resume
+      # yield @read_with_transforms 300, input_name, mode, resume
     if running_in_devtools
       setTimeout ( -> help 'ok' ), 1e6
 
