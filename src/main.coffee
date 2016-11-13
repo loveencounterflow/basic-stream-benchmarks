@@ -29,9 +29,10 @@ O.inputs                  = {}
 O.inputs[ 'long' ]        = PATH.resolve __dirname, '../test-data/Unicode-NamesList.txt'
 O.inputs[ 'short' ]       = PATH.resolve __dirname, '../test-data/Unicode-NamesList-short.txt'
 #...........................................................................................................
-### Avoid to try (and, presumably, fail due to v8 version mismatch) to require `v8-profiler` when running
-this module with `devtool`: ###
-V8PROFILER                = null
+### Avoid to try to require `v8-profiler` when running this module with `devtool`: ###
+running_in_devtools       = console.profile?
+V8PROFILER                = if running_in_devtools then null else require 'v8-profiler'
+flamegraph_from_stream    = require 'flamegraph/from-stream'
 
 
 #===========================================================================================================
@@ -51,7 +52,7 @@ $as_line = ->
     callback()
 
 #-----------------------------------------------------------------------------------------------------------
-@report = ( S ) ->
+report = ( S ) ->
   dts             = ( S.t1 - S.t0 ) / 1000
   bps             = S.byte_count / dts
   ips             = S.item_count / dts
@@ -65,34 +66,47 @@ $as_line = ->
   help "#{bps_txt} bps / #{ips_txt} ips"
 
 #-----------------------------------------------------------------------------------------------------------
-running_in_devtools = console.profile?
+start_profile = ( run_name ) ->
+  if running_in_devtools
+    console.profile run_name
+  else
+    V8PROFILER.startProfiling run_name
 
 #-----------------------------------------------------------------------------------------------------------
-start_profile = ( name ) ->
+stop_profile = ( run_name ) ->
   if running_in_devtools
-    console.profile name
+    console.profileEnd run_name
   else
-    V8PROFILER = require 'v8-profiler'
-    V8PROFILER.startProfiling name
-
-#-----------------------------------------------------------------------------------------------------------
-stop_profile = ( name ) ->
-  if running_in_devtools
-    console.profileEnd name
-  else
-    profile = V8PROFILER.stopProfiling name
+    profile = V8PROFILER.stopProfiling run_name
     profile.export ( error, result ) =>
       throw error if error?
-      FS.writeFileSync "profile-#{name}.json", result
+      FS.writeFileSync "profile-#{run_name}.json", result
+
+#-----------------------------------------------------------------------------------------------------------
+write_flamegraph = ( run_name, handler ) ->
+  ###
+  ###
+  return if running_in_devtools
+  profile_name    = "profile-#{run_name}.json"
+  flamegraph_name = "flamegraph-#{run_name}.svg"
+  # debug '33928', 'cat', [ profile_name, '|', 'flamegraph', '-t', 'cpuprofile', '>', flamegraph_name, ]
+  source          = FS.createReadStream profile_name, { encoding: 'utf-8', }
+  output          = FS.createWriteStream flamegraph_name
+  input           = flamegraph_from_stream source, { type: 'cpuprofile', }
+  input.pipe output
+  input.on 'close', ->
+    help "output written to #{flamegraph_name}"
+    handler()
+  return null
 
 
 #===========================================================================================================
 #
 #-----------------------------------------------------------------------------------------------------------
-@read_with_transforms = ( n, input_name, mode, handler ) ->
+@read_with_transforms = ( n, size, mode, handler ) ->
   # input_path  = PATH.resolve __dirname, '../test-data/Unicode-index.txt'
-  input_path    = O.inputs[ input_name ]
-  throw new Error "unknown input name #{rpr input_name}" unless input_path?
+  input_path    = O.inputs[ size ]
+  throw new Error "unknown input size #{rpr size}" unless input_path?
   throw new Error "unknown mode #{rpr mode}" unless mode in [ 'sync', 'async', ]
   output_path   = '/dev/null'
   input         = FS.createReadStream   input_path
@@ -102,14 +116,14 @@ stop_profile = ( name ) ->
   S.item_count  = 0
   S.t0          = null
   S.t1          = null
-  name          = "n:#{n}"
+  run_name      = "n=#{n},size=#{size},mode=#{mode}"
   #.........................................................................................................
   p = input
   p = p.pipe $split()
   #.........................................................................................................
   p = p.pipe through2.obj ( data, encoding, callback ) ->
     unless S.t0?
-      start_profile name
+      start_profile run_name
       S.t0 ?= Date.now()
     S.byte_count += data.length
     S.item_count += +1
@@ -126,29 +140,29 @@ stop_profile = ( name ) ->
   p = p.pipe output
   #.........................................................................................................
   output.on 'close', =>
-    stop_profile name
+    stop_profile run_name
     S.t1 = Date.now()
-    @report S
-    handler()
+    report S
+    write_flamegraph run_name, handler
   #.........................................................................................................
   return null
 
 #-----------------------------------------------------------------------------------------------------------
 @main = ->
-  input_name  = 'short'
-  # input_name  = 'long'
+  size  = 'short'
+  # size  = 'long'
   mode        = 'async'
   # mode        = 'sync'
   step ( resume ) =>
     for run in [ 1 .. 1 ]
-      # yield @read_with_transforms   0, input_name, mode, resume
-      # yield @read_with_transforms   1, input_name, mode, resume
-      yield @read_with_transforms   5, input_name, mode, resume
-      # yield @read_with_transforms  10, input_name, mode, resume
-      # yield @read_with_transforms  50, input_name, mode, resume
-      # yield @read_with_transforms 100, input_name, mode, resume
-      # yield @read_with_transforms 200, input_name, mode, resume
-      # yield @read_with_transforms 300, input_name, mode, resume
+      # yield @read_with_transforms   0, size, mode, resume
+      # yield @read_with_transforms   1, size, mode, resume
+      yield @read_with_transforms   5, size, mode, resume
+      # yield @read_with_transforms  10, size, mode, resume
+      # yield @read_with_transforms  50, size, mode, resume
+      # yield @read_with_transforms 100, size, mode, resume
+      # yield @read_with_transforms 200, size, mode, resume
+      # yield @read_with_transforms 300, size, mode, resume
     if running_in_devtools
       setTimeout ( -> help 'ok' ), 1e6
 
