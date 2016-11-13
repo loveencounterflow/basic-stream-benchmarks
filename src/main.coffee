@@ -65,39 +65,49 @@ report = ( S ) ->
   dts_txt         = format_float   dts
   bps_txt         = format_float   bps
   ips_txt         = format_float   ips
-  help "#{dts_txt}s"
-  help "#{byte_count_txt} bytes / #{item_count_txt} items"
-  help "#{bps_txt} bps / #{ips_txt} ips"
+  line            = []
+  line.push S.run_name
+  line.push dts_txt
+  line.push byte_count_txt
+  line.push 'bytes'
+  line.push item_count_txt
+  line.push 'items'
+  line.push bps_txt
+  line.push 'bps'
+  line.push ips_txt
+  line.push 'ips'
+  help line.join '\t'
+  # help "#{dts_txt}s"
+  # help "#{byte_count_txt} bytes / #{item_count_txt} items"
+  # help "#{bps_txt} bps / #{ips_txt} ips"
 
 #-----------------------------------------------------------------------------------------------------------
-start_profile = ( run_name ) ->
+start_profile = ( S ) ->
   if running_in_devtools
-    console.profile run_name
+    console.profile S.run_name
   else
-    V8PROFILER.startProfiling run_name
+    V8PROFILER.startProfiling S.run_name
 
 #-----------------------------------------------------------------------------------------------------------
-stop_profile = ( run_name, handler ) ->
+stop_profile = ( S, handler ) ->
   if running_in_devtools
-    console.profileEnd run_name
+    console.profileEnd S.run_name
   else
     step ( resume ) ->
-      profile       = V8PROFILER.stopProfiling run_name
-      profile_data  = yield profile.export resume
-      FS.writeFileSync "profile-#{run_name}.json", profile_data
+      profile         = V8PROFILER.stopProfiling S.run_name
+      profile_data    = yield profile.export resume
+      S.profile_name  = "profile-#{S.run_name}.json"
+      FS.writeFileSync S.profile_name, profile_data
       handler()
 
 #-----------------------------------------------------------------------------------------------------------
-write_flamegraph = ( run_name, handler ) ->
-  ###
-  ###
+write_flamegraph = ( S, handler ) ->
   return if running_in_devtools
-  profile_name    = "profile-#{run_name}.json"
-  flamegraph_name = "flamegraph-#{run_name}.svg"
-  # debug '33928', 'cat', [ profile_name, '|', 'flamegraph', '-t', 'cpuprofile', '>', flamegraph_name, ]
-  source          = D.new_stream 'utf-8', { path: profile_name, }
-  # output          = D.new_stream 'write', { path: flamegraph_name, }
-  callgraph_lines = null
+  #.........................................................................................................
+  S.flamegraph_name = "flamegraph-#{S.run_name}.svg"
+  source            = D.new_stream 'utf-8', { path: S.profile_name, }
+  callgraph_lines   = null
+  #.........................................................................................................
   ### TAINT stream returned by `flamegraph_from_stream` apparently doesn't emit `close` events, so we
   chose another way to do it: ###
   source
@@ -106,18 +116,20 @@ write_flamegraph = ( run_name, handler ) ->
     .pipe $ ( lines ) -> callgraph_lines = lines
     .pipe $ 'finish', ->
       svg = flamegraph callgraph_lines, { type: 'cpuprofile', }
-      FS.writeFileSync flamegraph_name, svg
+      FS.writeFileSync S.flamegraph_name, svg
       handler()
+  return null
+  #.........................................................................................................
+  # output          = D.new_stream 'write', { path: S.flamegraph_name, }
   # input           = flamegraph_from_stream source, { type: 'cpuprofile', }
   # input.on 'end', -> debug 'end'
   # input.on 'close', -> debug 'close'
   # input
   #   .pipe output
   #   .pipe $ 'finish', ->
-  #     debug '44321', run_name
-  #     help "output written to #{flamegraph_name}"
+  #     debug '44321', S.run_name
+  #     help "output written to #{S.flamegraph_name}"
   #     handler()
-  return null
 
 
 #===========================================================================================================
@@ -136,14 +148,14 @@ write_flamegraph = ( run_name, handler ) ->
   S.item_count  = 0
   S.t0          = null
   S.t1          = null
-  run_name      = "n=#{n},size=#{size},mode=#{mode}"
+  S.run_name    = "n=#{n},size=#{size},mode=#{mode}"
   #.........................................................................................................
   p = input
   p = p.pipe $split()
   #.........................................................................................................
   p = p.pipe through2.obj ( data, encoding, callback ) ->
     unless S.t0?
-      start_profile run_name
+      start_profile S
       S.t0 ?= Date.now()
     S.byte_count += data.length
     S.item_count += +1
@@ -161,11 +173,10 @@ write_flamegraph = ( run_name, handler ) ->
   #.........................................................................................................
   output.on 'close', ->
     step ( resume ) ->
-      yield stop_profile run_name, resume
+      yield stop_profile S, resume
       S.t1 = Date.now()
       report S
-      yield write_flamegraph run_name, resume
-      debug '88272'
+      yield write_flamegraph S, resume
       handler()
   #.........................................................................................................
   return null
@@ -182,16 +193,7 @@ write_flamegraph = ( run_name, handler ) ->
       for mode in [ 'sync', 'async', ]
         for size in [ 'short', ]
           for n in [ 1, 10, 100, ]
-            debug run, mode, size, n
             yield @read_with_transforms n, size, mode, resume
-      # yield @read_with_transforms   0, size, mode, resume
-      # yield @read_with_transforms   1, size, mode, resume
-      # yield @read_with_transforms   5, size, mode, resume
-      # yield @read_with_transforms  10, size, mode, resume
-      # yield @read_with_transforms  50, size, mode, resume
-      # yield @read_with_transforms 100, size, mode, resume
-      # yield @read_with_transforms 200, size, mode, resume
-      # yield @read_with_transforms 300, size, mode, resume
     if running_in_devtools
       setTimeout ( -> help 'ok' ), 1e6
 
