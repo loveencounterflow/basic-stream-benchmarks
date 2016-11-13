@@ -1,18 +1,86 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [basic-stream-benchmarks](#basic-stream-benchmarks)
+  - [Installation](#installation)
+  - [Running](#running)
+    - [In 'plain' NodeJS](#in-plain-nodejs)
+    - [In DevTools](#in-devtools)
+  - [Building](#building)
+  - [Results](#results)
+    - [Observations](#observations)
+    - [Numbers](#numbers)
+    - [Flamegraphs](#flamegraphs)
+  - [ToDo](#todo)
+  - [Acknowledgements](#acknowledgements)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+
+
 # basic-stream-benchmarks
-assessing throughput performance of NodeJS streams
+
+## Installation
+
+```bash
+git clone https://github.com/loveencounterflow/basic-stream-benchmarks.git
+cd basic-stream-benchmarks
+npm install
+```
+
+Additionally, you may want to
+
+```bash
+npm install -g devtool
+```
+
+so you can run the code inside Chromium DevTools.
 
 
+## Running
+
+### In 'plain' NodeJS
+
+```bash
+node lib/main.js
+```
+
+This will run a few test cases and produce flamegraph SVGs.
+
+
+### In DevTools
+
+```bash
+devtool lib/main.js
+```
+
+This will start Chromium DevTools and run the same code as with plain NodeJS, above, but results in
+interactive profiles.
+
+## Building
+
+If you have CoffeeScript installed and want to fiddle with source, you can re-build with
+
+```bash
+npm run build
+```
+
+## Results
+
+### Observations
 
 * sync mode is faster than async
 
-* devtools' instremented runs are naturally slower than NodeJS runs
+* devtools' instrumented runs are naturally slower than NodeJS runs
 
 * in async mode, call stacks have a conatant height; in sync mode, call stacks grow with the length of
   the pipeline. Devtools errors out way below 100 strem transforms / pipeline, NodeJS manages 300 and
   maybe more.
 
 
-# Results
+
+### Numbers
 
 | job                       | n    | mode  | dt     | bps         | ips        | Δdt    | Δbps     | Δips    |
 | ---:                      | ---: | ---:  | ---:   | ---:        | ---:       | ---:   | ---:     | ---:    |
@@ -59,6 +127,7 @@ cat profile-n\:5.json | flamegraph -t cpuprofile > flamegraph-n5-async-short.svg
 
  -->
 
+### Flamegraphs
 
 
 n=0, size=long, mode=async: <img src="https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=0,size=long,mode=async.png" width=200>;
@@ -77,7 +146,7 @@ n=100, size=long, mode=async: <img src="https://cdn.rawgit.com/loveencounterflow
 n=100, size=long, mode=sync: <img src="https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=100,size=long,mode=sync.png" width=200>
 
 
-# ToDo
+## ToDo
 
 * [ ] refactor exported / not exported methods in main
 * [ ] logging: one result per line
@@ -85,9 +154,9 @@ n=100, size=long, mode=sync: <img src="https://cdn.rawgit.com/loveencounterflow/
 * [ ] test `process.nextTick` vs `setImmediate`
 * [ ] test streaming from file vs. manually feeding input with `input.push` in loop
 
-# Acknowledgements
-
+## Acknowledgements
 
 Flamegraphs made with [thlorenz/flamegraph](https://github.com/thlorenz/flamegraph) which is based on
-[brendangregg/FlameGraph](https://github.com/brendangregg/FlameGraph).
+[brendangregg/FlameGraph](https://github.com/brendangregg/FlameGraph). Flamegraph SVGs converted to
+PNGs with [domenic/svg2png](https://github.com/domenic/svg2png).
 
