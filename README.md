@@ -43,8 +43,30 @@ cat profile-n\:5.json | flamegraph -t cpuprofile > flamegraph-n5-async-short.svg
 ```
 
 
-![](https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n5-async-short.svg)
 
+### n=1, size=short, mode=async
+
+![n=1, size=short, mode=async](https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=1,size=short,mode=async.svg)
+
+### n=1, size=short, mode=sync
+
+![n=1, size=short, mode=sync](https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=1,size=short,mode=sync.svg)
+
+### n=10, size=short, mode=async
+
+![n=10, size=short, mode=async](https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=10,size=short,mode=async.svg)
+
+### n=10, size=short, mode=sync
+
+![n=10, size=short, mode=sync](https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=10,size=short,mode=sync.svg)
+
+### n=100, size=short, mode=async
+
+![n=100, size=short, mode=async](https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=100,size=short,mode=async.svg)
+
+### n=100, size=short, mode=sync
+
+![n=100, size=short, mode=sync](https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=100,size=short,mode=sync.svg)
 
 
 
