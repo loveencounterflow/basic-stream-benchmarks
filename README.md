@@ -46,53 +46,41 @@ cat profile-n\:5.json | flamegraph -t cpuprofile > flamegraph-n5-async-short.svg
 
 
 
-### n=0, size=long, mode=async
+*n=0, size=long, mode=async*
+<img src="https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=0,size=long,mode=async.png" width=120
 
-![flamegraph-n=0,size=long,mode=async.png](https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=0,size=long,mode=async.png)
+*n=0, size=long, mode=sync*
+<img src="https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=0,size=long,mode=sync.png" width=120
 
-### n=0, size=long, mode=sync
+*n=1, size=long, mode=async*
+<img src="https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=1,size=long,mode=async.png" width=120
 
-![flamegraph-n=0,size=long,mode=sync.png](https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=0,size=long,mode=sync.png)
+*n=1, size=long, mode=sync*
+<img src="https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=1,size=long,mode=sync.png" width=120
 
-### n=1, size=long, mode=async
+*n=10 ,size=long, mode=async*
+<img src="https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=10,size=long,mode=async.png" width=120
 
-![flamegraph-n=1,size=long,mode=async.png](https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=1,size=long,mode=async.png)
+*n=10 ,size=long, mode=sync*
+<img src="https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=10,size=long,mode=sync.png" width=120
 
-### n=1, size=long, mode=sync
+*n=10 0,size=long, mode=async*
+<img src="https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=100,size=long,mode=async.png" width=120
 
-![flamegraph-n=1,size=long,mode=sync.png](https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=1,size=long,mode=sync.png)
+*n=10 0,size=long, mode=sync*
+<img src="https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=100,size=long,mode=sync.png" width=120
 
-### n=10 ,size=long, mode=async
+*n=20 ,size=long, mode=async*
+<img src="https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=20,size=long,mode=async.png" width=120
 
-![flamegraph-n=10,size=long,mode=async.png](https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=10,size=long,mode=async.png)
+*n=20 ,size=long, mode=sync*
+<img src="https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=20,size=long,mode=sync.png" width=120
 
-### n=10 ,size=long, mode=sync
+*n=40 ,size=long, mode=async*
+<img src="https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=40,size=long,mode=async.png" width=120
 
-![flamegraph-n=10,size=long,mode=sync.png](https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=10,size=long,mode=sync.png)
-
-### n=10 0,size=long, mode=async
-
-![flamegraph-n=100,size=long,mode=async.png](https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=100,size=long,mode=async.png)
-
-### n=10 0,size=long, mode=sync
-
-![flamegraph-n=100,size=long,mode=sync.png](https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=100,size=long,mode=sync.png)
-
-### n=20 ,size=long, mode=async
-
-![flamegraph-n=20,size=long,mode=async.png](https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=20,size=long,mode=async.png)
-
-### n=20 ,size=long, mode=sync
-
-![flamegraph-n=20,size=long,mode=sync.png](https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=20,size=long,mode=sync.png)
-
-### n=40 ,size=long, mode=async
-
-![flamegraph-n=40,size=long,mode=async.png](https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=40,size=long,mode=async.png)
-
-### n=40 ,size=long, mode=sync
-
-![flamegraph-n=40,size=long,mode=sync.png](https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=40,size=long,mode=sync.png)
+*n=40 ,size=long, mode=sync*
+<img src="https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=40,size=long,mode=sync.png" width=120
 
 
 
