@@ -177,6 +177,7 @@ write_flamegraph = ( S, handler ) ->
     if mode is 'sync'
       p = p.pipe through2.obj ( data, encoding, callback ) -> @push data; callback()
     else
+      # p = p.pipe through2.obj ( data, encoding, callback ) -> setImmediate => @push data; setImmediate => callback()
       p = p.pipe through2.obj ( data, encoding, callback ) -> setImmediate => @push data; callback()
   #.........................................................................................................
   p = p.pipe $as_line()
@@ -201,9 +202,9 @@ write_flamegraph = ( S, handler ) ->
   n_max = if running_in_devtools then 3 else 1
   step ( resume ) =>
     for run in [ 1 .. n_max ]
-      for mode in [ 'sync', 'async', ]
-        for size in [ 'short', 'long', ]
-          for n in [ 1, 10, 100, ]
+      for size in [ 'short', 'long', ]
+        for mode in [ 'sync', 'async', ]
+          for n in [ 0, 1, 10, 20, 40, ]
             yield @read_with_transforms n, size, mode, resume
     if running_in_devtools
       setTimeout ( -> help 'ok' ), 1e6

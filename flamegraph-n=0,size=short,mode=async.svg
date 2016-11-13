@@ -1,0 +1,412 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg version="1.1" id="flamegraph-svg" 
+  data-width="1200" width="1200" 
+  height="786" data-height="786"
+  onload="init(evt)" 
+  viewBox="0 0 1200 786" 
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<defs>
+	<linearGradient id="background" y1="0" y2="1" x1="0" x2="0">
+    <stop stop-color="#eeeeee" offset="5%" />
+    <stop stop-color="#eeeeb0" offset="95%" />
+	</linearGradient>
+</defs>
+<style type="text/css">
+	.func_g:hover { stroke:black; stroke-width:0.5; }
+</style>
+<script type="text/javascript">
+	var details;
+	function init(evt) { details = document.getElementById("details").firstChild; }
+  function s(info) { details.nodeValue = "Function:: " + info; }
+	function c() { details.nodeValue = ' '; }
+</script>
+
+<rect x="0.0" y="0" id="svg-background" width="1200" height="786" fill="url(#background)"  />
+<!--<text text-anchor="middle" x="600" y="24" font-size="17" font-family="Verdana" fill="rgb(0,0,0)">Flame Graph</text>-->
+<text text-anchor="left" x="10" y="778" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" id="details"> </text>
+
+<g class="func_g " onmouseover="s('(program) (5 samples), 16.1%)')" onmouseout="c()" data-search="(program)" data-funcname="(program)">
+  <title>(program) (5 samples), 16.1%)</title>
+  <rect x="10" data-x="10" y="721" width="190.3" data-width="190.3" height="15" data-height="15" fill="rgb(242, 201, 40)" rx="2" ry="2"></rect>
+  <text data-x="13" x="13" y="731.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">(program)</text>
+</g>
+<g class="func_g " onmouseover="s('Readable.unpipe _stream_readable.js:629 (1 samples), 3.2%)')" onmouseout="c()" data-search="readable.unpipe _stream_readable.js:629" data-funcname="Readable.unpipe _stream_readable.js:629">
+  <title>Readable.unpipe _stream_readable.js:629 (1 samples), 3.2%)</title>
+  <rect x="200.3" data-x="200.3" y="481" width="38.099999999999994" data-width="38.099999999999994" height="15" data-height="15" fill="rgb(232, 201, 30)" rx="2" ry="2"></rect>
+  <text data-x="203.3" x="203.3" y="491.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Rea..</text>
+</g>
+<g class="func_g " onmouseover="s('unpipe _stream_readable.js:598 (1 samples), 3.2%)')" onmouseout="c()" data-search="unpipe _stream_readable.js:598" data-funcname="unpipe _stream_readable.js:598">
+  <title>unpipe _stream_readable.js:598 (1 samples), 3.2%)</title>
+  <rect x="200.3" data-x="200.3" y="497" width="38.099999999999994" data-width="38.099999999999994" height="15" data-height="15" fill="rgb(239, 161, 37)" rx="2" ry="2"></rect>
+  <text data-x="203.3" x="203.3" y="507.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">unp..</text>
+</g>
+<g class="func_g " onmouseover="s('onfinish _stream_readable.js:591 (1 samples), 3.2%)')" onmouseout="c()" data-search="onfinish _stream_readable.js:591" data-funcname="onfinish _stream_readable.js:591">
+  <title>onfinish _stream_readable.js:591 (1 samples), 3.2%)</title>
+  <rect x="200.3" data-x="200.3" y="513" width="38.099999999999994" data-width="38.099999999999994" height="15" data-height="15" fill="rgb(234, 203, 32)" rx="2" ry="2"></rect>
+  <text data-x="203.3" x="203.3" y="523.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">onf..</text>
+</g>
+<g class="func_g " onmouseover="s('g events.js:287 (1 samples), 3.2%)')" onmouseout="c()" data-search="g events.js:287" data-funcname="g events.js:287">
+  <title>g events.js:287 (1 samples), 3.2%)</title>
+  <rect x="200.3" data-x="200.3" y="529" width="38.099999999999994" data-width="38.099999999999994" height="15" data-height="15" fill="rgb(244, 139, 43)" rx="2" ry="2"></rect>
+  <text data-x="203.3" x="203.3" y="539.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">g e..</text>
+</g>
+<g class="func_g " onmouseover="s('emitNone events.js:0 (1 samples), 3.2%)')" onmouseout="c()" data-search="emitnone events.js:0" data-funcname="emitNone events.js:0">
+  <title>emitNone events.js:0 (1 samples), 3.2%)</title>
+  <rect x="200.3" data-x="200.3" y="545" width="38.099999999999994" data-width="38.099999999999994" height="15" data-height="15" fill="rgb(233, 143, 31)" rx="2" ry="2"></rect>
+  <text data-x="203.3" x="203.3" y="555.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">emi..</text>
+</g>
+<g class="func_g " onmouseover="s('emit events.js:136 (1 samples), 3.2%)')" onmouseout="c()" data-search="emit events.js:136" data-funcname="emit events.js:136">
+  <title>emit events.js:136 (1 samples), 3.2%)</title>
+  <rect x="200.3" data-x="200.3" y="561" width="38.099999999999994" data-width="38.099999999999994" height="15" data-height="15" fill="rgb(240, 143, 38)" rx="2" ry="2"></rect>
+  <text data-x="203.3" x="203.3" y="571.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">emi..</text>
+</g>
+<g class="func_g " onmouseover="s('finishMaybe /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:0 (1 samples), 3.2%)')" onmouseout="c()" data-search="finishmaybe /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:0" data-funcname="finishMaybe /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:0">
+  <title>finishMaybe /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:0 (1 samples), 3.2%)</title>
+  <rect x="200.3" data-x="200.3" y="577" width="38.099999999999994" data-width="38.099999999999994" height="15" data-height="15" fill="rgb(233, 177, 31)" rx="2" ry="2"></rect>
+  <text data-x="203.3" x="203.3" y="587.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">fin..</text>
+</g>
+<g class="func_g " onmouseover="s('endWritable /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:0 (1 samples), 3.2%)')" onmouseout="c()" data-search="endwritable /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:0" data-funcname="endWritable /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:0">
+  <title>endWritable /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:0 (1 samples), 3.2%)</title>
+  <rect x="200.3" data-x="200.3" y="593" width="38.099999999999994" data-width="38.099999999999994" height="15" data-height="15" fill="rgb(233, 209, 31)" rx="2" ry="2"></rect>
+  <text data-x="203.3" x="203.3" y="603.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">end..</text>
+</g>
+<g class="func_g " onmouseover="s('Writable.end /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:434 (1 samples), 3.2%)')" onmouseout="c()" data-search="writable.end /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:434" data-funcname="Writable.end /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:434">
+  <title>Writable.end /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:434 (1 samples), 3.2%)</title>
+  <rect x="200.3" data-x="200.3" y="609" width="38.099999999999994" data-width="38.099999999999994" height="15" data-height="15" fill="rgb(241, 125, 40)" rx="2" ry="2"></rect>
+  <text data-x="203.3" x="203.3" y="619.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Wri..</text>
+</g>
+<g class="func_g " onmouseover="s('onend _stream_readable.js:509 (1 samples), 3.2%)')" onmouseout="c()" data-search="onend _stream_readable.js:509" data-funcname="onend _stream_readable.js:509">
+  <title>onend _stream_readable.js:509 (1 samples), 3.2%)</title>
+  <rect x="200.3" data-x="200.3" y="625" width="38.099999999999994" data-width="38.099999999999994" height="15" data-height="15" fill="rgb(235, 206, 33)" rx="2" ry="2"></rect>
+  <text data-x="203.3" x="203.3" y="635.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">one..</text>
+</g>
+<g class="func_g " onmouseover="s('g events.js:287 (1 samples), 3.2%)')" onmouseout="c()" data-search="g events.js:287" data-funcname="g events.js:287">
+  <title>g events.js:287 (1 samples), 3.2%)</title>
+  <rect x="200.3" data-x="200.3" y="641" width="38.099999999999994" data-width="38.099999999999994" height="15" data-height="15" fill="rgb(244, 139, 43)" rx="2" ry="2"></rect>
+  <text data-x="203.3" x="203.3" y="651.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">g e..</text>
+</g>
+<g class="func_g " onmouseover="s('emitNone events.js:0 (1 samples), 3.2%)')" onmouseout="c()" data-search="emitnone events.js:0" data-funcname="emitNone events.js:0">
+  <title>emitNone events.js:0 (1 samples), 3.2%)</title>
+  <rect x="200.3" data-x="200.3" y="657" width="38.099999999999994" data-width="38.099999999999994" height="15" data-height="15" fill="rgb(233, 143, 31)" rx="2" ry="2"></rect>
+  <text data-x="203.3" x="203.3" y="667.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">emi..</text>
+</g>
+<g class="func_g " onmouseover="s('emit events.js:136 (1 samples), 3.2%)')" onmouseout="c()" data-search="emit events.js:136" data-funcname="emit events.js:136">
+  <title>emit events.js:136 (1 samples), 3.2%)</title>
+  <rect x="200.3" data-x="200.3" y="673" width="38.099999999999994" data-width="38.099999999999994" height="15" data-height="15" fill="rgb(240, 143, 38)" rx="2" ry="2"></rect>
+  <text data-x="203.3" x="203.3" y="683.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">emi..</text>
+</g>
+<g class="func_g " onmouseover="s('endReadableNT _stream_readable.js:969 (1 samples), 3.2%)')" onmouseout="c()" data-search="endreadablent _stream_readable.js:969" data-funcname="endReadableNT _stream_readable.js:969">
+  <title>endReadableNT _stream_readable.js:969 (1 samples), 3.2%)</title>
+  <rect x="200.3" data-x="200.3" y="689" width="38.099999999999994" data-width="38.099999999999994" height="15" data-height="15" fill="rgb(226, 209, 23)" rx="2" ry="2"></rect>
+  <text data-x="203.3" x="203.3" y="699.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">end..</text>
+</g>
+<g class="func_g " onmouseover="s('_combinedTickCallback internal/process/next_tick.js:65 (1 samples), 3.2%)')" onmouseout="c()" data-search="_combinedtickcallback internal/process/next_tick.js:65" data-funcname="_combinedTickCallback internal/process/next_tick.js:65">
+  <title>_combinedTickCallback internal/process/next_tick.js:65 (1 samples), 3.2%)</title>
+  <rect x="200.3" data-x="200.3" y="705" width="38.099999999999994" data-width="38.099999999999994" height="15" data-height="15" fill="rgb(232, 180, 30)" rx="2" ry="2"></rect>
+  <text data-x="203.3" x="203.3" y="715.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">_co..</text>
+</g>
+<g class="func_g " onmouseover="s('_tickCallback internal/process/next_tick.js:87 (1 samples), 3.2%)')" onmouseout="c()" data-search="_tickcallback internal/process/next_tick.js:87" data-funcname="_tickCallback internal/process/next_tick.js:87">
+  <title>_tickCallback internal/process/next_tick.js:87 (1 samples), 3.2%)</title>
+  <rect x="200.3" data-x="200.3" y="721" width="38.099999999999994" data-width="38.099999999999994" height="15" data-height="15" fill="rgb(238, 131, 37)" rx="2" ry="2"></rect>
+  <text data-x="203.3" x="203.3" y="731.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">_ti..</text>
+</g>
+<g class="func_g " onmouseover="s('Readable.read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:287 (3 samples), 9.7%)')" onmouseout="c()" data-search="readable.read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:287" data-funcname="Readable.read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:287">
+  <title>Readable.read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:287 (3 samples), 9.7%)</title>
+  <rect x="733.2" data-x="733.2" y="273" width="114.19999999999993" data-width="114.19999999999993" height="15" data-height="15" fill="rgb(244, 201, 43)" rx="2" ry="2"></rect>
+  <text data-x="736.2" x="736.2" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Readable.read ..</text>
+</g>
+<g class="func_g " onmouseover="s('utf8Slice (1 samples), 3.2%)')" onmouseout="c()" data-search="utf8slice" data-funcname="utf8Slice">
+  <title>utf8Slice (1 samples), 3.2%)</title>
+  <rect x="885.5" data-x="885.5" y="113" width="38" data-width="38" height="15" data-height="15" fill="rgb(247, 124, 46)" rx="2" ry="2"></rect>
+  <text data-x="888.5" x="888.5" y="123.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">utf..</text>
+</g>
+<g class="func_g " onmouseover="s('Buffer.toString buffer.js:487 (1 samples), 3.2%)')" onmouseout="c()" data-search="buffer.tostring buffer.js:487" data-funcname="Buffer.toString buffer.js:487">
+  <title>Buffer.toString buffer.js:487 (1 samples), 3.2%)</title>
+  <rect x="885.5" data-x="885.5" y="129" width="38" data-width="38" height="15" data-height="15" fill="rgb(242, 127, 41)" rx="2" ry="2"></rect>
+  <text data-x="888.5" x="888.5" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Buf..</text>
+</g>
+<g class="func_g " onmouseover="s('utf8Write (1 samples), 3.2%)')" onmouseout="c()" data-search="utf8write" data-funcname="utf8Write">
+  <title>utf8Write (1 samples), 3.2%)</title>
+  <rect x="999.7" data-x="999.7" y="33" width="38" data-width="38" height="15" data-height="15" fill="rgb(240, 124, 39)" rx="2" ry="2"></rect>
+  <text data-x="1002.7" x="1002.7" y="43.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">utf..</text>
+</g>
+<g class="func_g " onmouseover="s('Buffer.write buffer.js:704 (3 samples), 9.7%)')" onmouseout="c()" data-search="buffer.write buffer.js:704" data-funcname="Buffer.write buffer.js:704">
+  <title>Buffer.write buffer.js:704 (3 samples), 9.7%)</title>
+  <rect x="923.5" data-x="923.5" y="49" width="114.20000000000005" data-width="114.20000000000005" height="15" data-height="15" fill="rgb(242, 127, 41)" rx="2" ry="2"></rect>
+  <text data-x="926.5" x="926.5" y="59.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Buffer.write b..</text>
+</g>
+<g class="func_g " onmouseover="s('byteLengthUtf8 (1 samples), 3.2%)')" onmouseout="c()" data-search="bytelengthutf8" data-funcname="byteLengthUtf8">
+  <title>byteLengthUtf8 (1 samples), 3.2%)</title>
+  <rect x="1037.7" data-x="1037.7" y="33" width="38.09999999999991" data-width="38.09999999999991" height="15" data-height="15" fill="rgb(236, 140, 34)" rx="2" ry="2"></rect>
+  <text data-x="1040.7" x="1040.7" y="43.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">byt..</text>
+</g>
+<g class="func_g " onmouseover="s('byteLength buffer.js:343 (1 samples), 3.2%)')" onmouseout="c()" data-search="bytelength buffer.js:343" data-funcname="byteLength buffer.js:343">
+  <title>byteLength buffer.js:343 (1 samples), 3.2%)</title>
+  <rect x="1037.7" data-x="1037.7" y="49" width="38.09999999999991" data-width="38.09999999999991" height="15" data-height="15" fill="rgb(242, 140, 41)" rx="2" ry="2"></rect>
+  <text data-x="1040.7" x="1040.7" y="59.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">byt..</text>
+</g>
+<g class="func_g " onmouseover="s('fromString buffer.js:186 (4 samples), 12.9%)')" onmouseout="c()" data-search="fromstring buffer.js:186" data-funcname="fromString buffer.js:186">
+  <title>fromString buffer.js:186 (4 samples), 12.9%)</title>
+  <rect x="923.5" data-x="923.5" y="65" width="152.29999999999995" data-width="152.29999999999995" height="15" data-height="15" fill="rgb(246, 184, 45)" rx="2" ry="2"></rect>
+  <text data-x="926.5" x="926.5" y="75.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">fromString buffer.j..</text>
+</g>
+<g class="func_g " onmouseover="s('Buffer.from /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:0 (4 samples), 12.9%)')" onmouseout="c()" data-search="buffer.from /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:0" data-funcname="Buffer.from /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:0">
+  <title>Buffer.from /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:0 (4 samples), 12.9%)</title>
+  <rect x="923.5" data-x="923.5" y="81" width="152.29999999999995" data-width="152.29999999999995" height="15" data-height="15" fill="rgb(233, 127, 31)" rx="2" ry="2"></rect>
+  <text data-x="926.5" x="926.5" y="91.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Buffer.from /home/f..</text>
+</g>
+<g class="func_g " onmouseover="s('Buffer /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:0 (4 samples), 12.9%)')" onmouseout="c()" data-search="buffer /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:0" data-funcname="Buffer /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:0">
+  <title>Buffer /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:0 (4 samples), 12.9%)</title>
+  <rect x="923.5" data-x="923.5" y="97" width="152.29999999999995" data-width="152.29999999999995" height="15" data-height="15" fill="rgb(233, 127, 31)" rx="2" ry="2"></rect>
+  <text data-x="926.5" x="926.5" y="107.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Buffer /home/flow/i..</text>
+</g>
+<g class="func_g " onmouseover="s('Readable.read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:287 (1 samples), 3.2%)')" onmouseout="c()" data-search="readable.read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:287" data-funcname="Readable.read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:287">
+  <title>Readable.read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:287 (1 samples), 3.2%)</title>
+  <rect x="1075.8" data-x="1075.8" y="81" width="38.100000000000136" data-width="38.100000000000136" height="15" data-height="15" fill="rgb(244, 201, 43)" rx="2" ry="2"></rect>
+  <text data-x="1078.8" x="1078.8" y="91.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Rea..</text>
+</g>
+<g class="func_g " onmouseover="s('Writable.write _stream_writable.js:225 (1 samples), 3.2%)')" onmouseout="c()" data-search="writable.write _stream_writable.js:225" data-funcname="Writable.write _stream_writable.js:225">
+  <title>Writable.write _stream_writable.js:225 (1 samples), 3.2%)</title>
+  <rect x="1113.9" data-x="1113.9" y="33" width="38" data-width="38" height="15" data-height="15" fill="rgb(242, 125, 40)" rx="2" ry="2"></rect>
+  <text data-x="1116.9" x="1116.9" y="43.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Wri..</text>
+</g>
+<g class="func_g " onmouseover="s('ondata /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:529 (1 samples), 3.2%)')" onmouseout="c()" data-search="ondata /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:529" data-funcname="ondata /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:529">
+  <title>ondata /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:529 (1 samples), 3.2%)</title>
+  <rect x="1113.9" data-x="1113.9" y="49" width="38" data-width="38" height="15" data-height="15" fill="rgb(233, 209, 31)" rx="2" ry="2"></rect>
+  <text data-x="1116.9" x="1116.9" y="59.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">ond..</text>
+</g>
+<g class="func_g " onmouseover="s('emitOne events.js:0 (1 samples), 3.2%)')" onmouseout="c()" data-search="emitone events.js:0" data-funcname="emitOne events.js:0">
+  <title>emitOne events.js:0 (1 samples), 3.2%)</title>
+  <rect x="1113.9" data-x="1113.9" y="65" width="38" data-width="38" height="15" data-height="15" fill="rgb(233, 143, 31)" rx="2" ry="2"></rect>
+  <text data-x="1116.9" x="1116.9" y="75.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">emi..</text>
+</g>
+<g class="func_g " onmouseover="s('emit events.js:136 (1 samples), 3.2%)')" onmouseout="c()" data-search="emit events.js:136" data-funcname="emit events.js:136">
+  <title>emit events.js:136 (1 samples), 3.2%)</title>
+  <rect x="1113.9" data-x="1113.9" y="81" width="38" data-width="38" height="15" data-height="15" fill="rgb(240, 143, 38)" rx="2" ry="2"></rect>
+  <text data-x="1116.9" x="1116.9" y="91.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">emi..</text>
+</g>
+<g class="func_g " onmouseover="s('readableAddChunk /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:170 (2 samples), 6.5%)')" onmouseout="c()" data-search="readableaddchunk /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:170" data-funcname="readableAddChunk /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:170">
+  <title>readableAddChunk /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:170 (2 samples), 6.5%)</title>
+  <rect x="1075.8" data-x="1075.8" y="97" width="76.10000000000014" data-width="76.10000000000014" height="15" data-height="15" fill="rgb(240, 185, 39)" rx="2" ry="2"></rect>
+  <text data-x="1078.8" x="1078.8" y="107.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">readable..</text>
+</g>
+<g class="func_g " onmouseover="s('Readable.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:146 (6 samples), 19.4%)')" onmouseout="c()" data-search="readable.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:146" data-funcname="Readable.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:146">
+  <title>Readable.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:146 (6 samples), 19.4%)</title>
+  <rect x="923.5" data-x="923.5" y="113" width="228.4000000000001" data-width="228.4000000000001" height="15" data-height="15" fill="rgb(239, 201, 37)" rx="2" ry="2"></rect>
+  <text data-x="926.5" x="926.5" y="123.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Readable.push /home/flow/io/ba..</text>
+</g>
+<g class="func_g " onmouseover="s('Transform.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:121 (6 samples), 19.4%)')" onmouseout="c()" data-search="transform.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:121" data-funcname="Transform.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:121">
+  <title>Transform.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:121 (6 samples), 19.4%)</title>
+  <rect x="923.5" data-x="923.5" y="129" width="228.4000000000001" data-width="228.4000000000001" height="15" data-height="15" fill="rgb(232, 175, 30)" rx="2" ry="2"></rect>
+  <text data-x="926.5" x="926.5" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Transform.push /home/flow/io/b..</text>
+</g>
+<g class="func_g " onmouseover="s(' /home/flow/io/basic-stream-benchmarks/lib/main.js:74 (8 samples), 25.8%)')" onmouseout="c()" data-search=" /home/flow/io/basic-stream-benchmarks/lib/main.js:74" data-funcname=" /home/flow/io/basic-stream-benchmarks/lib/main.js:74">
+  <title> /home/flow/io/basic-stream-benchmarks/lib/main.js:74 (8 samples), 25.8%)</title>
+  <rect x="847.4" data-x="847.4" y="145" width="304.5000000000001" data-width="304.5000000000001" height="15" data-height="15" fill="rgb(245, 173, 43)" rx="2" ry="2"></rect>
+  <text data-x="850.4" x="850.4" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"> /home/flow/io/basic-stream-benchmarks/li..</text>
+</g>
+<g class="func_g " onmouseover="s('Transform._read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:154 (8 samples), 25.8%)')" onmouseout="c()" data-search="transform._read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:154" data-funcname="Transform._read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:154">
+  <title>Transform._read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:154 (8 samples), 25.8%)</title>
+  <rect x="847.4" data-x="847.4" y="161" width="304.5000000000001" data-width="304.5000000000001" height="15" data-height="15" fill="rgb(241, 175, 40)" rx="2" ry="2"></rect>
+  <text data-x="850.4" x="850.4" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Transform._read /home/flow/io/basic-strea..</text>
+</g>
+<g class="func_g " onmouseover="s('Transform._write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:140 (8 samples), 25.8%)')" onmouseout="c()" data-search="transform._write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:140" data-funcname="Transform._write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:140">
+  <title>Transform._write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:140 (8 samples), 25.8%)</title>
+  <rect x="847.4" data-x="847.4" y="177" width="304.5000000000001" data-width="304.5000000000001" height="15" data-height="15" fill="rgb(232, 175, 29)" rx="2" ry="2"></rect>
+  <text data-x="850.4" x="850.4" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Transform._write /home/flow/io/basic-stre..</text>
+</g>
+<g class="func_g " onmouseover="s('doWrite /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:308 (8 samples), 25.8%)')" onmouseout="c()" data-search="dowrite /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:308" data-funcname="doWrite /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:308">
+  <title>doWrite /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:308 (8 samples), 25.8%)</title>
+  <rect x="847.4" data-x="847.4" y="193" width="304.5000000000001" data-width="304.5000000000001" height="15" data-height="15" fill="rgb(238, 215, 36)" rx="2" ry="2"></rect>
+  <text data-x="850.4" x="850.4" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">doWrite /home/flow/io/basic-stream-benchm..</text>
+</g>
+<g class="func_g " onmouseover="s('writeOrBuffer /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:280 (8 samples), 25.8%)')" onmouseout="c()" data-search="writeorbuffer /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:280" data-funcname="writeOrBuffer /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:280">
+  <title>writeOrBuffer /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:280 (8 samples), 25.8%)</title>
+  <rect x="847.4" data-x="847.4" y="209" width="304.5000000000001" data-width="304.5000000000001" height="15" data-height="15" fill="rgb(239, 109, 37)" rx="2" ry="2"></rect>
+  <text data-x="850.4" x="850.4" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">writeOrBuffer /home/flow/io/basic-stream-..</text>
+</g>
+<g class="func_g " onmouseover="s('Writable.write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:226 (8 samples), 25.8%)')" onmouseout="c()" data-search="writable.write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:226" data-funcname="Writable.write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:226">
+  <title>Writable.write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:226 (8 samples), 25.8%)</title>
+  <rect x="847.4" data-x="847.4" y="225" width="304.5000000000001" data-width="304.5000000000001" height="15" data-height="15" fill="rgb(240, 125, 39)" rx="2" ry="2"></rect>
+  <text data-x="850.4" x="850.4" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Writable.write /home/flow/io/basic-stream..</text>
+</g>
+<g class="func_g " onmouseover="s('ondata /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:529 (8 samples), 25.8%)')" onmouseout="c()" data-search="ondata /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:529" data-funcname="ondata /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:529">
+  <title>ondata /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:529 (8 samples), 25.8%)</title>
+  <rect x="847.4" data-x="847.4" y="241" width="304.5000000000001" data-width="304.5000000000001" height="15" data-height="15" fill="rgb(233, 209, 31)" rx="2" ry="2"></rect>
+  <text data-x="850.4" x="850.4" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">ondata /home/flow/io/basic-stream-benchma..</text>
+</g>
+<g class="func_g " onmouseover="s('emitOne events.js:0 (8 samples), 25.8%)')" onmouseout="c()" data-search="emitone events.js:0" data-funcname="emitOne events.js:0">
+  <title>emitOne events.js:0 (8 samples), 25.8%)</title>
+  <rect x="847.4" data-x="847.4" y="257" width="304.5000000000001" data-width="304.5000000000001" height="15" data-height="15" fill="rgb(233, 143, 31)" rx="2" ry="2"></rect>
+  <text data-x="850.4" x="850.4" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">emitOne events.js:0</text>
+</g>
+<g class="func_g " onmouseover="s('emit events.js:136 (8 samples), 25.8%)')" onmouseout="c()" data-search="emit events.js:136" data-funcname="emit events.js:136">
+  <title>emit events.js:136 (8 samples), 25.8%)</title>
+  <rect x="847.4" data-x="847.4" y="273" width="304.5000000000001" data-width="304.5000000000001" height="15" data-height="15" fill="rgb(240, 143, 38)" rx="2" ry="2"></rect>
+  <text data-x="850.4" x="850.4" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">emit events.js:136</text>
+</g>
+<g class="func_g " onmouseover="s('readableAddChunk /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:170 (11 samples), 35.5%)')" onmouseout="c()" data-search="readableaddchunk /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:170" data-funcname="readableAddChunk /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:170">
+  <title>readableAddChunk /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:170 (11 samples), 35.5%)</title>
+  <rect x="733.2" data-x="733.2" y="289" width="418.70000000000005" data-width="418.70000000000005" height="15" data-height="15" fill="rgb(240, 185, 39)" rx="2" ry="2"></rect>
+  <text data-x="736.2" x="736.2" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">readableAddChunk /home/flow/io/basic-stream-benchmarks/no..</text>
+</g>
+<g class="func_g " onmouseover="s('Readable.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:146 (11 samples), 35.5%)')" onmouseout="c()" data-search="readable.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:146" data-funcname="Readable.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:146">
+  <title>Readable.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:146 (11 samples), 35.5%)</title>
+  <rect x="733.2" data-x="733.2" y="305" width="418.70000000000005" data-width="418.70000000000005" height="15" data-height="15" fill="rgb(239, 201, 37)" rx="2" ry="2"></rect>
+  <text data-x="736.2" x="736.2" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Readable.push /home/flow/io/basic-stream-benchmarks/node_..</text>
+</g>
+<g class="func_g " onmouseover="s('Transform.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:121 (11 samples), 35.5%)')" onmouseout="c()" data-search="transform.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:121" data-funcname="Transform.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:121">
+  <title>Transform.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:121 (11 samples), 35.5%)</title>
+  <rect x="733.2" data-x="733.2" y="321" width="418.70000000000005" data-width="418.70000000000005" height="15" data-height="15" fill="rgb(232, 175, 30)" rx="2" ry="2"></rect>
+  <text data-x="736.2" x="736.2" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Transform.push /home/flow/io/basic-stream-benchmarks/node..</text>
+</g>
+<g class="func_g " onmouseover="s(' /home/flow/io/basic-stream-benchmarks/lib/main.js:188 (12 samples), 38.7%)')" onmouseout="c()" data-search=" /home/flow/io/basic-stream-benchmarks/lib/main.js:188" data-funcname=" /home/flow/io/basic-stream-benchmarks/lib/main.js:188">
+  <title> /home/flow/io/basic-stream-benchmarks/lib/main.js:188 (12 samples), 38.7%)</title>
+  <rect x="695.2" data-x="695.2" y="337" width="456.70000000000005" data-width="456.70000000000005" height="15" data-height="15" fill="rgb(243, 173, 42)" rx="2" ry="2"></rect>
+  <text data-x="698.2" x="698.2" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"> /home/flow/io/basic-stream-benchmarks/lib/main.js:188</text>
+</g>
+<g class="func_g " onmouseover="s('Transform._read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:154 (14 samples), 45.2%)')" onmouseout="c()" data-search="transform._read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:154" data-funcname="Transform._read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:154">
+  <title>Transform._read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:154 (14 samples), 45.2%)</title>
+  <rect x="619" data-x="619" y="353" width="532.9000000000001" data-width="532.9000000000001" height="15" data-height="15" fill="rgb(241, 175, 40)" rx="2" ry="2"></rect>
+  <text data-x="622" x="622" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Transform._read /home/flow/io/basic-stream-benchmarks/node_modules/readab..</text>
+</g>
+<g class="func_g " onmouseover="s('Transform._write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:140 (14 samples), 45.2%)')" onmouseout="c()" data-search="transform._write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:140" data-funcname="Transform._write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:140">
+  <title>Transform._write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:140 (14 samples), 45.2%)</title>
+  <rect x="619" data-x="619" y="369" width="532.9000000000001" data-width="532.9000000000001" height="15" data-height="15" fill="rgb(232, 175, 29)" rx="2" ry="2"></rect>
+  <text data-x="622" x="622" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Transform._write /home/flow/io/basic-stream-benchmarks/node_modules/reada..</text>
+</g>
+<g class="func_g " onmouseover="s('doWrite /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:308 (14 samples), 45.2%)')" onmouseout="c()" data-search="dowrite /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:308" data-funcname="doWrite /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:308">
+  <title>doWrite /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:308 (14 samples), 45.2%)</title>
+  <rect x="619" data-x="619" y="385" width="532.9000000000001" data-width="532.9000000000001" height="15" data-height="15" fill="rgb(238, 215, 36)" rx="2" ry="2"></rect>
+  <text data-x="622" x="622" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">doWrite /home/flow/io/basic-stream-benchmarks/node_modules/readable-strea..</text>
+</g>
+<g class="func_g " onmouseover="s('writeOrBuffer /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:280 (14 samples), 45.2%)')" onmouseout="c()" data-search="writeorbuffer /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:280" data-funcname="writeOrBuffer /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:280">
+  <title>writeOrBuffer /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:280 (14 samples), 45.2%)</title>
+  <rect x="619" data-x="619" y="401" width="532.9000000000001" data-width="532.9000000000001" height="15" data-height="15" fill="rgb(239, 109, 37)" rx="2" ry="2"></rect>
+  <text data-x="622" x="622" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">writeOrBuffer /home/flow/io/basic-stream-benchmarks/node_modules/readable..</text>
+</g>
+<g class="func_g " onmouseover="s('Writable.write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:226 (17 samples), 54.8%)')" onmouseout="c()" data-search="writable.write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:226" data-funcname="Writable.write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:226">
+  <title>Writable.write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:226 (17 samples), 54.8%)</title>
+  <rect x="504.8" data-x="504.8" y="417" width="647.1000000000001" data-width="647.1000000000001" height="15" data-height="15" fill="rgb(240, 125, 39)" rx="2" ry="2"></rect>
+  <text data-x="507.8" x="507.8" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Writable.write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_st..</text>
+</g>
+<g class="func_g " onmouseover="s('ondata /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:529 (17 samples), 54.8%)')" onmouseout="c()" data-search="ondata /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:529" data-funcname="ondata /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:529">
+  <title>ondata /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:529 (17 samples), 54.8%)</title>
+  <rect x="504.8" data-x="504.8" y="433" width="647.1000000000001" data-width="647.1000000000001" height="15" data-height="15" fill="rgb(233, 209, 31)" rx="2" ry="2"></rect>
+  <text data-x="507.8" x="507.8" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">ondata /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_rea..</text>
+</g>
+<g class="func_g " onmouseover="s('emitOne events.js:0 (17 samples), 54.8%)')" onmouseout="c()" data-search="emitone events.js:0" data-funcname="emitOne events.js:0">
+  <title>emitOne events.js:0 (17 samples), 54.8%)</title>
+  <rect x="504.8" data-x="504.8" y="449" width="647.1000000000001" data-width="647.1000000000001" height="15" data-height="15" fill="rgb(233, 143, 31)" rx="2" ry="2"></rect>
+  <text data-x="507.8" x="507.8" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">emitOne events.js:0</text>
+</g>
+<g class="func_g " onmouseover="s('emit events.js:136 (18 samples), 58.1%)')" onmouseout="c()" data-search="emit events.js:136" data-funcname="emit events.js:136">
+  <title>emit events.js:136 (18 samples), 58.1%)</title>
+  <rect x="466.8" data-x="466.8" y="465" width="685.1000000000001" data-width="685.1000000000001" height="15" data-height="15" fill="rgb(240, 143, 38)" rx="2" ry="2"></rect>
+  <text data-x="469.8" x="469.8" y="475.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">emit events.js:136</text>
+</g>
+<g class="func_g " onmouseover="s('readableAddChunk /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:170 (20 samples), 64.5%)')" onmouseout="c()" data-search="readableaddchunk /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:170" data-funcname="readableAddChunk /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:170">
+  <title>readableAddChunk /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:170 (20 samples), 64.5%)</title>
+  <rect x="390.6" data-x="390.6" y="481" width="761.3000000000001" data-width="761.3000000000001" height="15" data-height="15" fill="rgb(240, 185, 39)" rx="2" ry="2"></rect>
+  <text data-x="393.6" x="393.6" y="491.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">readableAddChunk /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable...</text>
+</g>
+<g class="func_g " onmouseover="s('Readable.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:146 (20 samples), 64.5%)')" onmouseout="c()" data-search="readable.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:146" data-funcname="Readable.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:146">
+  <title>Readable.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:146 (20 samples), 64.5%)</title>
+  <rect x="390.6" data-x="390.6" y="497" width="761.3000000000001" data-width="761.3000000000001" height="15" data-height="15" fill="rgb(239, 201, 37)" rx="2" ry="2"></rect>
+  <text data-x="393.6" x="393.6" y="507.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Readable.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_readable.js:..</text>
+</g>
+<g class="func_g " onmouseover="s('Transform.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:121 (21 samples), 67.7%)')" onmouseout="c()" data-search="transform.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:121" data-funcname="Transform.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:121">
+  <title>Transform.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:121 (21 samples), 67.7%)</title>
+  <rect x="352.6" data-x="352.6" y="513" width="799.3000000000001" data-width="799.3000000000001" height="15" data-height="15" fill="rgb(232, 175, 30)" rx="2" ry="2"></rect>
+  <text data-x="355.6" x="355.6" y="523.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Transform.push /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:121</text>
+</g>
+<g class="func_g " onmouseover="s('Uint8Array native typedarray.js:241 (1 samples), 3.2%)')" onmouseout="c()" data-search="uint8array native typedarray.js:241" data-funcname="Uint8Array native typedarray.js:241">
+  <title>Uint8Array native typedarray.js:241 (1 samples), 3.2%)</title>
+  <rect x="1151.9" data-x="1151.9" y="481" width="38.09999999999991" data-width="38.09999999999991" height="15" data-height="15" fill="rgb(229, 153, 27)" rx="2" ry="2"></rect>
+  <text data-x="1154.9" x="1154.9" y="491.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Uin..</text>
+</g>
+<g class="func_g " onmouseover="s('FastBuffer buffer.js:10 (1 samples), 3.2%)')" onmouseout="c()" data-search="fastbuffer buffer.js:10" data-funcname="FastBuffer buffer.js:10">
+  <title>FastBuffer buffer.js:10 (1 samples), 3.2%)</title>
+  <rect x="1151.9" data-x="1151.9" y="497" width="38.09999999999991" data-width="38.09999999999991" height="15" data-height="15" fill="rgb(229, 162, 26)" rx="2" ry="2"></rect>
+  <text data-x="1154.9" x="1154.9" y="507.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Fas..</text>
+</g>
+<g class="func_g " onmouseover="s('slice buffer.js:805 (1 samples), 3.2%)')" onmouseout="c()" data-search="slice buffer.js:805" data-funcname="slice buffer.js:805">
+  <title>slice buffer.js:805 (1 samples), 3.2%)</title>
+  <rect x="1151.9" data-x="1151.9" y="513" width="38.09999999999991" data-width="38.09999999999991" height="15" data-height="15" fill="rgb(240, 116, 38)" rx="2" ry="2"></rect>
+  <text data-x="1154.9" x="1154.9" y="523.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">sli..</text>
+</g>
+<g class="func_g " onmouseover="s('write /home/flow/io/basic-stream-benchmarks/node_modules/binary-split/index.js:12 (25 samples), 80.6%)')" onmouseout="c()" data-search="write /home/flow/io/basic-stream-benchmarks/node_modules/binary-split/index.js:12" data-funcname="write /home/flow/io/basic-stream-benchmarks/node_modules/binary-split/index.js:12">
+  <title>write /home/flow/io/basic-stream-benchmarks/node_modules/binary-split/index.js:12 (25 samples), 80.6%)</title>
+  <rect x="238.4" data-x="238.4" y="529" width="951.6" data-width="951.6" height="15" data-height="15" fill="rgb(243, 109, 41)" rx="2" ry="2"></rect>
+  <text data-x="241.4" x="241.4" y="539.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">write /home/flow/io/basic-stream-benchmarks/node_modules/binary-split/index.js:12</text>
+</g>
+<g class="func_g " onmouseover="s('Transform._read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:154 (25 samples), 80.6%)')" onmouseout="c()" data-search="transform._read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:154" data-funcname="Transform._read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:154">
+  <title>Transform._read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:154 (25 samples), 80.6%)</title>
+  <rect x="238.4" data-x="238.4" y="545" width="951.6" data-width="951.6" height="15" data-height="15" fill="rgb(241, 175, 40)" rx="2" ry="2"></rect>
+  <text data-x="241.4" x="241.4" y="555.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Transform._read /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:154</text>
+</g>
+<g class="func_g " onmouseover="s('Transform._write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:140 (25 samples), 80.6%)')" onmouseout="c()" data-search="transform._write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:140" data-funcname="Transform._write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:140">
+  <title>Transform._write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:140 (25 samples), 80.6%)</title>
+  <rect x="238.4" data-x="238.4" y="561" width="951.6" data-width="951.6" height="15" data-height="15" fill="rgb(232, 175, 29)" rx="2" ry="2"></rect>
+  <text data-x="241.4" x="241.4" y="571.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Transform._write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_transform.js:140</text>
+</g>
+<g class="func_g " onmouseover="s('doWrite /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:308 (25 samples), 80.6%)')" onmouseout="c()" data-search="dowrite /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:308" data-funcname="doWrite /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:308">
+  <title>doWrite /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:308 (25 samples), 80.6%)</title>
+  <rect x="238.4" data-x="238.4" y="577" width="951.6" data-width="951.6" height="15" data-height="15" fill="rgb(238, 215, 36)" rx="2" ry="2"></rect>
+  <text data-x="241.4" x="241.4" y="587.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">doWrite /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:308</text>
+</g>
+<g class="func_g " onmouseover="s('writeOrBuffer /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:280 (25 samples), 80.6%)')" onmouseout="c()" data-search="writeorbuffer /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:280" data-funcname="writeOrBuffer /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:280">
+  <title>writeOrBuffer /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:280 (25 samples), 80.6%)</title>
+  <rect x="238.4" data-x="238.4" y="593" width="951.6" data-width="951.6" height="15" data-height="15" fill="rgb(239, 109, 37)" rx="2" ry="2"></rect>
+  <text data-x="241.4" x="241.4" y="603.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">writeOrBuffer /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:280</text>
+</g>
+<g class="func_g " onmouseover="s('Writable.write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:226 (25 samples), 80.6%)')" onmouseout="c()" data-search="writable.write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:226" data-funcname="Writable.write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:226">
+  <title>Writable.write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:226 (25 samples), 80.6%)</title>
+  <rect x="238.4" data-x="238.4" y="609" width="951.6" data-width="951.6" height="15" data-height="15" fill="rgb(240, 125, 39)" rx="2" ry="2"></rect>
+  <text data-x="241.4" x="241.4" y="619.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Writable.write /home/flow/io/basic-stream-benchmarks/node_modules/readable-stream/lib/_stream_writable.js:226</text>
+</g>
+<g class="func_g " onmouseover="s('ondata _stream_readable.js:552 (25 samples), 80.6%)')" onmouseout="c()" data-search="ondata _stream_readable.js:552" data-funcname="ondata _stream_readable.js:552">
+  <title>ondata _stream_readable.js:552 (25 samples), 80.6%)</title>
+  <rect x="238.4" data-x="238.4" y="625" width="951.6" data-width="951.6" height="15" data-height="15" fill="rgb(242, 209, 40)" rx="2" ry="2"></rect>
+  <text data-x="241.4" x="241.4" y="635.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">ondata _stream_readable.js:552</text>
+</g>
+<g class="func_g " onmouseover="s('emitOne events.js:0 (25 samples), 80.6%)')" onmouseout="c()" data-search="emitone events.js:0" data-funcname="emitOne events.js:0">
+  <title>emitOne events.js:0 (25 samples), 80.6%)</title>
+  <rect x="238.4" data-x="238.4" y="641" width="951.6" data-width="951.6" height="15" data-height="15" fill="rgb(233, 143, 31)" rx="2" ry="2"></rect>
+  <text data-x="241.4" x="241.4" y="651.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">emitOne events.js:0</text>
+</g>
+<g class="func_g " onmouseover="s('emit events.js:136 (25 samples), 80.6%)')" onmouseout="c()" data-search="emit events.js:136" data-funcname="emit events.js:136">
+  <title>emit events.js:136 (25 samples), 80.6%)</title>
+  <rect x="238.4" data-x="238.4" y="657" width="951.6" data-width="951.6" height="15" data-height="15" fill="rgb(240, 143, 38)" rx="2" ry="2"></rect>
+  <text data-x="241.4" x="241.4" y="667.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">emit events.js:136</text>
+</g>
+<g class="func_g " onmouseover="s('readableAddChunk _stream_readable.js:147 (25 samples), 80.6%)')" onmouseout="c()" data-search="readableaddchunk _stream_readable.js:147" data-funcname="readableAddChunk _stream_readable.js:147">
+  <title>readableAddChunk _stream_readable.js:147 (25 samples), 80.6%)</title>
+  <rect x="238.4" data-x="238.4" y="673" width="951.6" data-width="951.6" height="15" data-height="15" fill="rgb(237, 185, 35)" rx="2" ry="2"></rect>
+  <text data-x="241.4" x="241.4" y="683.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">readableAddChunk _stream_readable.js:147</text>
+</g>
+<g class="func_g " onmouseover="s('Readable.push _stream_readable.js:123 (25 samples), 80.6%)')" onmouseout="c()" data-search="readable.push _stream_readable.js:123" data-funcname="Readable.push _stream_readable.js:123">
+  <title>Readable.push _stream_readable.js:123 (25 samples), 80.6%)</title>
+  <rect x="238.4" data-x="238.4" y="689" width="951.6" data-width="951.6" height="15" data-height="15" fill="rgb(246, 201, 45)" rx="2" ry="2"></rect>
+  <text data-x="241.4" x="241.4" y="699.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Readable.push _stream_readable.js:123</text>
+</g>
+<g class="func_g " onmouseover="s('onread fs.js:1991 (25 samples), 80.6%)')" onmouseout="c()" data-search="onread fs.js:1991" data-funcname="onread fs.js:1991">
+  <title>onread fs.js:1991 (25 samples), 80.6%)</title>
+  <rect x="238.4" data-x="238.4" y="705" width="951.6" data-width="951.6" height="15" data-height="15" fill="rgb(231, 203, 28)" rx="2" ry="2"></rect>
+  <text data-x="241.4" x="241.4" y="715.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">onread fs.js:1991</text>
+</g>
+<g class="func_g " onmouseover="s('wrapper fs.js:679 (25 samples), 80.6%)')" onmouseout="c()" data-search="wrapper fs.js:679" data-funcname="wrapper fs.js:679">
+  <title>wrapper fs.js:679 (25 samples), 80.6%)</title>
+  <rect x="238.4" data-x="238.4" y="721" width="951.6" data-width="951.6" height="15" data-height="15" fill="rgb(239, 134, 37)" rx="2" ry="2"></rect>
+  <text data-x="241.4" x="241.4" y="731.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">wrapper fs.js:679</text>
+</g>
+<g class="func_g " onmouseover="s('(root) (31 samples), 100%)')" onmouseout="c()" data-search="(root)" data-funcname="(root)">
+  <title>(root) (31 samples), 100%)</title>
+  <rect x="10" data-x="10" y="737" width="1180" data-width="1180" height="15" data-height="15" fill="rgb(245, 200, 44)" rx="2" ry="2"></rect>
+  <text data-x="13" x="13" y="747.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">(root)</text>
+</g>
+
+</svg>
