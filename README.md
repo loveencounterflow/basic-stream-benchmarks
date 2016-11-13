@@ -24,5 +24,29 @@ assessing throughput performance of NodeJS streams
 
 
 
+```bash
+perf record -F 99 -g -- node ~/io/basic-stream-benchmarks/lib/main.js && \
+perf script > out.perf && \
+~/bin/FlameGraph/stackcollapse-perf.pl out.perf > out.folded && \
+~/bin/FlameGraph/flamegraph.pl out.folded > flamegraph.svg
+```
+
+```bash
+npm install -g flamegraph
+npm install v8-profiler
+```
+
+```bash
+npm run build && node lib/main.js
+cat profile-n\:1.json | flamegraph -t cpuprofile > flamegraph.svg
+cat profile-n\:5.json | flamegraph -t cpuprofile > flamegraph-n5-async-short.svg
+```
+
+
+![](https://github.com/loveencounterflow/basic-stream-benchmarks/raw/master/flamegraph-n5-async-short.svg)
+
+
+
+
 
 
