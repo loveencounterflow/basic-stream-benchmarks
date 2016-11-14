@@ -197,12 +197,22 @@ write_flamegraph = ( S, handler ) ->
 #===========================================================================================================
 #
 #-----------------------------------------------------------------------------------------------------------
+new_spin = ( n ) ->
+  count = n
+  R = ->
+    count += -1
+    x = Math.sin count
+    R() unless count <= 0
+  return R
+
+#-----------------------------------------------------------------------------------------------------------
 @stupid_read = ( n, size, mode, handler ) ->
   # input_path  = PATH.resolve __dirname, '../test-data/Unicode-index.txt'
   input_path    = O.inputs[ size ]
   throw new Error "unknown input size #{rpr size}" unless input_path?
   throw new Error "unknown mode #{rpr mode}" unless mode in [ 'sync', 'async', ]
-  output_path   = '/dev/null'
+  # output_path   = '/dev/null'
+  output_path   = '/tmp/xxx.txt'
   S             = {}
   S.n           = n
   S.size        = size
@@ -213,7 +223,8 @@ write_flamegraph = ( S, handler ) ->
   S.t1          = null
   S.job_name    = "flavor=stupid,n=#{n},size=#{size},mode=#{mode}"
   start_profile S
-  input         = FS.readFileSync input_path, { encoding: 'utf-8', }
+  # input         = FS.readFileSync input_path, { encoding: 'utf-8', }
+  input         = FS.createReadStream   input_path, { encoding: 'utf-8', }
   output        = FS.createWriteStream output_path
   #.........................................................................................................
   output.on 'close', ->
@@ -224,12 +235,22 @@ write_flamegraph = ( S, handler ) ->
       # yield write_flamegraph S, resume
       handler()
   #.........................................................................................................
-  lines = input.split '\n'
+  input.on 'data', ( chunk ) ->
+    ### TAINT not quite right, chunk might end with partial line ###
+    S.t0         ?= Date.now()
+    ### more or less correct, since file contents are in US-ASCII: ###
+    S.byte_count += chunk.length
+    lines         = chunk.split '\n'
+    #.......................................................................................................
+    for line, line_idx in lines
+      S.item_count += +1
+      line += '\n'
+      spin = new_spin S.n
+      spin()
+      output.write line
   #.........................................................................................................
-  for line, line_idx in lines
-    line += '\n'
-    output.push line
-  output.end()
+  input.on 'end', ->
+    output.end()
   #.........................................................................................................
   return null
 
@@ -244,23 +265,22 @@ write_flamegraph = ( S, handler ) ->
             yield @read_with_transforms n, size, mode, resume
     if running_in_devtools
       setTimeout ( -> help 'ok' ), 1e6
+    return null
+  return null
 
 #-----------------------------------------------------------------------------------------------------------
 @stupid_main = ->
-  n     = 10
-  size  = 'long'
-  mode  = 'sync'
+  n_max = if running_in_devtools then 3 else 1
   step ( resume ) =>
-    @stupid_read n, size, mode, resume
-  # n_max = if running_in_devtools then 3 else 1
-  #   for run in [ 1 .. n_max ]
-  #     for size in [ 'short', 'long', ]
-  #       for mode in [ 'sync', 'async', ]
-  #         for n in [ 0, 1, 10, 20, 40, ]
-  #           yield @read_with_transforms n, size, mode, resume
-  #   if running_in_devtools
-  #     setTimeout ( -> help 'ok' ), 1e6
-
+    for run in [ 1 .. n_max ]
+      for size in [ 'short', 'long', ]
+        for mode in [ 'sync', 'async', ]
+          for n in [ 0, 1, 10, 20, 40, ]
+            yield @stupid_read n, size, mode, resume
+    if running_in_devtools
+      setTimeout ( -> help 'ok' ), 1e6
+    return null
+  return null
 
 ############################################################################################################
 unless module.parent?
