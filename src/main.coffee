@@ -143,23 +143,20 @@ write_flamegraph = ( S, handler ) ->
 #===========================================================================================================
 #
 #-----------------------------------------------------------------------------------------------------------
-@read_with_transforms = ( n, size, mode, handler ) ->
-  # input_path  = PATH.resolve __dirname, '../test-data/Unicode-index.txt'
-  input_path    = O.inputs[ size ]
-  throw new Error "unknown input size #{rpr size}" unless input_path?
-  throw new Error "unknown mode #{rpr mode}" unless mode in [ 'sync', 'async', ]
-  output_path   = '/dev/null'
-  input         = FS.createReadStream   input_path
-  output        = FS.createWriteStream  output_path
-  S             = {}
-  S.n           = n
-  S.size        = size
-  S.mode        = mode
+@read_piped = ( settings, handler ) ->
+  ### TAINT code duplication ###
+  S             = Object.assign {}, settings
   S.byte_count  = 0
   S.item_count  = 0
   S.t0          = null
   S.t1          = null
-  S.job_name    = "n=#{n},size=#{size},mode=#{mode}"
+  S.job_name    = "#{S.flavor},#{S.n},#{S.size},#{S.mode}"
+  input_path    = O.inputs[ S.size ]
+  throw new Error "unknown input size #{rpr S.size}" unless input_path?
+  throw new Error "unknown mode #{rpr S.mode}" unless S.mode in [ 'sync', 'async', ]
+  output_path   = '/dev/null'
+  input         = FS.createReadStream   input_path
+  output        = FS.createWriteStream  output_path
   #.........................................................................................................
   p = input
   p = p.pipe $split()
@@ -206,33 +203,30 @@ new_spin = ( n ) ->
   return R
 
 #-----------------------------------------------------------------------------------------------------------
-@stupid_read = ( n, size, mode, handler ) ->
-  # input_path  = PATH.resolve __dirname, '../test-data/Unicode-index.txt'
-  input_path    = O.inputs[ size ]
-  throw new Error "unknown input size #{rpr size}" unless input_path?
-  throw new Error "unknown mode #{rpr mode}" unless mode in [ 'sync', 'async', ]
-  # output_path   = '/dev/null'
-  output_path   = '/tmp/xxx.txt'
-  S             = {}
-  S.n           = n
-  S.size        = size
-  S.mode        = mode
+@read_evented = ( settings, handler ) ->
+  ### TAINT code duplication ###
+  S             = Object.assign {}, settings
   S.byte_count  = 0
   S.item_count  = 0
   S.t0          = null
   S.t1          = null
-  S.job_name    = "flavor=stupid,n=#{n},size=#{size},mode=#{mode}"
-  start_profile S
-  # input         = FS.readFileSync input_path, { encoding: 'utf-8', }
+  S.job_name    = "#{S.flavor},#{S.n},#{S.size},#{S.mode}"
+  input_path    = O.inputs[ S.size ]
+  throw new Error "unknown input size #{rpr S.size}" unless input_path?
+  throw new Error "unknown mode #{rpr S.mode}" unless S.mode in [ 'sync', 'async', ]
+  # output_path   = '/dev/null'
+  output_path   = '/tmp/xxx.txt'
   input         = FS.createReadStream   input_path, { encoding: 'utf-8', }
   output        = FS.createWriteStream output_path
+  #.........................................................................................................
+  start_profile S
   #.........................................................................................................
   output.on 'close', ->
     step ( resume ) ->
       yield stop_profile S, resume
       S.t1 = Date.now()
       report S
-      # yield write_flamegraph S, resume
+      yield write_flamegraph S, resume
       handler()
   #.........................................................................................................
   input.on 'data', ( chunk ) ->
@@ -257,35 +251,26 @@ new_spin = ( n ) ->
 #-----------------------------------------------------------------------------------------------------------
 @main = ->
   n_max = if running_in_devtools then 3 else 1
+  size  = 'long'
   step ( resume ) =>
     for run in [ 1 .. n_max ]
-      for size in [ 'short', 'long', ]
+      for flavor in [ 'evented', ]
+      # for flavor in [ 'piped', 'evented', ]
         for mode in [ 'sync', 'async', ]
           for n in [ 0, 1, 10, 20, 40, ]
-            yield @read_with_transforms n, size, mode, resume
+            if flavor is 'piped'
+              yield @read_piped   { n, size, mode, flavor, }, resume
+            else
+              yield @read_evented { n, size, mode, flavor, }, resume
     if running_in_devtools
       setTimeout ( -> help 'ok' ), 1e6
     return null
   return null
 
-#-----------------------------------------------------------------------------------------------------------
-@stupid_main = ->
-  n_max = if running_in_devtools then 3 else 1
-  step ( resume ) =>
-    for run in [ 1 .. n_max ]
-      for size in [ 'short', 'long', ]
-        for mode in [ 'sync', 'async', ]
-          for n in [ 0, 1, 10, 20, 40, ]
-            yield @stupid_read n, size, mode, resume
-    if running_in_devtools
-      setTimeout ( -> help 'ok' ), 1e6
-    return null
-  return null
 
 ############################################################################################################
 unless module.parent?
-  # @main()
-  @stupid_main()
+  @main()
 
 
 
