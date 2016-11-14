@@ -105,7 +105,7 @@ stop_profile = ( S, handler ) ->
       profile         = V8PROFILER.stopProfiling S.job_name
       profile_data    = yield profile.export resume
       S.profile_name  = "profile-#{S.job_name}.json"
-      profile_path    = PATH.resolve __dirname, '../profiles', S.profile_name
+      S.profile_path  = PATH.resolve __dirname, '../profiles', S.profile_name
       FS.writeFileSync S.profile_path, profile_data
       handler()
 
@@ -114,19 +114,17 @@ write_flamegraph = ( S, handler ) ->
   return if running_in_devtools
   #.........................................................................................................
   S.flamegraph_name = "flamegraph-#{S.job_name}.svg"
-  flamegraph_path   = PATH.resolve __dirname, '../flamegraphs', S.flamegraph_name
-  source            = D.new_stream 'utf-8', { path: flamegraph_path, }
-  callgraph_lines   = null
+  S.flamegraph_path = PATH.resolve __dirname, '../flamegraphs', S.flamegraph_name
+  source            = D.new_stream 'utf-8', { path: S.profile_path, }
   #.........................................................................................................
   ### TAINT stream returned by `flamegraph_from_stream` apparently doesn't emit `close` events, so we
   chose another way to do it: ###
   source
     .pipe D.$split()
     .pipe D.$collect()
-    .pipe $ ( lines ) -> callgraph_lines = lines
-    .pipe $ 'finish', ->
+    .pipe $ ( callgraph_lines ) ->
       svg = flamegraph callgraph_lines, { type: 'cpuprofile', }
-      FS.writeFileSync S.flamegraph_name, svg
+      FS.writeFileSync S.flamegraph_path, svg
       handler()
   return null
   #.........................................................................................................
@@ -181,8 +179,8 @@ new_spin = ( n ) ->
     @push data
     callback()
   #.........................................................................................................
-  for _ in [ 1 .. n ] by +1
-    if mode is 'sync'
+  for _ in [ 1 .. S.n ] by +1
+    if S.mode is 'sync'
       p = p.pipe through2.obj ( data, encoding, callback ) -> @push data; callback()
     else
       # p = p.pipe through2.obj ( data, encoding, callback ) -> setImmediate => @push data; setImmediate => callback()
@@ -254,8 +252,13 @@ new_spin = ( n ) ->
 @main = ->
   n_max             = if running_in_devtools then 3 else 1
   size              = 'long'
+  # #.........................................................................................................
+  # flavors           = [ 'piped', ]
+  # modes             = [ 'sync', ]
+  # transform_counts  = [ 0, ]
+  #.........................................................................................................
   flavors           = [ 'evented', 'piped', ]
-  # transform_counts  = [ 0, 1, 10, 20, 40, ]
+  transform_counts  = [ 0, 1, 10, 20, 40, ]
   transform_counts  = [ 0, 1, ]
   modes             = [ 'sync', 'async', ]
   #.........................................................................................................
@@ -275,8 +278,8 @@ new_spin = ( n ) ->
 
 ############################################################################################################
 unless module.parent?
-  CND.run =>
-    @main()
+  # CND.run => @main()
+  @main()
 
 
 
