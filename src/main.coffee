@@ -105,7 +105,8 @@ stop_profile = ( S, handler ) ->
       profile         = V8PROFILER.stopProfiling S.job_name
       profile_data    = yield profile.export resume
       S.profile_name  = "profile-#{S.job_name}.json"
-      FS.writeFileSync S.profile_name, profile_data
+      profile_path    = PATH.resolve __dirname, '../profiles', S.profile_name
+      FS.writeFileSync S.profile_path, profile_data
       handler()
 
 #-----------------------------------------------------------------------------------------------------------
@@ -113,7 +114,8 @@ write_flamegraph = ( S, handler ) ->
   return if running_in_devtools
   #.........................................................................................................
   S.flamegraph_name = "flamegraph-#{S.job_name}.svg"
-  source            = D.new_stream 'utf-8', { path: S.profile_name, }
+  flamegraph_path   = PATH.resolve __dirname, '../flamegraphs', S.flamegraph_name
+  source            = D.new_stream 'utf-8', { path: flamegraph_path, }
   callgraph_lines   = null
   #.........................................................................................................
   ### TAINT stream returned by `flamegraph_from_stream` apparently doesn't emit `close` events, so we
@@ -250,21 +252,24 @@ new_spin = ( n ) ->
 
 #-----------------------------------------------------------------------------------------------------------
 @main = ->
-  n_max = if running_in_devtools then 3 else 1
-  size  = 'long'
+  n_max             = if running_in_devtools then 3 else 1
+  size              = 'long'
+  flavors           = [ 'evented', 'piped', ]
+  # transform_counts  = [ 0, 1, 10, 20, 40, ]
+  transform_counts  = [ 0, 1, ]
+  modes             = [ 'sync', 'async', ]
+  #.........................................................................................................
   step ( resume ) =>
     for run in [ 1 .. n_max ]
-      for flavor in [ 'evented', ]
-      # for flavor in [ 'piped', 'evented', ]
-        for mode in [ 'sync', 'async', ]
-          for n in [ 0, 1, 10, 20, 40, ]
-            if flavor is 'piped'
-              yield @read_piped   { n, size, mode, flavor, }, resume
-            else
-              yield @read_evented { n, size, mode, flavor, }, resume
+      for flavor in flavors
+        for mode in modes
+          for n in transform_counts
+            if flavor is 'piped' then yield @read_piped   { n, size, mode, flavor, }, resume
+            else                      yield @read_evented { n, size, mode, flavor, }, resume
     if running_in_devtools
       setTimeout ( -> help 'ok' ), 1e6
     return null
+  #.........................................................................................................
   return null
 
 
