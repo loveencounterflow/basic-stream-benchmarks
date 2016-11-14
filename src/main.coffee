@@ -159,7 +159,7 @@ new_spin = ( n ) ->
   S.item_count  = 0
   S.t0          = null
   S.t1          = null
-  S.job_name    = "#{S.flavor},#{S.n},#{S.size},#{S.mode}"
+  S.job_name    = "#{S.flavor},#{S.n},#{S.mode}"
   input_path    = O.inputs[ S.size ]
   throw new Error "unknown input size #{rpr S.size}" unless input_path?
   throw new Error "unknown mode #{rpr S.mode}" unless S.mode in [ 'sync', 'async', ]
@@ -207,7 +207,7 @@ new_spin = ( n ) ->
   S.item_count  = 0
   S.t0          = null
   S.t1          = null
-  S.job_name    = "#{S.flavor},#{S.n},#{S.size},#{S.mode}"
+  S.job_name    = "#{S.flavor},#{S.n},#{S.mode}"
   input_path    = O.inputs[ S.size ]
   throw new Error "unknown input size #{rpr S.size}" unless input_path?
   throw new Error "unknown mode #{rpr S.mode}" unless S.mode in [ 'sync', 'async', ]
@@ -259,13 +259,13 @@ new_spin = ( n ) ->
   #.........................................................................................................
   flavors           = [ 'evented', 'piped', ]
   transform_counts  = [ 0, 1, 10, 20, 40, ]
-  transform_counts  = [ 0, 1, ]
   modes             = [ 'sync', 'async', ]
   #.........................................................................................................
   step ( resume ) =>
     for run in [ 1 .. n_max ]
       for flavor in flavors
         for mode in modes
+          continue if flavor is 'evented' and mode is 'async'
           for n in transform_counts
             if flavor is 'piped' then yield @read_piped   { n, size, mode, flavor, }, resume
             else                      yield @read_evented { n, size, mode, flavor, }, resume
