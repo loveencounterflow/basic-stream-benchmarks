@@ -193,12 +193,48 @@ write_flamegraph = ( S, handler ) ->
   #.........................................................................................................
   return null
 
+
+#===========================================================================================================
+#
+#-----------------------------------------------------------------------------------------------------------
+@stupid_read = ( n, size, mode, handler ) ->
+  # input_path  = PATH.resolve __dirname, '../test-data/Unicode-index.txt'
+  input_path    = O.inputs[ size ]
+  throw new Error "unknown input size #{rpr size}" unless input_path?
+  throw new Error "unknown mode #{rpr mode}" unless mode in [ 'sync', 'async', ]
+  output_path   = '/dev/null'
+  S             = {}
+  S.n           = n
+  S.size        = size
+  S.mode        = mode
+  S.byte_count  = 0
+  S.item_count  = 0
+  S.t0          = null
+  S.t1          = null
+  S.job_name    = "flavor=stupid,n=#{n},size=#{size},mode=#{mode}"
+  start_profile S
+  input         = FS.readFileSync input_path, { encoding: 'utf-8', }
+  output        = FS.createWriteStream output_path
+  #.........................................................................................................
+  output.on 'close', ->
+    step ( resume ) ->
+      yield stop_profile S, resume
+      S.t1 = Date.now()
+      report S
+      # yield write_flamegraph S, resume
+      handler()
+  #.........................................................................................................
+  lines = input.split '\n'
+  #.........................................................................................................
+  for line, line_idx in lines
+    line += '\n'
+    output.push line
+  output.end()
+  #.........................................................................................................
+  return null
+
 #-----------------------------------------------------------------------------------------------------------
 @main = ->
-  # size  = 'short'
-  # size  = 'long'
-  # mode        = 'async'
-  # mode        = 'sync'
   n_max = if running_in_devtools then 3 else 1
   step ( resume ) =>
     for run in [ 1 .. n_max ]
@@ -209,10 +245,27 @@ write_flamegraph = ( S, handler ) ->
     if running_in_devtools
       setTimeout ( -> help 'ok' ), 1e6
 
+#-----------------------------------------------------------------------------------------------------------
+@stupid_main = ->
+  n     = 10
+  size  = 'long'
+  mode  = 'sync'
+  step ( resume ) =>
+    @stupid_read n, size, mode, resume
+  # n_max = if running_in_devtools then 3 else 1
+  #   for run in [ 1 .. n_max ]
+  #     for size in [ 'short', 'long', ]
+  #       for mode in [ 'sync', 'async', ]
+  #         for n in [ 0, 1, 10, 20, 40, ]
+  #           yield @read_with_transforms n, size, mode, resume
+  #   if running_in_devtools
+  #     setTimeout ( -> help 'ok' ), 1e6
+
 
 ############################################################################################################
 unless module.parent?
-  @main()
+  # @main()
+  @stupid_main()
 
 
 

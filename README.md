@@ -85,6 +85,63 @@ no-op transforms we can gain an understanding of how expensive the act of adding
 a pipeline is as such (turns out the cost is considerable).
 
 
+```coffee
+FS            = require 'fs'
+through2      = require 'through2'
+$split        = require 'binary-split'
+input_path    = 'test-data/Unicode-NamesList.txt'
+output_path   = '/dev/null'
+input         = FS.createReadStream   input_path
+output        = FS.createWriteStream  output_path
+n             = 50
+#.........................................................................................................
+p = input
+p = p.pipe $split()
+#.........................................................................................................
+for _ in [ 1 .. n ] by +1
+  ### 1 ###
+  p = p.pipe through2.obj ( data, encoding, callback ) -> @push data; callback()
+#.........................................................................................................
+p = p.pipe through2 ( data, encoding, callback ) -> @push data + '\n'; callback()
+p = p.pipe output
+```
+
+```coffee
+  ### 1 ###
+  p = p.pipe through2.obj ( data, encoding, callback ) -> setImmediate => @push data; callback()
+```
+
+
+```js
+var FS            = require 'fs';
+var through2      = require 'through2';
+var $split        = require 'binary-split';
+var input_path    = 'test-data/Unicode-NamesList.txt';
+var output_path   = '/dev/null';
+var input         = FS.createReadStream(input_path);
+var output        = FS.createWriteStream(output_path);
+var n             = 50;
+var $split
+var p = input;
+p = p.pipe($split());
+
+var _, i, ref;
+for (_ = i = 1, ref = n; i <= ref; _ = i += +1) {
+    /* 1 */
+    p = p.pipe(through2.obj(function(data, encoding, callback) {
+      this.push(data);
+      return callback();
+    }));
+  };
+p = p.pipe(through2(function(data, encoding, callback) {
+  this.push(data + '\n');
+  return callback();
+}));
+
+p = p.pipe(output);
+```
+
+
 ## Results
 
 ### Observations
