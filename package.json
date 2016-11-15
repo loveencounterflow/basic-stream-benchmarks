@@ -29,6 +29,7 @@
     "cnd": "^4.2.0",
     "coffeenode-suspend": "^0.1.11",
     "flamegraph": "^0.7.0",
+    "mkdirp": "^0.5.1",
     "numeral": "^1.5.3",
     "pipedreams": "^6.3.2",
     "through2": "^2.0.1",

@@ -1,0 +1,627 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg version="1.1" id="flamegraph-svg" 
+  data-width="1200" width="1200" 
+  height="530" data-height="530"
+  onload="init(evt)" 
+  viewBox="0 0 1200 530" 
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<defs>
+	<linearGradient id="background" y1="0" y2="1" x1="0" x2="0">
+    <stop stop-color="#eeeeee" offset="5%" />
+    <stop stop-color="#eeeeb0" offset="95%" />
+	</linearGradient>
+</defs>
+<style type="text/css">
+	.func_g:hover { stroke:black; stroke-width:0.5; }
+</style>
+<script type="text/javascript">
+	var details;
+	function init(evt) { details = document.getElementById("details").firstChild; }
+  function s(info) { details.nodeValue = "Function:: " + info; }
+	function c() { details.nodeValue = ' '; }
+</script>
+
+<rect x="0.0" y="0" id="svg-background" width="1200" height="530" fill="url(#background)"  />
+<!--<text text-anchor="middle" x="600" y="24" font-size="17" font-family="Verdana" fill="rgb(0,0,0)">Flame Graph</text>-->
+<text text-anchor="left" x="10" y="522" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" id="details"> </text>
+
+<g class="func_g " onmouseover="s('(garbage collector) (5 samples), 2%)')" onmouseout="c()" data-search="(garbage collector)" data-funcname="(garbage collector)">
+  <title>(garbage collector) (5 samples), 2%)</title>
+  <rect x="10" data-x="10" y="465" width="23.4" data-width="23.4" height="15" data-height="15" fill="rgb(247, 207, 46)" rx="2" ry="2"></rect>
+  <text data-x="13" x="13" y="475.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">(..</text>
+</g>
+<g class="func_g " onmouseover="s('(program) (24 samples), 9.5%)')" onmouseout="c()" data-search="(program)" data-funcname="(program)">
+  <title>(program) (24 samples), 9.5%)</title>
+  <rect x="33.4" data-x="33.4" y="465" width="112.4" data-width="112.4" height="15" data-height="15" fill="rgb(242, 201, 40)" rx="2" ry="2"></rect>
+  <text data-x="36.4" x="36.4" y="475.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">(program)</text>
+</g>
+<g class="func_g " onmouseover="s('CorkedRequest.finish _stream_writable.js:541 (5 samples), 2%)')" onmouseout="c()" data-search="corkedrequest.finish _stream_writable.js:541" data-funcname="CorkedRequest.finish _stream_writable.js:541">
+  <title>CorkedRequest.finish _stream_writable.js:541 (5 samples), 2%)</title>
+  <rect x="150.5" data-x="150.5" y="385" width="23.400000000000006" data-width="23.400000000000006" height="15" data-height="15" fill="rgb(227, 150, 24)" rx="2" ry="2"></rect>
+  <text data-x="153.5" x="153.5" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">C..</text>
+</g>
+<g class="func_g " onmouseover="s('afterWrite _stream_writable.js:383 (5 samples), 2%)')" onmouseout="c()" data-search="afterwrite _stream_writable.js:383" data-funcname="afterWrite _stream_writable.js:383">
+  <title>afterWrite _stream_writable.js:383 (5 samples), 2%)</title>
+  <rect x="150.5" data-x="150.5" y="401" width="23.400000000000006" data-width="23.400000000000006" height="15" data-height="15" fill="rgb(250, 133, 50)" rx="2" ry="2"></rect>
+  <text data-x="153.5" x="153.5" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">a..</text>
+</g>
+<g class="func_g " onmouseover="s('writeBuffers (2 samples), 0.8%)')" onmouseout="c()" data-search="writebuffers" data-funcname="writeBuffers">
+  <title>writeBuffers (2 samples), 0.8%)</title>
+  <rect x="192.6" data-x="192.6" y="337" width="9.400000000000006" data-width="9.400000000000006" height="15" data-height="15" fill="rgb(238, 109, 37)" rx="2" ry="2"></rect>
+  <text data-x="192.6" x="192.6" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('writev fs.js:2145 (3 samples), 1.2%)')" onmouseout="c()" data-search="writev fs.js:2145" data-funcname="writev fs.js:2145">
+  <title>writev fs.js:2145 (3 samples), 1.2%)</title>
+  <rect x="187.9" data-x="187.9" y="353" width="14.099999999999994" data-width="14.099999999999994" height="15" data-height="15" fill="rgb(240, 109, 39)" rx="2" ry="2"></rect>
+  <text data-x="187.9" x="187.9" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('WriteStream._writev fs.js:2157 (4 samples), 1.6%)')" onmouseout="c()" data-search="writestream._writev fs.js:2157" data-funcname="WriteStream._writev fs.js:2157">
+  <title>WriteStream._writev fs.js:2157 (4 samples), 1.6%)</title>
+  <rect x="183.3" data-x="183.3" y="369" width="18.69999999999999" data-width="18.69999999999999" height="15" data-height="15" fill="rgb(236, 125, 34)" rx="2" ry="2"></rect>
+  <text data-x="183.3" x="183.3" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('doWrite _stream_writable.js:325 (5 samples), 2%)')" onmouseout="c()" data-search="dowrite _stream_writable.js:325" data-funcname="doWrite _stream_writable.js:325">
+  <title>doWrite _stream_writable.js:325 (5 samples), 2%)</title>
+  <rect x="178.6" data-x="178.6" y="385" width="23.400000000000006" data-width="23.400000000000006" height="15" data-height="15" fill="rgb(241, 215, 40)" rx="2" ry="2"></rect>
+  <text data-x="181.6" x="181.6" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">d..</text>
+</g>
+<g class="func_g " onmouseover="s('clearBuffer _stream_writable.js:402 (6 samples), 2.4%)')" onmouseout="c()" data-search="clearbuffer _stream_writable.js:402" data-funcname="clearBuffer _stream_writable.js:402">
+  <title>clearBuffer _stream_writable.js:402 (6 samples), 2.4%)</title>
+  <rect x="173.9" data-x="173.9" y="401" width="28.099999999999994" data-width="28.099999999999994" height="15" data-height="15" fill="rgb(248, 96, 47)" rx="2" ry="2"></rect>
+  <text data-x="176.9" x="176.9" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">c..</text>
+</g>
+<g class="func_g " onmouseover="s('onwrite _stream_writable.js:355 (12 samples), 4.8%)')" onmouseout="c()" data-search="onwrite _stream_writable.js:355" data-funcname="onwrite _stream_writable.js:355">
+  <title>onwrite _stream_writable.js:355 (12 samples), 4.8%)</title>
+  <rect x="145.8" data-x="145.8" y="417" width="56.19999999999999" data-width="56.19999999999999" height="15" data-height="15" fill="rgb(238, 187, 36)" rx="2" ry="2"></rect>
+  <text data-x="148.8" x="148.8" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">onwri..</text>
+</g>
+<g class="func_g " onmouseover="s('WritableState.onwrite _stream_writable.js:88 (12 samples), 4.8%)')" onmouseout="c()" data-search="writablestate.onwrite _stream_writable.js:88" data-funcname="WritableState.onwrite _stream_writable.js:88">
+  <title>WritableState.onwrite _stream_writable.js:88 (12 samples), 4.8%)</title>
+  <rect x="145.8" data-x="145.8" y="433" width="56.19999999999999" data-width="56.19999999999999" height="15" data-height="15" fill="rgb(236, 125, 35)" rx="2" ry="2"></rect>
+  <text data-x="148.8" x="148.8" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Writa..</text>
+</g>
+<g class="func_g " onmouseover="s(' fs.js:2175 (12 samples), 4.8%)')" onmouseout="c()" data-search=" fs.js:2175" data-funcname=" fs.js:2175">
+  <title> fs.js:2175 (12 samples), 4.8%)</title>
+  <rect x="145.8" data-x="145.8" y="449" width="56.19999999999999" data-width="56.19999999999999" height="15" data-height="15" fill="rgb(249, 176, 48)" rx="2" ry="2"></rect>
+  <text data-x="148.8" x="148.8" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"> fs.j..</text>
+</g>
+<g class="func_g " onmouseover="s('wrapper fs.js:2146 (12 samples), 4.8%)')" onmouseout="c()" data-search="wrapper fs.js:2146" data-funcname="wrapper fs.js:2146">
+  <title>wrapper fs.js:2146 (12 samples), 4.8%)</title>
+  <rect x="145.8" data-x="145.8" y="465" width="56.19999999999999" data-width="56.19999999999999" height="15" data-height="15" fill="rgb(239, 134, 37)" rx="2" ry="2"></rect>
+  <text data-x="148.8" x="148.8" y="475.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">wrapp..</text>
+</g>
+<g class="func_g " onmouseover="s('read (2 samples), 0.8%)')" onmouseout="c()" data-search="read" data-funcname="read">
+  <title>read (2 samples), 0.8%)</title>
+  <rect x="202" data-x="202" y="353" width="9.300000000000011" data-width="9.300000000000011" height="15" data-height="15" fill="rgb(242, 185, 40)" rx="2" ry="2"></rect>
+  <text data-x="202" x="202" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('fs.read fs.js:644 (2 samples), 0.8%)')" onmouseout="c()" data-search="fs.read fs.js:644" data-funcname="fs.read fs.js:644">
+  <title>fs.read fs.js:644 (2 samples), 0.8%)</title>
+  <rect x="202" data-x="202" y="369" width="9.300000000000011" data-width="9.300000000000011" height="15" data-height="15" fill="rgb(239, 157, 37)" rx="2" ry="2"></rect>
+  <text data-x="202" x="202" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('ReadStream._read fs.js:1952 (2 samples), 0.8%)')" onmouseout="c()" data-search="readstream._read fs.js:1952" data-funcname="ReadStream._read fs.js:1952">
+  <title>ReadStream._read fs.js:1952 (2 samples), 0.8%)</title>
+  <rect x="202" data-x="202" y="385" width="9.300000000000011" data-width="9.300000000000011" height="15" data-height="15" fill="rgb(239, 201, 37)" rx="2" ry="2"></rect>
+  <text data-x="202" x="202" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('Readable.read _stream_readable.js:271 (2 samples), 0.8%)')" onmouseout="c()" data-search="readable.read _stream_readable.js:271" data-funcname="Readable.read _stream_readable.js:271">
+  <title>Readable.read _stream_readable.js:271 (2 samples), 0.8%)</title>
+  <rect x="202" data-x="202" y="401" width="9.300000000000011" data-width="9.300000000000011" height="15" data-height="15" fill="rgb(238, 201, 36)" rx="2" ry="2"></rect>
+  <text data-x="202" x="202" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('slowToString buffer.js:420 (5 samples), 2%)')" onmouseout="c()" data-search="slowtostring buffer.js:420" data-funcname="slowToString buffer.js:420">
+  <title>slowToString buffer.js:420 (5 samples), 2%)</title>
+  <rect x="211.3" data-x="211.3" y="353" width="23.5" data-width="23.5" height="15" data-height="15" fill="rgb(232, 135, 29)" rx="2" ry="2"></rect>
+  <text data-x="214.3" x="214.3" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">s..</text>
+</g>
+<g class="func_g " onmouseover="s('Buffer.toString buffer.js:487 (5 samples), 2%)')" onmouseout="c()" data-search="buffer.tostring buffer.js:487" data-funcname="Buffer.toString buffer.js:487">
+  <title>Buffer.toString buffer.js:487 (5 samples), 2%)</title>
+  <rect x="211.3" data-x="211.3" y="369" width="23.5" data-width="23.5" height="15" data-height="15" fill="rgb(242, 127, 41)" rx="2" ry="2"></rect>
+  <text data-x="214.3" x="214.3" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">B..</text>
+</g>
+<g class="func_g " onmouseover="s('utf8Text string_decoder.js:177 (5 samples), 2%)')" onmouseout="c()" data-search="utf8text string_decoder.js:177" data-funcname="utf8Text string_decoder.js:177">
+  <title>utf8Text string_decoder.js:177 (5 samples), 2%)</title>
+  <rect x="211.3" data-x="211.3" y="385" width="23.5" data-width="23.5" height="15" data-height="15" fill="rgb(246, 124, 45)" rx="2" ry="2"></rect>
+  <text data-x="214.3" x="214.3" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">u..</text>
+</g>
+<g class="func_g " onmouseover="s('StringDecoder.write string_decoder.js:49 (5 samples), 2%)')" onmouseout="c()" data-search="stringdecoder.write string_decoder.js:49" data-funcname="StringDecoder.write string_decoder.js:49">
+  <title>StringDecoder.write string_decoder.js:49 (5 samples), 2%)</title>
+  <rect x="211.3" data-x="211.3" y="401" width="23.5" data-width="23.5" height="15" data-height="15" fill="rgb(227, 156, 24)" rx="2" ry="2"></rect>
+  <text data-x="214.3" x="214.3" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">S..</text>
+</g>
+<g class="func_g " onmouseover="s('sin native fdlibm.js:248 (2 samples), 0.8%)')" onmouseout="c()" data-search="sin native fdlibm.js:248" data-funcname="sin native fdlibm.js:248">
+  <title>sin native fdlibm.js:248 (2 samples), 0.8%)</title>
+  <rect x="454.8" data-x="454.8" y="33" width="9.399999999999977" data-width="9.399999999999977" height="15" data-height="15" fill="rgb(234, 153, 32)" rx="2" ry="2"></rect>
+  <text data-x="454.8" x="454.8" y="43.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (3 samples), 1.2%)')" onmouseout="c()" data-search="r /volumes/storage/io/basic-stream-benchmarks/lib/main.js:200" data-funcname="R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200">
+  <title>R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (3 samples), 1.2%)</title>
+  <rect x="450.2" data-x="450.2" y="49" width="14" data-width="14" height="15" data-height="15" fill="rgb(235, 128, 33)" rx="2" ry="2"></rect>
+  <text data-x="450.2" x="450.2" y="59.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('MathSinSlow native fdlibm.js:75 (1 samples), 0.4%)')" onmouseout="c()" data-search="mathsinslow native fdlibm.js:75" data-funcname="MathSinSlow native fdlibm.js:75">
+  <title>MathSinSlow native fdlibm.js:75 (1 samples), 0.4%)</title>
+  <rect x="464.2" data-x="464.2" y="33" width="4.699999999999989" data-width="4.699999999999989" height="15" data-height="15" fill="rgb(243, 103, 42)" rx="2" ry="2"></rect>
+  <text data-x="464.2" x="464.2" y="43.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('sin native fdlibm.js:248 (1 samples), 0.4%)')" onmouseout="c()" data-search="sin native fdlibm.js:248" data-funcname="sin native fdlibm.js:248">
+  <title>sin native fdlibm.js:248 (1 samples), 0.4%)</title>
+  <rect x="464.2" data-x="464.2" y="49" width="4.699999999999989" data-width="4.699999999999989" height="15" data-height="15" fill="rgb(234, 153, 32)" rx="2" ry="2"></rect>
+  <text data-x="464.2" x="464.2" y="59.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (6 samples), 2.4%)')" onmouseout="c()" data-search="r /volumes/storage/io/basic-stream-benchmarks/lib/main.js:200" data-funcname="R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200">
+  <title>R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (6 samples), 2.4%)</title>
+  <rect x="440.8" data-x="440.8" y="65" width="28.099999999999966" data-width="28.099999999999966" height="15" data-height="15" fill="rgb(235, 128, 33)" rx="2" ry="2"></rect>
+  <text data-x="443.8" x="443.8" y="75.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">R..</text>
+</g>
+<g class="func_g " onmouseover="s('MathSinSlow native fdlibm.js:75 (2 samples), 0.8%)')" onmouseout="c()" data-search="mathsinslow native fdlibm.js:75" data-funcname="MathSinSlow native fdlibm.js:75">
+  <title>MathSinSlow native fdlibm.js:75 (2 samples), 0.8%)</title>
+  <rect x="468.9" data-x="468.9" y="49" width="9.400000000000034" data-width="9.400000000000034" height="15" data-height="15" fill="rgb(243, 103, 42)" rx="2" ry="2"></rect>
+  <text data-x="468.9" x="468.9" y="59.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('sin native fdlibm.js:248 (2 samples), 0.8%)')" onmouseout="c()" data-search="sin native fdlibm.js:248" data-funcname="sin native fdlibm.js:248">
+  <title>sin native fdlibm.js:248 (2 samples), 0.8%)</title>
+  <rect x="468.9" data-x="468.9" y="65" width="9.400000000000034" data-width="9.400000000000034" height="15" data-height="15" fill="rgb(234, 153, 32)" rx="2" ry="2"></rect>
+  <text data-x="468.9" x="468.9" y="75.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (9 samples), 3.6%)')" onmouseout="c()" data-search="r /volumes/storage/io/basic-stream-benchmarks/lib/main.js:200" data-funcname="R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200">
+  <title>R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (9 samples), 3.6%)</title>
+  <rect x="436.1" data-x="436.1" y="81" width="42.19999999999999" data-width="42.19999999999999" height="15" data-height="15" fill="rgb(235, 128, 33)" rx="2" ry="2"></rect>
+  <text data-x="439.1" x="439.1" y="91.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">R /..</text>
+</g>
+<g class="func_g " onmouseover="s('MathSinSlow native fdlibm.js:75 (2 samples), 0.8%)')" onmouseout="c()" data-search="mathsinslow native fdlibm.js:75" data-funcname="MathSinSlow native fdlibm.js:75">
+  <title>MathSinSlow native fdlibm.js:75 (2 samples), 0.8%)</title>
+  <rect x="478.3" data-x="478.3" y="65" width="9.300000000000011" data-width="9.300000000000011" height="15" data-height="15" fill="rgb(243, 103, 42)" rx="2" ry="2"></rect>
+  <text data-x="478.3" x="478.3" y="75.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('sin native fdlibm.js:248 (2 samples), 0.8%)')" onmouseout="c()" data-search="sin native fdlibm.js:248" data-funcname="sin native fdlibm.js:248">
+  <title>sin native fdlibm.js:248 (2 samples), 0.8%)</title>
+  <rect x="478.3" data-x="478.3" y="81" width="9.300000000000011" data-width="9.300000000000011" height="15" data-height="15" fill="rgb(234, 153, 32)" rx="2" ry="2"></rect>
+  <text data-x="478.3" x="478.3" y="91.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (13 samples), 5.2%)')" onmouseout="c()" data-search="r /volumes/storage/io/basic-stream-benchmarks/lib/main.js:200" data-funcname="R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200">
+  <title>R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (13 samples), 5.2%)</title>
+  <rect x="426.7" data-x="426.7" y="97" width="60.900000000000034" data-width="60.900000000000034" height="15" data-height="15" fill="rgb(235, 128, 33)" rx="2" ry="2"></rect>
+  <text data-x="429.7" x="429.7" y="107.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">R /Vol..</text>
+</g>
+<g class="func_g " onmouseover="s('R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (13 samples), 5.2%)')" onmouseout="c()" data-search="r /volumes/storage/io/basic-stream-benchmarks/lib/main.js:200" data-funcname="R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200">
+  <title>R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (13 samples), 5.2%)</title>
+  <rect x="426.7" data-x="426.7" y="113" width="60.900000000000034" data-width="60.900000000000034" height="15" data-height="15" fill="rgb(235, 128, 33)" rx="2" ry="2"></rect>
+  <text data-x="429.7" x="429.7" y="123.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">R /Vol..</text>
+</g>
+<g class="func_g " onmouseover="s('MathSinSlow native fdlibm.js:75 (2 samples), 0.8%)')" onmouseout="c()" data-search="mathsinslow native fdlibm.js:75" data-funcname="MathSinSlow native fdlibm.js:75">
+  <title>MathSinSlow native fdlibm.js:75 (2 samples), 0.8%)</title>
+  <rect x="487.6" data-x="487.6" y="97" width="9.399999999999977" data-width="9.399999999999977" height="15" data-height="15" fill="rgb(243, 103, 42)" rx="2" ry="2"></rect>
+  <text data-x="487.6" x="487.6" y="107.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('sin native fdlibm.js:248 (2 samples), 0.8%)')" onmouseout="c()" data-search="sin native fdlibm.js:248" data-funcname="sin native fdlibm.js:248">
+  <title>sin native fdlibm.js:248 (2 samples), 0.8%)</title>
+  <rect x="487.6" data-x="487.6" y="113" width="9.399999999999977" data-width="9.399999999999977" height="15" data-height="15" fill="rgb(234, 153, 32)" rx="2" ry="2"></rect>
+  <text data-x="487.6" x="487.6" y="123.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (15 samples), 6%)')" onmouseout="c()" data-search="r /volumes/storage/io/basic-stream-benchmarks/lib/main.js:200" data-funcname="R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200">
+  <title>R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (15 samples), 6%)</title>
+  <rect x="426.7" data-x="426.7" y="129" width="70.30000000000001" data-width="70.30000000000001" height="15" data-height="15" fill="rgb(235, 128, 33)" rx="2" ry="2"></rect>
+  <text data-x="429.7" x="429.7" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">R /Volu..</text>
+</g>
+<g class="func_g " onmouseover="s('MathSinSlow native fdlibm.js:75 (1 samples), 0.4%)')" onmouseout="c()" data-search="mathsinslow native fdlibm.js:75" data-funcname="MathSinSlow native fdlibm.js:75">
+  <title>MathSinSlow native fdlibm.js:75 (1 samples), 0.4%)</title>
+  <rect x="497" data-x="497" y="113" width="4.699999999999989" data-width="4.699999999999989" height="15" data-height="15" fill="rgb(243, 103, 42)" rx="2" ry="2"></rect>
+  <text data-x="497" x="497" y="123.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('sin native fdlibm.js:248 (1 samples), 0.4%)')" onmouseout="c()" data-search="sin native fdlibm.js:248" data-funcname="sin native fdlibm.js:248">
+  <title>sin native fdlibm.js:248 (1 samples), 0.4%)</title>
+  <rect x="497" data-x="497" y="129" width="4.699999999999989" data-width="4.699999999999989" height="15" data-height="15" fill="rgb(234, 153, 32)" rx="2" ry="2"></rect>
+  <text data-x="497" x="497" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (19 samples), 7.5%)')" onmouseout="c()" data-search="r /volumes/storage/io/basic-stream-benchmarks/lib/main.js:200" data-funcname="R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200">
+  <title>R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (19 samples), 7.5%)</title>
+  <rect x="412.7" data-x="412.7" y="145" width="89" data-width="89" height="15" data-height="15" fill="rgb(235, 128, 33)" rx="2" ry="2"></rect>
+  <text data-x="415.7" x="415.7" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">R /Volumes..</text>
+</g>
+<g class="func_g " onmouseover="s('MathSinSlow native fdlibm.js:75 (3 samples), 1.2%)')" onmouseout="c()" data-search="mathsinslow native fdlibm.js:75" data-funcname="MathSinSlow native fdlibm.js:75">
+  <title>MathSinSlow native fdlibm.js:75 (3 samples), 1.2%)</title>
+  <rect x="501.7" data-x="501.7" y="129" width="14.000000000000057" data-width="14.000000000000057" height="15" data-height="15" fill="rgb(243, 103, 42)" rx="2" ry="2"></rect>
+  <text data-x="501.7" x="501.7" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('sin native fdlibm.js:248 (3 samples), 1.2%)')" onmouseout="c()" data-search="sin native fdlibm.js:248" data-funcname="sin native fdlibm.js:248">
+  <title>sin native fdlibm.js:248 (3 samples), 1.2%)</title>
+  <rect x="501.7" data-x="501.7" y="145" width="14.000000000000057" data-width="14.000000000000057" height="15" data-height="15" fill="rgb(234, 153, 32)" rx="2" ry="2"></rect>
+  <text data-x="501.7" x="501.7" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (25 samples), 9.9%)')" onmouseout="c()" data-search="r /volumes/storage/io/basic-stream-benchmarks/lib/main.js:200" data-funcname="R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200">
+  <title>R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (25 samples), 9.9%)</title>
+  <rect x="398.7" data-x="398.7" y="161" width="117.00000000000006" data-width="117.00000000000006" height="15" data-height="15" fill="rgb(235, 128, 33)" rx="2" ry="2"></rect>
+  <text data-x="401.7" x="401.7" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">R /Volumes/Sto..</text>
+</g>
+<g class="func_g " onmouseover="s('MathSinSlow native fdlibm.js:75 (2 samples), 0.8%)')" onmouseout="c()" data-search="mathsinslow native fdlibm.js:75" data-funcname="MathSinSlow native fdlibm.js:75">
+  <title>MathSinSlow native fdlibm.js:75 (2 samples), 0.8%)</title>
+  <rect x="515.7" data-x="515.7" y="145" width="9.399999999999977" data-width="9.399999999999977" height="15" data-height="15" fill="rgb(243, 103, 42)" rx="2" ry="2"></rect>
+  <text data-x="515.7" x="515.7" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('sin native fdlibm.js:248 (2 samples), 0.8%)')" onmouseout="c()" data-search="sin native fdlibm.js:248" data-funcname="sin native fdlibm.js:248">
+  <title>sin native fdlibm.js:248 (2 samples), 0.8%)</title>
+  <rect x="515.7" data-x="515.7" y="161" width="9.399999999999977" data-width="9.399999999999977" height="15" data-height="15" fill="rgb(234, 153, 32)" rx="2" ry="2"></rect>
+  <text data-x="515.7" x="515.7" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (28 samples), 11.1%)')" onmouseout="c()" data-search="r /volumes/storage/io/basic-stream-benchmarks/lib/main.js:200" data-funcname="R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200">
+  <title>R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (28 samples), 11.1%)</title>
+  <rect x="394" data-x="394" y="177" width="131.10000000000002" data-width="131.10000000000002" height="15" data-height="15" fill="rgb(235, 128, 33)" rx="2" ry="2"></rect>
+  <text data-x="397" x="397" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">R /Volumes/Stora..</text>
+</g>
+<g class="func_g " onmouseover="s('MathSinSlow native fdlibm.js:75 (1 samples), 0.4%)')" onmouseout="c()" data-search="mathsinslow native fdlibm.js:75" data-funcname="MathSinSlow native fdlibm.js:75">
+  <title>MathSinSlow native fdlibm.js:75 (1 samples), 0.4%)</title>
+  <rect x="525.1" data-x="525.1" y="161" width="4.699999999999932" data-width="4.699999999999932" height="15" data-height="15" fill="rgb(243, 103, 42)" rx="2" ry="2"></rect>
+  <text data-x="525.1" x="525.1" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('sin native fdlibm.js:248 (1 samples), 0.4%)')" onmouseout="c()" data-search="sin native fdlibm.js:248" data-funcname="sin native fdlibm.js:248">
+  <title>sin native fdlibm.js:248 (1 samples), 0.4%)</title>
+  <rect x="525.1" data-x="525.1" y="177" width="4.699999999999932" data-width="4.699999999999932" height="15" data-height="15" fill="rgb(234, 153, 32)" rx="2" ry="2"></rect>
+  <text data-x="525.1" x="525.1" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (31 samples), 12.3%)')" onmouseout="c()" data-search="r /volumes/storage/io/basic-stream-benchmarks/lib/main.js:200" data-funcname="R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200">
+  <title>R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (31 samples), 12.3%)</title>
+  <rect x="384.6" data-x="384.6" y="193" width="145.19999999999993" data-width="145.19999999999993" height="15" data-height="15" fill="rgb(235, 128, 33)" rx="2" ry="2"></rect>
+  <text data-x="387.6" x="387.6" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">R /Volumes/Storage..</text>
+</g>
+<g class="func_g " onmouseover="s('MathSinSlow native fdlibm.js:75 (2 samples), 0.8%)')" onmouseout="c()" data-search="mathsinslow native fdlibm.js:75" data-funcname="MathSinSlow native fdlibm.js:75">
+  <title>MathSinSlow native fdlibm.js:75 (2 samples), 0.8%)</title>
+  <rect x="529.8" data-x="529.8" y="177" width="9.300000000000068" data-width="9.300000000000068" height="15" data-height="15" fill="rgb(243, 103, 42)" rx="2" ry="2"></rect>
+  <text data-x="529.8" x="529.8" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('sin native fdlibm.js:248 (2 samples), 0.8%)')" onmouseout="c()" data-search="sin native fdlibm.js:248" data-funcname="sin native fdlibm.js:248">
+  <title>sin native fdlibm.js:248 (2 samples), 0.8%)</title>
+  <rect x="529.8" data-x="529.8" y="193" width="9.300000000000068" data-width="9.300000000000068" height="15" data-height="15" fill="rgb(234, 153, 32)" rx="2" ry="2"></rect>
+  <text data-x="529.8" x="529.8" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (36 samples), 14.3%)')" onmouseout="c()" data-search="r /volumes/storage/io/basic-stream-benchmarks/lib/main.js:200" data-funcname="R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200">
+  <title>R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (36 samples), 14.3%)</title>
+  <rect x="370.6" data-x="370.6" y="209" width="168.5" data-width="168.5" height="15" data-height="15" fill="rgb(235, 128, 33)" rx="2" ry="2"></rect>
+  <text data-x="373.6" x="373.6" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">R /Volumes/Storage/io..</text>
+</g>
+<g class="func_g " onmouseover="s('MathSinSlow native fdlibm.js:75 (1 samples), 0.4%)')" onmouseout="c()" data-search="mathsinslow native fdlibm.js:75" data-funcname="MathSinSlow native fdlibm.js:75">
+  <title>MathSinSlow native fdlibm.js:75 (1 samples), 0.4%)</title>
+  <rect x="539.1" data-x="539.1" y="193" width="4.699999999999932" data-width="4.699999999999932" height="15" data-height="15" fill="rgb(243, 103, 42)" rx="2" ry="2"></rect>
+  <text data-x="539.1" x="539.1" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('sin native fdlibm.js:248 (1 samples), 0.4%)')" onmouseout="c()" data-search="sin native fdlibm.js:248" data-funcname="sin native fdlibm.js:248">
+  <title>sin native fdlibm.js:248 (1 samples), 0.4%)</title>
+  <rect x="539.1" data-x="539.1" y="209" width="4.699999999999932" data-width="4.699999999999932" height="15" data-height="15" fill="rgb(234, 153, 32)" rx="2" ry="2"></rect>
+  <text data-x="539.1" x="539.1" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (40 samples), 15.9%)')" onmouseout="c()" data-search="r /volumes/storage/io/basic-stream-benchmarks/lib/main.js:200" data-funcname="R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200">
+  <title>R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (40 samples), 15.9%)</title>
+  <rect x="356.5" data-x="356.5" y="225" width="187.29999999999995" data-width="187.29999999999995" height="15" data-height="15" fill="rgb(235, 128, 33)" rx="2" ry="2"></rect>
+  <text data-x="359.5" x="359.5" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">R /Volumes/Storage/io/ba..</text>
+</g>
+<g class="func_g " onmouseover="s('MathSinSlow native fdlibm.js:75 (4 samples), 1.6%)')" onmouseout="c()" data-search="mathsinslow native fdlibm.js:75" data-funcname="MathSinSlow native fdlibm.js:75">
+  <title>MathSinSlow native fdlibm.js:75 (4 samples), 1.6%)</title>
+  <rect x="548.5" data-x="548.5" y="209" width="18.700000000000045" data-width="18.700000000000045" height="15" data-height="15" fill="rgb(243, 103, 42)" rx="2" ry="2"></rect>
+  <text data-x="548.5" x="548.5" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('sin native fdlibm.js:248 (5 samples), 2%)')" onmouseout="c()" data-search="sin native fdlibm.js:248" data-funcname="sin native fdlibm.js:248">
+  <title>sin native fdlibm.js:248 (5 samples), 2%)</title>
+  <rect x="543.8" data-x="543.8" y="225" width="23.40000000000009" data-width="23.40000000000009" height="15" data-height="15" fill="rgb(234, 153, 32)" rx="2" ry="2"></rect>
+  <text data-x="546.8" x="546.8" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">s..</text>
+</g>
+<g class="func_g " onmouseover="s('R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (46 samples), 18.3%)')" onmouseout="c()" data-search="r /volumes/storage/io/basic-stream-benchmarks/lib/main.js:200" data-funcname="R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200">
+  <title>R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (46 samples), 18.3%)</title>
+  <rect x="351.8" data-x="351.8" y="241" width="215.40000000000003" data-width="215.40000000000003" height="15" data-height="15" fill="rgb(235, 128, 33)" rx="2" ry="2"></rect>
+  <text data-x="354.8" x="354.8" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">R /Volumes/Storage/io/basic-..</text>
+</g>
+<g class="func_g " onmouseover="s('MathSinSlow native fdlibm.js:75 (3 samples), 1.2%)')" onmouseout="c()" data-search="mathsinslow native fdlibm.js:75" data-funcname="MathSinSlow native fdlibm.js:75">
+  <title>MathSinSlow native fdlibm.js:75 (3 samples), 1.2%)</title>
+  <rect x="567.2" data-x="567.2" y="225" width="14.099999999999909" data-width="14.099999999999909" height="15" data-height="15" fill="rgb(243, 103, 42)" rx="2" ry="2"></rect>
+  <text data-x="567.2" x="567.2" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('sin native fdlibm.js:248 (3 samples), 1.2%)')" onmouseout="c()" data-search="sin native fdlibm.js:248" data-funcname="sin native fdlibm.js:248">
+  <title>sin native fdlibm.js:248 (3 samples), 1.2%)</title>
+  <rect x="567.2" data-x="567.2" y="241" width="14.099999999999909" data-width="14.099999999999909" height="15" data-height="15" fill="rgb(234, 153, 32)" rx="2" ry="2"></rect>
+  <text data-x="567.2" x="567.2" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (51 samples), 20.2%)')" onmouseout="c()" data-search="r /volumes/storage/io/basic-stream-benchmarks/lib/main.js:200" data-funcname="R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200">
+  <title>R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (51 samples), 20.2%)</title>
+  <rect x="342.5" data-x="342.5" y="257" width="238.79999999999995" data-width="238.79999999999995" height="15" data-height="15" fill="rgb(235, 128, 33)" rx="2" ry="2"></rect>
+  <text data-x="345.5" x="345.5" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">R /Volumes/Storage/io/basic-str..</text>
+</g>
+<g class="func_g " onmouseover="s('MathSinSlow native fdlibm.js:75 (3 samples), 1.2%)')" onmouseout="c()" data-search="mathsinslow native fdlibm.js:75" data-funcname="MathSinSlow native fdlibm.js:75">
+  <title>MathSinSlow native fdlibm.js:75 (3 samples), 1.2%)</title>
+  <rect x="581.3" data-x="581.3" y="241" width="14" data-width="14" height="15" data-height="15" fill="rgb(243, 103, 42)" rx="2" ry="2"></rect>
+  <text data-x="581.3" x="581.3" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('sin native fdlibm.js:248 (3 samples), 1.2%)')" onmouseout="c()" data-search="sin native fdlibm.js:248" data-funcname="sin native fdlibm.js:248">
+  <title>sin native fdlibm.js:248 (3 samples), 1.2%)</title>
+  <rect x="581.3" data-x="581.3" y="257" width="14" data-width="14" height="15" data-height="15" fill="rgb(234, 153, 32)" rx="2" ry="2"></rect>
+  <text data-x="581.3" x="581.3" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (55 samples), 21.8%)')" onmouseout="c()" data-search="r /volumes/storage/io/basic-stream-benchmarks/lib/main.js:200" data-funcname="R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200">
+  <title>R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (55 samples), 21.8%)</title>
+  <rect x="337.8" data-x="337.8" y="273" width="257.49999999999994" data-width="257.49999999999994" height="15" data-height="15" fill="rgb(235, 128, 33)" rx="2" ry="2"></rect>
+  <text data-x="340.8" x="340.8" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">R /Volumes/Storage/io/basic-stream..</text>
+</g>
+<g class="func_g " onmouseover="s('MathSinSlow native fdlibm.js:75 (3 samples), 1.2%)')" onmouseout="c()" data-search="mathsinslow native fdlibm.js:75" data-funcname="MathSinSlow native fdlibm.js:75">
+  <title>MathSinSlow native fdlibm.js:75 (3 samples), 1.2%)</title>
+  <rect x="595.3" data-x="595.3" y="257" width="14.100000000000023" data-width="14.100000000000023" height="15" data-height="15" fill="rgb(243, 103, 42)" rx="2" ry="2"></rect>
+  <text data-x="595.3" x="595.3" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('sin native fdlibm.js:248 (3 samples), 1.2%)')" onmouseout="c()" data-search="sin native fdlibm.js:248" data-funcname="sin native fdlibm.js:248">
+  <title>sin native fdlibm.js:248 (3 samples), 1.2%)</title>
+  <rect x="595.3" data-x="595.3" y="273" width="14.100000000000023" data-width="14.100000000000023" height="15" data-height="15" fill="rgb(234, 153, 32)" rx="2" ry="2"></rect>
+  <text data-x="595.3" x="595.3" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (60 samples), 23.8%)')" onmouseout="c()" data-search="r /volumes/storage/io/basic-stream-benchmarks/lib/main.js:200" data-funcname="R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200">
+  <title>R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (60 samples), 23.8%)</title>
+  <rect x="328.4" data-x="328.4" y="289" width="281" data-width="281" height="15" data-height="15" fill="rgb(235, 128, 33)" rx="2" ry="2"></rect>
+  <text data-x="331.4" x="331.4" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">R /Volumes/Storage/io/basic-stream-be..</text>
+</g>
+<g class="func_g " onmouseover="s('MathSinSlow native fdlibm.js:75 (3 samples), 1.2%)')" onmouseout="c()" data-search="mathsinslow native fdlibm.js:75" data-funcname="MathSinSlow native fdlibm.js:75">
+  <title>MathSinSlow native fdlibm.js:75 (3 samples), 1.2%)</title>
+  <rect x="618.7" data-x="618.7" y="273" width="14.099999999999909" data-width="14.099999999999909" height="15" data-height="15" fill="rgb(243, 103, 42)" rx="2" ry="2"></rect>
+  <text data-x="618.7" x="618.7" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('sin native fdlibm.js:248 (5 samples), 2%)')" onmouseout="c()" data-search="sin native fdlibm.js:248" data-funcname="sin native fdlibm.js:248">
+  <title>sin native fdlibm.js:248 (5 samples), 2%)</title>
+  <rect x="609.4" data-x="609.4" y="289" width="23.399999999999977" data-width="23.399999999999977" height="15" data-height="15" fill="rgb(234, 153, 32)" rx="2" ry="2"></rect>
+  <text data-x="612.4" x="612.4" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">s..</text>
+</g>
+<g class="func_g " onmouseover="s('R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (65 samples), 25.8%)')" onmouseout="c()" data-search="r /volumes/storage/io/basic-stream-benchmarks/lib/main.js:200" data-funcname="R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200">
+  <title>R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (65 samples), 25.8%)</title>
+  <rect x="328.4" data-x="328.4" y="305" width="304.4" data-width="304.4" height="15" data-height="15" fill="rgb(235, 128, 33)" rx="2" ry="2"></rect>
+  <text data-x="331.4" x="331.4" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">R /Volumes/Storage/io/basic-stream-bench..</text>
+</g>
+<g class="func_g " onmouseover="s('MathSinSlow native fdlibm.js:75 (4 samples), 1.6%)')" onmouseout="c()" data-search="mathsinslow native fdlibm.js:75" data-funcname="MathSinSlow native fdlibm.js:75">
+  <title>MathSinSlow native fdlibm.js:75 (4 samples), 1.6%)</title>
+  <rect x="637.5" data-x="637.5" y="289" width="18.700000000000045" data-width="18.700000000000045" height="15" data-height="15" fill="rgb(243, 103, 42)" rx="2" ry="2"></rect>
+  <text data-x="637.5" x="637.5" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('sin native fdlibm.js:248 (5 samples), 2%)')" onmouseout="c()" data-search="sin native fdlibm.js:248" data-funcname="sin native fdlibm.js:248">
+  <title>sin native fdlibm.js:248 (5 samples), 2%)</title>
+  <rect x="632.8" data-x="632.8" y="305" width="23.40000000000009" data-width="23.40000000000009" height="15" data-height="15" fill="rgb(234, 153, 32)" rx="2" ry="2"></rect>
+  <text data-x="635.8" x="635.8" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">s..</text>
+</g>
+<g class="func_g " onmouseover="s('R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (71 samples), 28.2%)')" onmouseout="c()" data-search="r /volumes/storage/io/basic-stream-benchmarks/lib/main.js:200" data-funcname="R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200">
+  <title>R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (71 samples), 28.2%)</title>
+  <rect x="323.7" data-x="323.7" y="321" width="332.50000000000006" data-width="332.50000000000006" height="15" data-height="15" fill="rgb(235, 128, 33)" rx="2" ry="2"></rect>
+  <text data-x="326.7" x="326.7" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">R /Volumes/Storage/io/basic-stream-benchmark..</text>
+</g>
+<g class="func_g " onmouseover="s('MathSinSlow native fdlibm.js:75 (3 samples), 1.2%)')" onmouseout="c()" data-search="mathsinslow native fdlibm.js:75" data-funcname="MathSinSlow native fdlibm.js:75">
+  <title>MathSinSlow native fdlibm.js:75 (3 samples), 1.2%)</title>
+  <rect x="656.2" data-x="656.2" y="305" width="14" data-width="14" height="15" data-height="15" fill="rgb(243, 103, 42)" rx="2" ry="2"></rect>
+  <text data-x="656.2" x="656.2" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('sin native fdlibm.js:248 (3 samples), 1.2%)')" onmouseout="c()" data-search="sin native fdlibm.js:248" data-funcname="sin native fdlibm.js:248">
+  <title>sin native fdlibm.js:248 (3 samples), 1.2%)</title>
+  <rect x="656.2" data-x="656.2" y="321" width="14" data-width="14" height="15" data-height="15" fill="rgb(234, 153, 32)" rx="2" ry="2"></rect>
+  <text data-x="656.2" x="656.2" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (76 samples), 30.2%)')" onmouseout="c()" data-search="r /volumes/storage/io/basic-stream-benchmarks/lib/main.js:200" data-funcname="R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200">
+  <title>R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (76 samples), 30.2%)</title>
+  <rect x="314.4" data-x="314.4" y="337" width="355.80000000000007" data-width="355.80000000000007" height="15" data-height="15" fill="rgb(235, 128, 33)" rx="2" ry="2"></rect>
+  <text data-x="317.4" x="317.4" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">R /Volumes/Storage/io/basic-stream-benchmarks/li..</text>
+</g>
+<g class="func_g " onmouseover="s('MathSinSlow native fdlibm.js:75 (3 samples), 1.2%)')" onmouseout="c()" data-search="mathsinslow native fdlibm.js:75" data-funcname="MathSinSlow native fdlibm.js:75">
+  <title>MathSinSlow native fdlibm.js:75 (3 samples), 1.2%)</title>
+  <rect x="670.2" data-x="670.2" y="321" width="14.099999999999909" data-width="14.099999999999909" height="15" data-height="15" fill="rgb(243, 103, 42)" rx="2" ry="2"></rect>
+  <text data-x="670.2" x="670.2" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('sin native fdlibm.js:248 (3 samples), 1.2%)')" onmouseout="c()" data-search="sin native fdlibm.js:248" data-funcname="sin native fdlibm.js:248">
+  <title>sin native fdlibm.js:248 (3 samples), 1.2%)</title>
+  <rect x="670.2" data-x="670.2" y="337" width="14.099999999999909" data-width="14.099999999999909" height="15" data-height="15" fill="rgb(234, 153, 32)" rx="2" ry="2"></rect>
+  <text data-x="670.2" x="670.2" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (87 samples), 34.5%)')" onmouseout="c()" data-search="r /volumes/storage/io/basic-stream-benchmarks/lib/main.js:200" data-funcname="R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200">
+  <title>R /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:200 (87 samples), 34.5%)</title>
+  <rect x="276.9" data-x="276.9" y="353" width="407.4" data-width="407.4" height="15" data-height="15" fill="rgb(235, 128, 33)" rx="2" ry="2"></rect>
+  <text data-x="279.9" x="279.9" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">R /Volumes/Storage/io/basic-stream-benchmarks/lib/main...</text>
+</g>
+<g class="func_g " onmouseover="s('callback (1 samples), 0.4%)')" onmouseout="c()" data-search="callback" data-funcname="callback">
+  <title>callback (1 samples), 0.4%)</title>
+  <rect x="703" data-x="703" y="337" width="4.7000000000000455" data-width="4.7000000000000455" height="15" data-height="15" fill="rgb(242, 112, 41)" rx="2" ry="2"></rect>
+  <text data-x="703" x="703" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('callback (1 samples), 0.4%)')" onmouseout="c()" data-search="callback" data-funcname="callback">
+  <title>callback (1 samples), 0.4%)</title>
+  <rect x="749.8" data-x="749.8" y="321" width="4.7000000000000455" data-width="4.7000000000000455" height="15" data-height="15" fill="rgb(242, 112, 41)" rx="2" ry="2"></rect>
+  <text data-x="749.8" x="749.8" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('isFinite native v8natives.js:32 (4 samples), 1.6%)')" onmouseout="c()" data-search="isfinite native v8natives.js:32" data-funcname="isFinite native v8natives.js:32">
+  <title>isFinite native v8natives.js:32 (4 samples), 1.6%)</title>
+  <rect x="885.6" data-x="885.6" y="257" width="18.799999999999955" data-width="18.799999999999955" height="15" data-height="15" fill="rgb(240, 133, 39)" rx="2" ry="2"></rect>
+  <text data-x="885.6" x="885.6" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('utf8Write (13 samples), 5.2%)')" onmouseout="c()" data-search="utf8write" data-funcname="utf8Write">
+  <title>utf8Write (13 samples), 5.2%)</title>
+  <rect x="904.4" data-x="904.4" y="257" width="60.80000000000007" data-width="60.80000000000007" height="15" data-height="15" fill="rgb(240, 124, 39)" rx="2" ry="2"></rect>
+  <text data-x="907.4" x="907.4" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">utf8Wr..</text>
+</g>
+<g class="func_g " onmouseover="s('Buffer.write buffer.js:704 (36 samples), 14.3%)')" onmouseout="c()" data-search="buffer.write buffer.js:704" data-funcname="Buffer.write buffer.js:704">
+  <title>Buffer.write buffer.js:704 (36 samples), 14.3%)</title>
+  <rect x="796.7" data-x="796.7" y="273" width="168.5" data-width="168.5" height="15" data-height="15" fill="rgb(242, 127, 41)" rx="2" ry="2"></rect>
+  <text data-x="799.7" x="799.7" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Buffer.write buffer.j..</text>
+</g>
+<g class="func_g " onmouseover="s('byteLengthUtf8 (8 samples), 3.2%)')" onmouseout="c()" data-search="bytelengthutf8" data-funcname="byteLengthUtf8">
+  <title>byteLengthUtf8 (8 samples), 3.2%)</title>
+  <rect x="1007.4" data-x="1007.4" y="257" width="37.39999999999998" data-width="37.39999999999998" height="15" data-height="15" fill="rgb(236, 140, 34)" rx="2" ry="2"></rect>
+  <text data-x="1010.4" x="1010.4" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">byt..</text>
+</g>
+<g class="func_g " onmouseover="s('byteLength buffer.js:343 (17 samples), 6.7%)')" onmouseout="c()" data-search="bytelength buffer.js:343" data-funcname="byteLength buffer.js:343">
+  <title>byteLength buffer.js:343 (17 samples), 6.7%)</title>
+  <rect x="965.2" data-x="965.2" y="273" width="79.59999999999991" data-width="79.59999999999991" height="15" data-height="15" fill="rgb(242, 140, 41)" rx="2" ry="2"></rect>
+  <text data-x="968.2" x="968.2" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">byteLengt..</text>
+</g>
+<g class="func_g " onmouseover="s('Uint8ArrayConstructByLength native typedarray.js:184 (1 samples), 0.4%)')" onmouseout="c()" data-search="uint8arrayconstructbylength native typedarray.js:184" data-funcname="Uint8ArrayConstructByLength native typedarray.js:184">
+  <title>Uint8ArrayConstructByLength native typedarray.js:184 (1 samples), 0.4%)</title>
+  <rect x="1044.8" data-x="1044.8" y="209" width="4.7000000000000455" data-width="4.7000000000000455" height="15" data-height="15" fill="rgb(250, 153, 49)" rx="2" ry="2"></rect>
+  <text data-x="1044.8" x="1044.8" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('Uint8Array native typedarray.js:241 (1 samples), 0.4%)')" onmouseout="c()" data-search="uint8array native typedarray.js:241" data-funcname="Uint8Array native typedarray.js:241">
+  <title>Uint8Array native typedarray.js:241 (1 samples), 0.4%)</title>
+  <rect x="1044.8" data-x="1044.8" y="225" width="4.7000000000000455" data-width="4.7000000000000455" height="15" data-height="15" fill="rgb(229, 153, 27)" rx="2" ry="2"></rect>
+  <text data-x="1044.8" x="1044.8" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('FastBuffer buffer.js:10 (1 samples), 0.4%)')" onmouseout="c()" data-search="fastbuffer buffer.js:10" data-funcname="FastBuffer buffer.js:10">
+  <title>FastBuffer buffer.js:10 (1 samples), 0.4%)</title>
+  <rect x="1044.8" data-x="1044.8" y="241" width="4.7000000000000455" data-width="4.7000000000000455" height="15" data-height="15" fill="rgb(229, 162, 26)" rx="2" ry="2"></rect>
+  <text data-x="1044.8" x="1044.8" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('createUnsafeBuffer buffer.js:35 (1 samples), 0.4%)')" onmouseout="c()" data-search="createunsafebuffer buffer.js:35" data-funcname="createUnsafeBuffer buffer.js:35">
+  <title>createUnsafeBuffer buffer.js:35 (1 samples), 0.4%)</title>
+  <rect x="1044.8" data-x="1044.8" y="257" width="4.7000000000000455" data-width="4.7000000000000455" height="15" data-height="15" fill="rgb(235, 122, 33)" rx="2" ry="2"></rect>
+  <text data-x="1044.8" x="1044.8" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('createPool buffer.js:0 (1 samples), 0.4%)')" onmouseout="c()" data-search="createpool buffer.js:0" data-funcname="createPool buffer.js:0">
+  <title>createPool buffer.js:0 (1 samples), 0.4%)</title>
+  <rect x="1044.8" data-x="1044.8" y="273" width="4.7000000000000455" data-width="4.7000000000000455" height="15" data-height="15" fill="rgb(233, 122, 31)" rx="2" ry="2"></rect>
+  <text data-x="1044.8" x="1044.8" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('ToPositiveInteger native runtime.js:27 (2 samples), 0.8%)')" onmouseout="c()" data-search="topositiveinteger native runtime.js:27" data-funcname="ToPositiveInteger native runtime.js:27">
+  <title>ToPositiveInteger native runtime.js:27 (2 samples), 0.8%)</title>
+  <rect x="1124.4" data-x="1124.4" y="209" width="9.399999999999864" data-width="9.399999999999864" height="15" data-height="15" fill="rgb(233, 167, 30)" rx="2" ry="2"></rect>
+  <text data-x="1124.4" x="1124.4" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('Uint8ArrayConstructByArrayBuffer native typedarray.js:144 (8 samples), 3.2%)')" onmouseout="c()" data-search="uint8arrayconstructbyarraybuffer native typedarray.js:144" data-funcname="Uint8ArrayConstructByArrayBuffer native typedarray.js:144">
+  <title>Uint8ArrayConstructByArrayBuffer native typedarray.js:144 (8 samples), 3.2%)</title>
+  <rect x="1096.3" data-x="1096.3" y="225" width="37.5" data-width="37.5" height="15" data-height="15" fill="rgb(242, 153, 41)" rx="2" ry="2"></rect>
+  <text data-x="1099.3" x="1099.3" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Uin..</text>
+</g>
+<g class="func_g " onmouseover="s('Uint8Array native typedarray.js:241 (11 samples), 4.4%)')" onmouseout="c()" data-search="uint8array native typedarray.js:241" data-funcname="Uint8Array native typedarray.js:241">
+  <title>Uint8Array native typedarray.js:241 (11 samples), 4.4%)</title>
+  <rect x="1082.3" data-x="1082.3" y="241" width="51.5" data-width="51.5" height="15" data-height="15" fill="rgb(229, 153, 27)" rx="2" ry="2"></rect>
+  <text data-x="1085.3" x="1085.3" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Uint8..</text>
+</g>
+<g class="func_g " onmouseover="s('FastBuffer buffer.js:10 (17 samples), 6.7%)')" onmouseout="c()" data-search="fastbuffer buffer.js:10" data-funcname="FastBuffer buffer.js:10">
+  <title>FastBuffer buffer.js:10 (17 samples), 6.7%)</title>
+  <rect x="1054.2" data-x="1054.2" y="257" width="79.59999999999991" data-width="79.59999999999991" height="15" data-height="15" fill="rgb(229, 162, 26)" rx="2" ry="2"></rect>
+  <text data-x="1057.2" x="1057.2" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">FastBuffe..</text>
+</g>
+<g class="func_g " onmouseover="s('slice buffer.js:0 (18 samples), 7.1%)')" onmouseout="c()" data-search="slice buffer.js:0" data-funcname="slice buffer.js:0">
+  <title>slice buffer.js:0 (18 samples), 7.1%)</title>
+  <rect x="1049.5" data-x="1049.5" y="273" width="84.29999999999995" data-width="84.29999999999995" height="15" data-height="15" fill="rgb(233, 116, 31)" rx="2" ry="2"></rect>
+  <text data-x="1052.5" x="1052.5" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">slice buf..</text>
+</g>
+<g class="func_g " onmouseover="s('fromString buffer.js:186 (78 samples), 31%)')" onmouseout="c()" data-search="fromstring buffer.js:186" data-funcname="fromString buffer.js:186">
+  <title>fromString buffer.js:186 (78 samples), 31%)</title>
+  <rect x="768.6" data-x="768.6" y="289" width="365.19999999999993" data-width="365.19999999999993" height="15" data-height="15" fill="rgb(246, 184, 45)" rx="2" ry="2"></rect>
+  <text data-x="771.6" x="771.6" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">fromString buffer.js:186</text>
+</g>
+<g class="func_g " onmouseover="s('isSharedArrayBuffer (1 samples), 0.4%)')" onmouseout="c()" data-search="issharedarraybuffer" data-funcname="isSharedArrayBuffer">
+  <title>isSharedArrayBuffer (1 samples), 0.4%)</title>
+  <rect x="1133.8" data-x="1133.8" y="289" width="4.7000000000000455" data-width="4.7000000000000455" height="15" data-height="15" fill="rgb(242, 129, 40)" rx="2" ry="2"></rect>
+  <text data-x="1133.8" x="1133.8" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('Buffer.from _stream_writable.js:0 (82 samples), 32.5%)')" onmouseout="c()" data-search="buffer.from _stream_writable.js:0" data-funcname="Buffer.from _stream_writable.js:0">
+  <title>Buffer.from _stream_writable.js:0 (82 samples), 32.5%)</title>
+  <rect x="754.5" data-x="754.5" y="305" width="384" data-width="384" height="15" data-height="15" fill="rgb(233, 127, 31)" rx="2" ry="2"></rect>
+  <text data-x="757.5" x="757.5" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Buffer.from _stream_writable.js:0</text>
+</g>
+<g class="func_g " onmouseover="s('decodeChunk _stream_writable.js:0 (82 samples), 32.5%)')" onmouseout="c()" data-search="decodechunk _stream_writable.js:0" data-funcname="decodeChunk _stream_writable.js:0">
+  <title>decodeChunk _stream_writable.js:0 (82 samples), 32.5%)</title>
+  <rect x="754.5" data-x="754.5" y="321" width="384" data-width="384" height="15" data-height="15" fill="rgb(233, 210, 31)" rx="2" ry="2"></rect>
+  <text data-x="757.5" x="757.5" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">decodeChunk _stream_writable.js:0</text>
+</g>
+<g class="func_g " onmouseover="s('writeOrBuffer _stream_writable.js:295 (92 samples), 36.5%)')" onmouseout="c()" data-search="writeorbuffer _stream_writable.js:295" data-funcname="writeOrBuffer _stream_writable.js:295">
+  <title>writeOrBuffer _stream_writable.js:295 (92 samples), 36.5%)</title>
+  <rect x="707.7" data-x="707.7" y="337" width="430.79999999999995" data-width="430.79999999999995" height="15" data-height="15" fill="rgb(246, 109, 45)" rx="2" ry="2"></rect>
+  <text data-x="710.7" x="710.7" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">writeOrBuffer _stream_writable.js:295</text>
+</g>
+<g class="func_g " onmouseover="s('Writable.write _stream_writable.js:225 (97 samples), 38.5%)')" onmouseout="c()" data-search="writable.write _stream_writable.js:225" data-funcname="Writable.write _stream_writable.js:225">
+  <title>Writable.write _stream_writable.js:225 (97 samples), 38.5%)</title>
+  <rect x="684.3" data-x="684.3" y="353" width="454.20000000000005" data-width="454.20000000000005" height="15" data-height="15" fill="rgb(242, 125, 40)" rx="2" ry="2"></rect>
+  <text data-x="687.3" x="687.3" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Writable.write _stream_writable.js:225</text>
+</g>
+<g class="func_g " onmouseover="s('new_spin /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:197 (5 samples), 2%)')" onmouseout="c()" data-search="new_spin /volumes/storage/io/basic-stream-benchmarks/lib/main.js:197" data-funcname="new_spin /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:197">
+  <title>new_spin /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:197 (5 samples), 2%)</title>
+  <rect x="1138.5" data-x="1138.5" y="353" width="23.40000000000009" data-width="23.40000000000009" height="15" data-height="15" fill="rgb(243, 185, 42)" rx="2" ry="2"></rect>
+  <text data-x="1141.5" x="1141.5" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">n..</text>
+</g>
+<g class="func_g " onmouseover="s('push push:0 (2 samples), 0.8%)')" onmouseout="c()" data-search="push push:0" data-funcname="push push:0">
+  <title>push push:0 (2 samples), 0.8%)</title>
+  <rect x="1161.9" data-x="1161.9" y="353" width="9.399999999999864" data-width="9.399999999999864" height="15" data-height="15" fill="rgb(232, 156, 30)" rx="2" ry="2"></rect>
+  <text data-x="1161.9" x="1161.9" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('split native string.js:280 (3 samples), 1.2%)')" onmouseout="c()" data-search="split native string.js:280" data-funcname="split native string.js:280">
+  <title>split native string.js:280 (3 samples), 1.2%)</title>
+  <rect x="1171.3" data-x="1171.3" y="353" width="14" data-width="14" height="15" data-height="15" fill="rgb(239, 180, 37)" rx="2" ry="2"></rect>
+  <text data-x="1171.3" x="1171.3" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s(' /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:296 (203 samples), 80.6%)')" onmouseout="c()" data-search=" /volumes/storage/io/basic-stream-benchmarks/lib/main.js:296" data-funcname=" /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:296">
+  <title> /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:296 (203 samples), 80.6%)</title>
+  <rect x="234.8" data-x="234.8" y="369" width="950.5" data-width="950.5" height="15" data-height="15" fill="rgb(244, 192, 43)" rx="2" ry="2"></rect>
+  <text data-x="237.8" x="237.8" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"> /Volumes/Storage/io/basic-stream-benchmarks/lib/main.js:296</text>
+</g>
+<g class="func_g " onmouseover="s('emitOne events.js:94 (203 samples), 80.6%)')" onmouseout="c()" data-search="emitone events.js:94" data-funcname="emitOne events.js:94">
+  <title>emitOne events.js:94 (203 samples), 80.6%)</title>
+  <rect x="234.8" data-x="234.8" y="385" width="950.5" data-width="950.5" height="15" data-height="15" fill="rgb(242, 143, 41)" rx="2" ry="2"></rect>
+  <text data-x="237.8" x="237.8" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">emitOne events.js:94</text>
+</g>
+<g class="func_g " onmouseover="s('emit events.js:136 (203 samples), 80.6%)')" onmouseout="c()" data-search="emit events.js:136" data-funcname="emit events.js:136">
+  <title>emit events.js:136 (203 samples), 80.6%)</title>
+  <rect x="234.8" data-x="234.8" y="401" width="950.5" data-width="950.5" height="15" data-height="15" fill="rgb(240, 143, 38)" rx="2" ry="2"></rect>
+  <text data-x="237.8" x="237.8" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">emit events.js:136</text>
+</g>
+<g class="func_g " onmouseover="s('readableAddChunk _stream_readable.js:147 (210 samples), 83.3%)')" onmouseout="c()" data-search="readableaddchunk _stream_readable.js:147" data-funcname="readableAddChunk _stream_readable.js:147">
+  <title>readableAddChunk _stream_readable.js:147 (210 samples), 83.3%)</title>
+  <rect x="202" data-x="202" y="417" width="983.3" data-width="983.3" height="15" data-height="15" fill="rgb(237, 185, 35)" rx="2" ry="2"></rect>
+  <text data-x="205" x="205" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">readableAddChunk _stream_readable.js:147</text>
+</g>
+<g class="func_g " onmouseover="s('Readable.push _stream_readable.js:123 (210 samples), 83.3%)')" onmouseout="c()" data-search="readable.push _stream_readable.js:123" data-funcname="Readable.push _stream_readable.js:123">
+  <title>Readable.push _stream_readable.js:123 (210 samples), 83.3%)</title>
+  <rect x="202" data-x="202" y="433" width="983.3" data-width="983.3" height="15" data-height="15" fill="rgb(246, 201, 45)" rx="2" ry="2"></rect>
+  <text data-x="205" x="205" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">Readable.push _stream_readable.js:123</text>
+</g>
+<g class="func_g " onmouseover="s('onread fs.js:1991 (210 samples), 83.3%)')" onmouseout="c()" data-search="onread fs.js:1991" data-funcname="onread fs.js:1991">
+  <title>onread fs.js:1991 (210 samples), 83.3%)</title>
+  <rect x="202" data-x="202" y="449" width="983.3" data-width="983.3" height="15" data-height="15" fill="rgb(231, 203, 28)" rx="2" ry="2"></rect>
+  <text data-x="205" x="205" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">onread fs.js:1991</text>
+</g>
+<g class="func_g " onmouseover="s('wrapper fs.js:679 (210 samples), 83.3%)')" onmouseout="c()" data-search="wrapper fs.js:679" data-funcname="wrapper fs.js:679">
+  <title>wrapper fs.js:679 (210 samples), 83.3%)</title>
+  <rect x="202" data-x="202" y="465" width="983.3" data-width="983.3" height="15" data-height="15" fill="rgb(239, 134, 37)" rx="2" ry="2"></rect>
+  <text data-x="205" x="205" y="475.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">wrapper fs.js:679</text>
+</g>
+<g class="func_g " onmouseover="s('WriteStream._writev fs.js:2157 (1 samples), 0.4%)')" onmouseout="c()" data-search="writestream._writev fs.js:2157" data-funcname="WriteStream._writev fs.js:2157">
+  <title>WriteStream._writev fs.js:2157 (1 samples), 0.4%)</title>
+  <rect x="1185.3" data-x="1185.3" y="369" width="4.7000000000000455" data-width="4.7000000000000455" height="15" data-height="15" fill="rgb(236, 125, 34)" rx="2" ry="2"></rect>
+  <text data-x="1185.3" x="1185.3" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('doWrite _stream_writable.js:325 (1 samples), 0.4%)')" onmouseout="c()" data-search="dowrite _stream_writable.js:325" data-funcname="doWrite _stream_writable.js:325">
+  <title>doWrite _stream_writable.js:325 (1 samples), 0.4%)</title>
+  <rect x="1185.3" data-x="1185.3" y="385" width="4.7000000000000455" data-width="4.7000000000000455" height="15" data-height="15" fill="rgb(241, 215, 40)" rx="2" ry="2"></rect>
+  <text data-x="1185.3" x="1185.3" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('clearBuffer _stream_writable.js:402 (1 samples), 0.4%)')" onmouseout="c()" data-search="clearbuffer _stream_writable.js:402" data-funcname="clearBuffer _stream_writable.js:402">
+  <title>clearBuffer _stream_writable.js:402 (1 samples), 0.4%)</title>
+  <rect x="1185.3" data-x="1185.3" y="401" width="4.7000000000000455" data-width="4.7000000000000455" height="15" data-height="15" fill="rgb(248, 96, 47)" rx="2" ry="2"></rect>
+  <text data-x="1185.3" x="1185.3" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('onwrite _stream_writable.js:355 (1 samples), 0.4%)')" onmouseout="c()" data-search="onwrite _stream_writable.js:355" data-funcname="onwrite _stream_writable.js:355">
+  <title>onwrite _stream_writable.js:355 (1 samples), 0.4%)</title>
+  <rect x="1185.3" data-x="1185.3" y="417" width="4.7000000000000455" data-width="4.7000000000000455" height="15" data-height="15" fill="rgb(238, 187, 36)" rx="2" ry="2"></rect>
+  <text data-x="1185.3" x="1185.3" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('WritableState.onwrite _stream_writable.js:88 (1 samples), 0.4%)')" onmouseout="c()" data-search="writablestate.onwrite _stream_writable.js:88" data-funcname="WritableState.onwrite _stream_writable.js:88">
+  <title>WritableState.onwrite _stream_writable.js:88 (1 samples), 0.4%)</title>
+  <rect x="1185.3" data-x="1185.3" y="433" width="4.7000000000000455" data-width="4.7000000000000455" height="15" data-height="15" fill="rgb(236, 125, 35)" rx="2" ry="2"></rect>
+  <text data-x="1185.3" x="1185.3" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s(' fs.js:2129 (1 samples), 0.4%)')" onmouseout="c()" data-search=" fs.js:2129" data-funcname=" fs.js:2129">
+  <title> fs.js:2129 (1 samples), 0.4%)</title>
+  <rect x="1185.3" data-x="1185.3" y="449" width="4.7000000000000455" data-width="4.7000000000000455" height="15" data-height="15" fill="rgb(236, 176, 34)" rx="2" ry="2"></rect>
+  <text data-x="1185.3" x="1185.3" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('wrapper fs.js:745 (1 samples), 0.4%)')" onmouseout="c()" data-search="wrapper fs.js:745" data-funcname="wrapper fs.js:745">
+  <title>wrapper fs.js:745 (1 samples), 0.4%)</title>
+  <rect x="1185.3" data-x="1185.3" y="465" width="4.7000000000000455" data-width="4.7000000000000455" height="15" data-height="15" fill="rgb(236, 134, 34)" rx="2" ry="2"></rect>
+  <text data-x="1185.3" x="1185.3" y="475.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+</g>
+<g class="func_g " onmouseover="s('(root) (252 samples), 100%)')" onmouseout="c()" data-search="(root)" data-funcname="(root)">
+  <title>(root) (252 samples), 100%)</title>
+  <rect x="10" data-x="10" y="481" width="1180" data-width="1180" height="15" data-height="15" fill="rgb(245, 200, 44)" rx="2" ry="2"></rect>
+  <text data-x="13" x="13" y="491.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)">(root)</text>
+</g>
+
+</svg>

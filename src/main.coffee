@@ -16,6 +16,7 @@ echo                      = CND.echo.bind CND
 #...........................................................................................................
 PATH                      = require 'path'
 FS                        = require 'fs'
+OS                        = require 'os'
 #...........................................................................................................
 through2                  = require 'through2'
 $split                    = require 'binary-split'
@@ -38,6 +39,7 @@ running_in_devtools       = console.profile?
 V8PROFILER                = if running_in_devtools then null else require 'v8-profiler'
 flamegraph                = require 'flamegraph'
 flamegraph_from_stream    = require 'flamegraph/from-stream'
+mkdirp                    = require 'mkdirp'
 
 
 #===========================================================================================================
@@ -55,6 +57,30 @@ $as_line = ->
     # info rpr data
     @push data + '\n'
     callback()
+
+#-----------------------------------------------------------------------------------------------------------
+get_fingerprint = ->
+  cpu_nfo = OS.cpus()[ 0 ]
+  model   = cpu_nfo[ 'model' ]
+  model   = model.toLowerCase()
+  model   = model.replace /[^-a-z0-9]/g,'-'
+  model   = model.replace /-+/g, '-'
+  model   = model.replace /^-/, ''
+  model   = model.replace /-$/, ''
+  speed   = "#{cpu_nfo[ 'speed' ]}mhz"
+  return "#{speed}-#{model}"
+
+#-----------------------------------------------------------------------------------------------------------
+new_XXX = ( settings ) ->
+  R             = Object.assign {}, settings
+  R.byte_count  = 0
+  R.item_count  = 0
+  R.t0          = null
+  R.t1          = null
+  R.fingerprint = get_fingerprint()
+  R.speed       = R.fingerprint.replace /^([^-]+).*$/, '$1'
+  R.job_name    = "#{R.speed},#{R.flavor},#{R.n},#{R.mode}"
+  return R
 
 #-----------------------------------------------------------------------------------------------------------
 report = ( S ) ->
@@ -105,7 +131,9 @@ stop_profile = ( S, handler ) ->
       profile         = V8PROFILER.stopProfiling S.job_name
       profile_data    = yield profile.export resume
       S.profile_name  = "profile-#{S.job_name}.json"
-      S.profile_path  = PATH.resolve __dirname, '../profiles', S.profile_name
+      S.profile_home  = PATH.resolve __dirname, '../results', S.fingerprint, 'profiles'
+      mkdirp.sync S.profile_home
+      S.profile_path  = PATH.resolve S.profile_home, S.profile_name
       FS.writeFileSync S.profile_path, profile_data
       handler()
 
@@ -114,7 +142,9 @@ write_flamegraph = ( S, handler ) ->
   return if running_in_devtools
   #.........................................................................................................
   S.flamegraph_name = "flamegraph-#{S.job_name}.svg"
-  S.flamegraph_path = PATH.resolve __dirname, '../flamegraphs', S.flamegraph_name
+  S.flamegraph_home = PATH.resolve __dirname, '../results', S.fingerprint, 'flamegraphs'
+  mkdirp.sync S.flamegraph_home
+  S.flamegraph_path = PATH.resolve S.flamegraph_home, S.flamegraph_name
   source            = D.new_stream 'utf-8', { path: S.profile_path, }
   #.........................................................................................................
   ### TAINT stream returned by `flamegraph_from_stream` apparently doesn't emit `close` events, so we
@@ -127,17 +157,6 @@ write_flamegraph = ( S, handler ) ->
       FS.writeFileSync S.flamegraph_path, svg
       handler()
   return null
-  #.........................................................................................................
-  # output          = D.new_stream 'write', { path: S.flamegraph_name, }
-  # input           = flamegraph_from_stream source, { type: 'cpuprofile', }
-  # input.on 'end', -> debug 'end'
-  # input.on 'close', -> debug 'close'
-  # input
-  #   .pipe output
-  #   .pipe $ 'finish', ->
-  #     debug '44321', S.job_name
-  #     help "output written to #{S.flamegraph_name}"
-  #     handler()
 
 #-----------------------------------------------------------------------------------------------------------
 new_spin = ( n ) ->
@@ -153,13 +172,7 @@ new_spin = ( n ) ->
 #
 #-----------------------------------------------------------------------------------------------------------
 @read_piped = ( settings, handler ) ->
-  ### TAINT code duplication ###
-  S             = Object.assign {}, settings
-  S.byte_count  = 0
-  S.item_count  = 0
-  S.t0          = null
-  S.t1          = null
-  S.job_name    = "#{S.flavor},#{S.n},#{S.mode}"
+  S             = new_XXX settings
   input_path    = O.inputs[ S.size ]
   throw new Error "unknown input size #{rpr S.size}" unless input_path?
   throw new Error "unknown mode #{rpr S.mode}" unless S.mode in [ 'sync', 'async', ]
@@ -202,12 +215,7 @@ new_spin = ( n ) ->
 #-----------------------------------------------------------------------------------------------------------
 @read_evented = ( settings, handler ) ->
   ### TAINT code duplication ###
-  S             = Object.assign {}, settings
-  S.byte_count  = 0
-  S.item_count  = 0
-  S.t0          = null
-  S.t1          = null
-  S.job_name    = "#{S.flavor},#{S.n},#{S.mode}"
+  S             = new_XXX settings
   input_path    = O.inputs[ S.size ]
   throw new Error "unknown input size #{rpr S.size}" unless input_path?
   throw new Error "unknown mode #{rpr S.mode}" unless S.mode in [ 'sync', 'async', ]
@@ -258,7 +266,7 @@ new_spin = ( n ) ->
   # transform_counts  = [ 0, ]
   #.........................................................................................................
   flavors           = [ 'evented', 'piped', ]
-  transform_counts  = [ 0, 1, 10, 20, 40, ]
+  transform_counts  = [ 0, 1, 10, 20, 40, 80, 160, ]
   modes             = [ 'sync', 'async', ]
   #.........................................................................................................
   step ( resume ) =>
@@ -280,7 +288,6 @@ new_spin = ( n ) ->
 unless module.parent?
   # CND.run => @main()
   @main()
-
 
 
 
