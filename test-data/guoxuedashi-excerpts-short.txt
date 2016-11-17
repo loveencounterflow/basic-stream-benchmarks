@@ -1,0 +1,131 @@
+u-cjk-4e00	一	fact/拼音	yī
+u-cjk-4e00	一	fact/部首	一
+u-cjk-4e00	一	fact/四角码	10000
+u-cjk-4e00	一	fact/仓颉	m
+u-cjk-4e00	一	fact/86五笔	ggll
+u-cjk-4e00	一	fact/98五笔	ggll
+u-cjk-4e00	一	fact/郑码	A
+u-cjk-4e00	一	fact/总笔画数	1
+u-cjk-4e00	一	fact/笔顺	1
+u-cjk-4e00	一	gloss/0	"● 一　　yī  ㄧˉ"
+u-cjk-4e00	一	gloss/1	"　1. 数名，最小的正整数（在钞票和单据上常用大写「壹」代）。"
+u-cjk-4e00	一	gloss/2	"　2. 纯；专：专～。～心～意。"
+u-cjk-4e00	一	gloss/3	"　3. 全；满：～生。～地水。"
+u-cjk-4e00	一	gloss/4	"　4. 相同：～样。颜色不～。"
+u-cjk-4e00	一	gloss/5	"　5. 另外的：蟋蟀～名促织。"
+u-cjk-4e00	一	gloss/6	"　6. 表示动作短暂，或是一次，或具试探性：算～算。试～试。"
+u-cjk-4e00	一	gloss/7	"　7. 乃；竞：～至于此。"
+u-cjk-4e00	一	gloss/8	"　8. 部分联成整体：统～。整齐划～。"
+u-cjk-4e00	一	gloss/9	"　9. 或者：～胜～负。"
+u-cjk-4e00	一	gloss/10	"　10. 初次：～见如故。"
+u-cjk-4e00	一	gloss/11	"　11. 中国古代乐谱记音符号，相当于简谱中的低音「7」。"
+u-cjk-4e00	一	yitizi_address	/zidian/ytz_z1u.html
+
+u-cjk-4e01	丁	fact/拼音	dīng,zhēng
+u-cjk-4e01	丁	fact/部首	一
+u-cjk-4e01	丁	fact/四角码	10200
+u-cjk-4e01	丁	fact/仓颉	mn
+u-cjk-4e01	丁	fact/86五笔	sgh
+u-cjk-4e01	丁	fact/98五笔	sgh
+u-cjk-4e01	丁	fact/郑码	AI
+u-cjk-4e01	丁	fact/总笔画数	2
+u-cjk-4e01	丁	fact/笔顺	12
+u-cjk-4e01	丁	gloss/0	"● 丁　　dīng  ㄉㄧㄥˉ"
+u-cjk-4e01	丁	gloss/1	"　1. 天干的第四位，用于作顺序第四的代称：～是～，卯是卯。"
+u-cjk-4e01	丁	gloss/2	"　2. 成年男子。"
+u-cjk-4e01	丁	gloss/3	"　3. 人口。"
+u-cjk-4e01	丁	gloss/4	"　4. 从事某种劳动的人：园～。"
+u-cjk-4e01	丁	gloss/5	"● 丁　　zhēng  ㄓㄥˉ"
+u-cjk-4e01	丁	gloss/6	"　◎ 〔～～〕象声词，形容伐木、下棋、弹琴的声音。"
+u-cjk-4e01	丁	yitizi_address	/zidian/ytz_z5s.html
+
+u-cjk-4e02	丂	fact/拼音	kǎo,qiǎo,yú
+u-cjk-4e02	丂	fact/部首	一
+u-cjk-4e02	丂	fact/四角码	10027
+u-cjk-4e02	丂	fact/仓颉	mvs
+u-cjk-4e02	丂	fact/86五笔	gnv
+u-cjk-4e02	丂	fact/98五笔	gnv
+u-cjk-4e02	丂	fact/郑码	AZVV
+u-cjk-4e02	丂	fact/总笔画数	2
+u-cjk-4e02	丂	fact/笔顺	15
+u-cjk-4e02	丂	gloss/0	"● 丂　　kǎo  ㄎㄠˇ"
+u-cjk-4e02	丂	gloss/1	"　1. 气要舒出的样子。"
+u-cjk-4e02	丂	gloss/2	"　2. 古同「考」。"
+u-cjk-4e02	丂	gloss/3	"● 丂　　qiǎo  ㄑㄧㄠˇ"
+u-cjk-4e02	丂	gloss/4	"　◎ 古通「巧」。"
+u-cjk-4e02	丂	gloss/5	"● 丂　　yú  ㄩˊ"
+u-cjk-4e02	丂	gloss/6	"　◎ 古同「于」。"
+u-cjk-4e02	丂	yitizi_address	/zidian/ytz_z266e.html
+
+u-cjk-4e03	七	fact/拼音	qī
+u-cjk-4e03	七	fact/部首	一
+u-cjk-4e03	七	fact/四角码	40710
+u-cjk-4e03	七	fact/仓颉	ju
+u-cjk-4e03	七	fact/86五笔	agn
+u-cjk-4e03	七	fact/98五笔	agn
+u-cjk-4e03	七	fact/郑码	HD
+u-cjk-4e03	七	fact/总笔画数	2
+u-cjk-4e03	七	fact/笔顺	15
+u-cjk-4e03	七	gloss/0	"● 七　　qī  ㄑㄧˉ"
+u-cjk-4e03	七	gloss/1	"　1. 数名，六加一（在钞票和单据上常用大写「柒」代）。"
+u-cjk-4e03	七	gloss/2	"　2. 文体名，或称「七体」，为赋体的另一种形式。"
+u-cjk-4e03	七	gloss/3	"　3. 旧时人死后每隔七天一祭，共七次，称「做七」。"
+u-cjk-4e03	七	yitizi_address	/zidian/ytz_z7l.html
+
+u-cjk-4e04	丄	fact/拼音	shàng
+u-cjk-4e04	丄	fact/部首	一
+u-cjk-4e04	丄	fact/四角码	20100
+u-cjk-4e04	丄	fact/仓颉	lm
+u-cjk-4e04	丄	fact/86五笔	hgd
+u-cjk-4e04	丄	fact/98五笔	hgd
+u-cjk-4e04	丄	fact/郑码	IAVV
+u-cjk-4e04	丄	fact/总笔画数	2
+u-cjk-4e04	丄	fact/笔顺	21
+u-cjk-4e04	丄	gloss/0	"● 丄　　shàng  ㄕㄤˋ"
+u-cjk-4e04	丄	gloss/1	"　◎ 古同「上」。"
+u-cjk-4e04	丄	yitizi_address	/zidian/ytz_z24p.html
+
+u-cjk-4e05	丅	fact/拼音	xià
+u-cjk-4e05	丅	fact/部首	一
+u-cjk-4e05	丅	fact/四角码	10200
+u-cjk-4e05	丅	fact/仓颉	ml
+u-cjk-4e05	丅	fact/86五笔	ghk
+u-cjk-4e05	丅	fact/98五笔	ghk
+u-cjk-4e05	丅	fact/郑码	AIAA
+u-cjk-4e05	丅	fact/总笔画数	2
+u-cjk-4e05	丅	fact/笔顺	12
+u-cjk-4e05	丅	gloss/0	"● 丅　　xià  ㄒㄧㄚˋ"
+u-cjk-4e05	丅	gloss/1	"　◎ 古同「下」。"
+u-cjk-4e05	丅	yitizi_address	/zidian/ytz_z18m.html
+
+u-cjk-4e06	丆	fact/拼音	hǎn
+u-cjk-4e06	丆	fact/部首	一
+u-cjk-4e06	丆	fact/四角码	10200
+u-cjk-4e06	丆	fact/仓颉	mh
+u-cjk-4e06	丆	fact/86五笔	dgt
+u-cjk-4e06	丆	fact/98五笔	dgt
+u-cjk-4e06	丆	fact/郑码	GDAA
+u-cjk-4e06	丆	fact/总笔画数	2
+u-cjk-4e06	丆	fact/笔顺	13
+u-cjk-4e06	丆	gloss/0	"● 丆　　hǎn  ㄏㄢˇ"
+u-cjk-4e06	丆	gloss/1	"　◎ 同「厂」。汉字偏旁部首之一。"
+u-cjk-4e06	丆	yitizi_address	/zidian/ytz_z70989e.html
+
+u-cjk-4e07	万	fact/拼音	wàn,mò
+u-cjk-4e07	万	fact/部首	一
+u-cjk-4e07	万	fact/四角码	10227
+u-cjk-4e07	万	fact/仓颉	ms
+u-cjk-4e07	万	fact/86五笔	dnv
+u-cjk-4e07	万	fact/98五笔	gqe
+u-cjk-4e07	万	fact/总笔画数	3
+u-cjk-4e07	万	fact/笔顺	153
+u-cjk-4e07	万	gloss/0	"● 万"
+u-cjk-4e07	万	gloss/1	"　　wàn  ㄨㄢˋ"
+u-cjk-4e07	万	gloss/2	"　1. 数目，十个一千：～户侯（中国汉代侯爵的最高一级，享有万户农民的赋税。后泛指高官）。"
+u-cjk-4e07	万	gloss/3	"　2. 喻极多：～物。～方（a.指全国和世界各地；b.指姿态多种多样）。日理～机。气象～千。"
+u-cjk-4e07	万	gloss/4	"　3. 极，很，绝对：～～。～幸。"
+u-cjk-4e07	万	gloss/5	"　4. 姓。"
+u-cjk-4e07	万	gloss/6	"● 万"
+u-cjk-4e07	万	gloss/7	"　　mò  ㄇㄛˋ"
+u-cjk-4e07	万	gloss/8	"　◎ 〔～俟（qí）〕原为中国古代鲜卑族部落名；后为复姓。"
+u-cjk-4e07	万	yitizi_address	/zidian/ytz_z13900e.html

@@ -1,0 +1,14 @@
+01 ; charset=UTF-8
+02 @@@	The Unicode Standard 9.0.0
+03 @@@+	U90M160615.lst
+04 	Unicode 9.0.0 final names list.
+05 	This file is semi-automatically derived from UnicodeData.txt and
+06 	a set of manually created annotations using a script to select
+07 	or suppress information from the data file. The rules used
+08 	for this process are aimed at readability for the human reader,
+09 	at the expense of some details; therefore, this file should not
+10 	be parsed for machine-readable information.
+11 @+		© 2016 Unicode®, Inc.
+12 	For terms of use, see http://www.unicode.org/terms_of_use.html
+13 @@	0000	C0 Controls and Basic Latin (Basic Latin)	007F
+14 @@+
