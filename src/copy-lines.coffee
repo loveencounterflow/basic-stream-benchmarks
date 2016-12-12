@@ -18,8 +18,6 @@ FS                        = require 'fs'
 through2                  = require 'through2'
 $split                    = require 'binary-split'
 #...........................................................................................................
-{ step, }                 = require 'coffeenode-suspend'
-#...........................................................................................................
 O                         = {}
 O.inputs                  = {}
 O.outputs                 = {}
@@ -27,9 +25,6 @@ O.inputs.long             = PATH.resolve __dirname, '../test-data/Unicode-NamesL
 O.inputs.short            = PATH.resolve __dirname, '../test-data/Unicode-NamesList-short.txt'
 O.inputs.tiny             = PATH.resolve __dirname, '../test-data/Unicode-NamesList-tiny.txt'
 O.outputs.lines           = PATH.resolve __dirname, '/tmp/basic-stream-benchmarks/lines.txt'
-#...........................................................................................................
-D                         = require 'pipedreams'
-{ $, $async, }            = D
 #...........................................................................................................
 mkdirp                    = require 'mkdirp'
 PATCHER                   = require './patch-event-emitter'
@@ -39,46 +34,76 @@ adapted from
 https://strongloop.com/strongblog/practical-examples-of-the-new-node-js-streams-api/
 ###
 
-stream  = require 'stream'
-liner   = new stream.Transform objectMode: true
 
-liner._transform = ( chunk, encoding, done ) ->
-  data = chunk.toString()
-  if @_lastLineData
-    data = @_lastLineData + data
-  lines = data.split '\n'
-  @_lastLineData = ( lines.splice lines.length - 1, 1 )[ 0 ]
-  lines.forEach @push.bind @
-  done()
-  return
+# stream  = require 'stream'
+stream  = require 'readable-stream'
 
-liner._flush = (done) ->
-  if @_lastLineData
-    @push @_lastLineData
-  @_lastLineData = null
-  done()
-  return
+
+#-----------------------------------------------------------------------------------------------------------
+$split = ->
+  #.........................................................................................................
+  R         = new stream.Transform objectMode: true
+  last_line = null
+  #.........................................................................................................
+  R._transform = ( chunk, encoding, done ) ->
+    data = chunk.toString()
+    if last_line?
+      data = last_line + data
+    lines = data.split '\n'
+    last_line = ( lines.splice lines.length - 1, 1 )[ 0 ]
+    lines.forEach @push.bind @
+    done()
+    return
+  #.........................................................................................................
+  R._flush = ( done ) ->
+    if last_line?
+      @push last_line
+    last_line = null
+    done()
+    return
+  #.........................................................................................................
+  return R
+
+#-----------------------------------------------------------------------------------------------------------
+$show = ->
+  #.........................................................................................................
+  R = new stream.Transform objectMode: true
+  #.........................................................................................................
+  R._transform = ( chunk, encoding, done ) ->
+    @push chunk
+    # debug '11021', chunk.length
+    debug '11021', chunk
+    done()
+    return
+  #.........................................................................................................
+  return R
+
+#-----------------------------------------------------------------------------------------------------------
+$pass = ->
+  #.........................................................................................................
+  R = new stream.Transform objectMode: true
+  #.........................................................................................................
+  R._transform = ( chunk, encoding, done ) ->
+    @push chunk
+    done()
+    return
+  #.........................................................................................................
+  return R
 
 
 #===========================================================================================================
 mkdirp.sync PATH.dirname O.outputs.lines
+settings        = null
 # settings        = { highWaterMark: 16000, }
-settings        = { highWaterMark: 1e6, }
-# input           = FS.createReadStream O.inputs.tiny
-input           = FS.createReadStream   O.inputs.long,   settings
-output          = FS.createWriteStream  O.outputs.lines, settings
+# settings        = { highWaterMark: 1e6, }
+# input           = FS.createReadStream   O.inputs.tiny,    settings
+input           = FS.createReadStream   O.inputs.long,    settings
+output          = FS.createWriteStream  O.outputs.lines,  settings
 PATCHER.patch_timer_etc input, output
 
-
-
-input.pipe output
-# input.on  'end',    ( ) -> info "input/end"
-# input.on  'finish', ( ) -> info "input/finish"
-# input.on  'close',  ( ) -> info "input/close"
-# output.on 'end',    ( ) -> info "output/end"
-# output.on 'finish', ( ) -> info "output/finish"
-# output.on 'close',  ( ) -> info "output/close"
-
-
-
+x = input
+x = x.pipe $split()
+# for idx in [ 1 .. 100 ]
+#   x = x.pipe $pass()
+x = x.pipe output
 

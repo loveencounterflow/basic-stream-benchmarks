@@ -35,15 +35,15 @@ format_integer            = ( x ) -> ( new_numeral x ).format '0,0'
 
 #-----------------------------------------------------------------------------------------------------------
 exclude_events  = [
-  'pipe'
-  'resume'
-  # 'open'
+  # 'end'
+  # 'finish'
   # 'open'
   'data'
-  'readable'
-  # 'end'
+  'drain'
+  'pipe'
   'prefinish'
-  # 'finish'
+  'readable'
+  'resume'
   'unpipe'
   ]
 

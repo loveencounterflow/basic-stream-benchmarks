@@ -30,11 +30,9 @@
     "coffeenode-suspend": "^0.1.11",
     "flamegraph": "^0.7.0",
     "mkdirp": "^0.5.1",
-    "numeral": "^1.5.3",
     "pipedreams": "^6.3.2",
     "pipestreams": "0.0.3",
-    "through2": "^2.0.1",
-    "v8-profiler": "^5.6.5"
+    "through2": "^2.0.1"
   },
   "devDependencies": {}
 }
