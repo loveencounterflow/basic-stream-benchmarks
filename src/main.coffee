@@ -40,7 +40,14 @@ PS                        = require '../../pipestreams'
 #...........................................................................................................
 ### Avoid to try to require `v8-profiler` when running this module with `devtool`: ###
 running_in_devtools       = console.profile?
-V8PROFILER                = if running_in_devtools then null else require 'v8-profiler'
+V8PROFILER                = null
+unless running_in_devtools
+  try
+    V8PROFILER = require 'v8-profiler'
+  catch error
+    throw error unless error[ 'code' ] is 'MODULE_NOT_FOUND'
+    warn "unable to `require v8-profiler`"
+#...........................................................................................................
 flamegraph                = require 'flamegraph'
 flamegraph_from_stream    = require 'flamegraph/from-stream'
 mkdirp                    = require 'mkdirp'
@@ -125,14 +132,14 @@ start_profile = ( S ) ->
   S.t0 = Date.now()
   if running_in_devtools
     console.profile S.job_name
-  else
+  else if V8PROFILER?
     V8PROFILER.startProfiling S.job_name
 
 #-----------------------------------------------------------------------------------------------------------
 stop_profile = ( S, handler ) ->
   if running_in_devtools
     console.profileEnd S.job_name
-  else
+  else if V8PROFILER?
     step ( resume ) ->
       profile         = V8PROFILER.stopProfiling S.job_name
       profile_data    = yield profile.export resume
