@@ -27,6 +27,10 @@ O.inputs.short            = PATH.resolve __dirname, '../test-data/Unicode-NamesL
 O.inputs.tiny             = PATH.resolve __dirname, '../test-data/Unicode-NamesList-tiny.txt'
 O.outputs.lines           = PATH.resolve __dirname, '/tmp/basic-stream-benchmarks/lines.txt'
 #...........................................................................................................
+new_numeral               = require 'numeral'
+format_float              = ( x ) -> ( new_numeral x ).format '0,0.000'
+format_integer            = ( x ) -> ( new_numeral x ).format '0,0'
+#...........................................................................................................
 mkdirp                    = require 'mkdirp'
 # PATCHER                   = require './patch-event-emitter'
 pull                      = require 'pull-stream'
@@ -47,63 +51,7 @@ paths = [
   PATH.resolve __dirname, './patch-event-emitter.js'
   ]
 
-### # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #  ###
-###  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # ###
 
-# ```
-# function logger () {
-#   return function (read) {
-#     debug( '22201', read );
-#     read(null, function next(end, data) {
-#       if(end === true) return
-#       if(end) throw end
-#       help( '20001', data )
-#       read(null, next)
-#     })
-#   }
-# }
-# ```
-
-logger = ->
-  return ( read ) ->
-    debug '22201', read
-    next = ( end, data ) ->
-      urge '20001', [ end, data, ]
-      return if end is true
-      throw end if end?
-      read null, next
-    read null, next
-    return null
-
-### # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #  ###
-###  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # ###
-
-```
-function map( read, map ) {
-  //return a readable function!
-  return function ( end, handler ) {
-    read(end, function (end, data) {
-      debug( '33344', data );
-      handler(end, data != null ? map(data) : null)
-    })
-  }
-}
-```
-
-
-map = (read, map) ->
-  #return a readable function!
-  (end, handler) ->
-    read end, (end, data) ->
-      debug '33344', data
-      handler end, if data != null then map(data) else null
-      return
-    return
-
-  # map paths
-
-### # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #  ###
-###  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # ###
 
 ### http://dominictarr.com/post/149248845122/pull-streams-pull-streams-are-a-very-simple ###
 
@@ -117,46 +65,156 @@ function values(array) {
 }
 ```
 
+#-----------------------------------------------------------------------------------------------------------
+values = ( list ) ->
+  ### source ###
+  idx = 0
+  return ( end, handler ) ->
+    return handler end if end
+    return handler true  if idx >= list.length
+    idx += +1
+    handler null, list[ idx - 1 ]
+
+#-----------------------------------------------------------------------------------------------------------
+$random = ( n ) ->
+  ### source ###
+  return ( end, handler ) ->
+    return handler end if end
+    ### only read n times, then stop ###
+    n += -1
+    return handler true if n < 0
+    handler null, Math.random()
+
+#-----------------------------------------------------------------------------------------------------------
+$sequence = ( n ) ->
+  ### source ###
+  Z = 0
+  return ( end, handler ) ->
+    return handler end if end
+    Z += +1
+    return handler true if Z > n
+    handler null, Z
+
+#-----------------------------------------------------------------------------------------------------------
+$logger = ->
+  ### sink ###
+  return ( read ) ->
+    next = ( end, data ) ->
+      return if end is true
+      throw end if end
+      info '>>>', data
+      read null, next
+    read null, next
+    return null
+
+# #-----------------------------------------------------------------------------------------------------------
+# $map = ( read, map ) ->
+#   ### return a readable function! ###
+#   return ( end, handler ) ->
+#     read end, ( end, data ) ->
+#       Z = if data? then map data else null
+#       handler end, Z
+#       return
+#     return
+
+
+#-----------------------------------------------------------------------------------------------------------
+prop = require 'pull-stream/util/prop'
+
+id = ( e ) -> e
+
+$map = ( mapper ) ->
+  debug '22201', mapper
+  return id unless mapper?
+  mapper = prop mapper
+  return ( read ) ->
+    return ( abort, handler ) ->
+      read abort, ( end, data ) ->
+        debug '23201', data
+        try
+          data = if not end then mapper data else null
+        catch error
+          return read error, -> handler error
+        handler end, data
+        return
+      return
+
+
 ### # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #  ###
 ###  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # ###
 
-pipeline = [
   # ( pull.values paths                                   )
   # ( pull.asyncMap FS.stat                               )
-  # ( logger() )
-  ( pull.values [ 1, 2, 3, ] )
-  ( through ( data ) -> help data; @queue data; urge ( name for name of @ ) )
-  ( pull.collect ( error, collector ) -> info collector )
+  # ( pull.values [ 1, 2, 3, ] )
+  # ( values [ 1, 2, 3, ] )
+
+#===========================================================================================================
+pipeline = [
+  # ( $random 4 )
+  ( $sequence 4 )
+  ( $map ( data ) -> whisper '+++', data; data ** 2 )
+  ( through ( data ) -> whisper '###', data; @queue data )
+  # ( pull.collect ( error, collector ) -> info collector; @queue collector )
+  ( $logger() )
   ]
 
 pull pipeline...
+$logger() $random 5
 
-
-```
-pull(
-  pull.values([1,2,3]),
-  through(function (data) {
-    this.queue(data * 10)
-  }),
-  pull.collect(function (err, ary) {
-    if(err) throw err
-    debug( ary );
-    // t.deepEqual(ary, [10, 20, 30])
-    // t.end()
-  })
-)
-```
-
+#===========================================================================================================
 pipeline = [
   ( pull.values [ 1, 2, 3, ] )
-  ( through ( data ) -> debug data; @queue data * 10 )
-  ( pull.collect ( error, collector ) -> throw error if error?; debug collector )
+  ( through ( data ) -> @queue data * 10 )
+  ( pull.collect ( error, collector ) -> throw error if error?; debug '***', collector )
   ]
 pull pipeline...
 
 
 
+#===========================================================================================================
+$stringify                = require 'pull-stringify'
+$split                    = require 'pull-split'
+$utf8                     = require 'pull-utf8-decoder'
+$on_end                   = require 'pull-stream/sinks/on-end'
+to_pull                   = require 'stream-to-pull-stream'
+input                     = FS.createReadStream PATH.resolve __dirname, '../test-data/ids.txt'
+# output                    = process.stdout
+output                    = FS.createWriteStream '/tmp/formulas.txt'
 
+t0    = null
+t1    = null
+count = 0
+
+pipeline = [
+  to_pull.source input
+  # through null, ( P... ) -> debug P
+  through do ->
+    is_first = yes
+    return ( data ) ->
+      if is_first
+        is_first  = no
+        t0        = Date.now()
+      @queue data
+  $utf8()
+  $split()
+  pull.map      ( line    ) -> line.trim()
+  pull.filter   ( line    ) -> line.length > 0
+  pull.filter   ( line    ) -> not line.startsWith '#'
+  pull.map      ( line    ) -> count += +1; return line
+  pull.map      ( line    ) -> line.split '\t'
+  pull.map      ( fields  ) -> [ _, glyph, formula, ] = fields; return [ glyph, formula, ]
+  pull.map      ( fields  ) -> JSON.stringify fields
+  pull.map      ( line    ) -> line + '\n'
+  # $on_end -> debug 'ok'
+  to_pull.sink output, ( error ) ->
+    throw error if error?
+    t1  = Date.now()
+    dts = ( t1 - t0 ) / 1000
+    ips = count / dts
+    help "dts: #{format_float dts}, ips: #{format_float ips}"
+    help 'ok'
+  ]
+pull pipeline...
 
 
 # #-----------------------------------------------------------------------------------------------------------
