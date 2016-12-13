@@ -197,10 +197,11 @@ pipeline = [
       @queue data
   $utf8()
   $split()
+  pull.map      ( line    ) -> count += +1; return line
   pull.map      ( line    ) -> line.trim()
   pull.filter   ( line    ) -> line.length > 0
   pull.filter   ( line    ) -> not line.startsWith '#'
-  pull.map      ( line    ) -> count += +1; return line
+  pull.filter   ( line    ) -> ( /魚/ ).test line
   pull.map      ( line    ) -> line.split '\t'
   pull.map      ( fields  ) -> [ _, glyph, formula, ] = fields; return [ glyph, formula, ]
   pull.map      ( fields  ) -> JSON.stringify fields
