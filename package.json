@@ -32,6 +32,9 @@
     "mkdirp": "^0.5.1",
     "pipedreams": "^6.3.2",
     "pipestreams": "0.0.3",
+    "pull-split": "^0.2.0",
+    "pull-stream": "^3.5.0",
+    "pull-through": "^1.0.18",
     "through2": "^2.0.1"
   },
   "devDependencies": {}
