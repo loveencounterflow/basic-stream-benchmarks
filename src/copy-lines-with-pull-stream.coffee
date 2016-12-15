@@ -177,44 +177,57 @@ $split                    = require 'pull-split'
 $utf8                     = require 'pull-utf8-decoder'
 $on_end                   = require 'pull-stream/sinks/on-end'
 to_pull                   = require 'stream-to-pull-stream'
-input                     = FS.createReadStream PATH.resolve __dirname, '../test-data/ids.txt'
+input_stream              = FS.createReadStream PATH.resolve __dirname, '../test-data/ids.txt'
 # output                    = process.stdout
-output                    = FS.createWriteStream '/tmp/formulas.txt'
+output_stream             = FS.createWriteStream '/tmp/formulas.txt'
 
+pipeline  = []
+push      = pipeline.push.bind pipeline
+
+#-----------------------------------------------------------------------------------------------------------
 t0        = null
 t1        = null
 count     = 0
-pipeline  = []
-þ         = pipeline.push.bind pipeline
-# þ         = ( x ) -> pipeline.push x
 
-þ to_pull.source input
-  # through null, ( P... ) -> debug P
-þ through do ->
-  is_first = yes
-  return ( data ) ->
-    if is_first
-      is_first  = no
-      t0        = Date.now()
-    @queue data
-þ $utf8()
-þ $split()
-þ pull.map      ( line    ) -> count += +1; return line
-þ pull.map      ( line    ) -> line.trim()
-þ pull.filter   ( line    ) -> line.length > 0
-þ pull.filter   ( line    ) -> not line.startsWith '#'
-# þ pull.filter   ( line    ) -> ( /魚/ ).test line
-þ pull.map      ( line    ) -> line.split '\t'
-þ pull.map      ( fields  ) -> [ _, glyph, formula, ] = fields; return [ glyph, formula, ]
-þ pull.map      ( fields  ) -> JSON.stringify fields
-þ pull.map      ( line    ) -> line + '\n'
-þ to_pull.sink output, ( error ) ->
-  throw error if error?
-  t1  = Date.now()
-  dts = ( t1 - t0 ) / 1000
-  ips = count / dts
-  help "dts: #{format_float dts}, ips: #{format_float ips}"
-  help 'ok'
+#...........................................................................................................
+$input = -> to_pull.source input_stream
+
+#...........................................................................................................
+$output = ->
+  return to_pull.sink output_stream, ( error ) ->
+    throw error if error?
+    t1  = Date.now()
+    dts = ( t1 - t0 ) / 1000
+    ips = count / dts
+    help "dts: #{format_float dts}, ips: #{format_float ips}"
+    help 'ok'
+
+#...........................................................................................................
+$stop_time = ->
+  return through do ->
+    is_first = yes
+    return ( data ) ->
+      if is_first
+        is_first  = no
+        t0        = Date.now()
+      @queue data
+      return null
+
+#-----------------------------------------------------------------------------------------------------------
+push $input()
+push $stop_time()
+push $utf8()
+push $split()
+push pull.map      ( line    ) -> count += +1; return line
+push pull.map      ( line    ) -> line.trim()
+push pull.filter   ( line    ) -> line.length > 0
+push pull.filter   ( line    ) -> not line.startsWith '#'
+# push pull.filter   ( line    ) -> ( /魚/ ).test line
+push pull.map      ( line    ) -> line.split '\t'
+push pull.map      ( fields  ) -> [ _, glyph, formula, ] = fields; return [ glyph, formula, ]
+push pull.map      ( fields  ) -> JSON.stringify fields
+push pull.map      ( line    ) -> line + '\n'
+push $output()
 
 #-----------------------------------------------------------------------------------------------------------
 pull pipeline...

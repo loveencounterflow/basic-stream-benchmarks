@@ -18,14 +18,6 @@ FS                        = require 'fs'
 through2                  = require 'through2'
 $split                    = require 'binary-split'
 #...........................................................................................................
-O                         = {}
-O.inputs                  = {}
-O.outputs                 = {}
-O.inputs.long             = PATH.resolve __dirname, '../test-data/Unicode-NamesList.txt'
-O.inputs.short            = PATH.resolve __dirname, '../test-data/Unicode-NamesList-short.txt'
-O.inputs.tiny             = PATH.resolve __dirname, '../test-data/Unicode-NamesList-tiny.txt'
-O.outputs.lines           = PATH.resolve __dirname, '/tmp/basic-stream-benchmarks/lines.txt'
-#...........................................................................................................
 mkdirp                    = require 'mkdirp'
 PATCHER                   = require './patch-event-emitter'
 
