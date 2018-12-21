@@ -213,7 +213,9 @@ cat profile-n\:5.json | flamegraph -t cpuprofile > flamegraph-n5-async-short.svg
 
 ### Flamegraphs
 
-![](https://github.com/loveencounterflow/basic-stream-benchmarks/raw/master/results/2833mhz-intel-r-core-tm-2-quad-cpu-q9550-2-83ghz/flamegraphs/flamegraph-2833mhz%2Cevented%2C0%2Csync.svg)
+**NOTE** because raw-git.com has shuttered, the images below can be shown here;
+you can still access them by heading to [the appropriate
+subfolder](https://github.com/loveencounterflow/basic-stream-benchmarks/tree/master/results/2833mhz-intel-r-core-tm-2-quad-cpu-q9550-2-83ghz/flamegraphs).
 
 n=0, size=long, mode=async: <img src="https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=0,size=long,mode=async.png" width=200>;
 n=0, size=long, mode=sync: <img src="https://cdn.rawgit.com/loveencounterflow/basic-stream-benchmarks/master/flamegraph-n=0,size=long,mode=sync.png" width=200>
